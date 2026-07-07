@@ -24,7 +24,7 @@ export default function Reviews() {
     <section
       id="reviews"
       aria-label="What founders say"
-      className="cv-auto relative overflow-hidden bg-espresso py-24 text-cream sm:py-32"
+      className="relative overflow-hidden bg-espresso py-24 text-cream sm:py-32"
     >
       <ThreadScene color="#f2ecdd" alpha={0.1} rise={0.28} />
       <span className="marginalia !text-cream-soft">verbatim — client notes</span>

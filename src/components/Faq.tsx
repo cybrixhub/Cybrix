@@ -20,7 +20,7 @@ export default function Faq() {
     <section
       id="faq"
       aria-label="Frequently asked questions"
-      className="cv-auto bg-paper py-24 sm:py-32"
+      className="bg-paper py-24 sm:py-32"
     >
       <script
         type="application/ld+json"

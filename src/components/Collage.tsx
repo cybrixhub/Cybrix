@@ -53,7 +53,7 @@ export default function Collage() {
   return (
     <section
       aria-label="From the studio floor"
-      className="cv-auto relative overflow-hidden bg-paper py-24 sm:py-32"
+      className="relative overflow-hidden bg-paper py-24 sm:py-32"
     >
       <PixelGlitch
         seed={3}
