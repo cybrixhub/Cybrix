@@ -34,9 +34,10 @@
   --color-blush: #382420;
   --color-butter: #392c17;
 
-  /* Fonts (Satoshi from Fontshare, Instrument Sans as self-hosted fallback) */
+  /* Fonts — all self-hosted via next/font (no third-party CDN) */
   --font-sans:
-    "Satoshi", var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+    var(--font-satoshi), var(--font-instrument), ui-sans-serif, system-ui,
+    sans-serif;
   --font-display: var(--font-fraunces), Georgia, serif;
   --font-mono: var(--font-plex), ui-monospace, monospace;
 
@@ -293,6 +294,14 @@ html.lenis body {
 /* Split-text lines get masked by GSAP; keep layout stable before split */
 .split-parent {
   overflow-wrap: anywhere;
+}
+
+/* Content-visibility skip: browser defers rendering below-fold sections
+   until they scroll near the viewport. contain-intrinsic-size reserves
+   space so ScrollTrigger positions stay accurate. */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 900px;
 }
 
 /* ------------------------------------------------------------------ */

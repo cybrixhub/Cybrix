@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Stamp from "./Stamp";
 import { FACTOIDS } from "@/lib/site";
 
@@ -49,13 +50,14 @@ export default function Factoids() {
           <div className="relative z-10 flex h-full items-center py-16">
             <div className="relative aspect-[3/4] w-full overflow-hidden border border-ink/20 shadow-[0_40px_80px_-30px_rgba(0,0,0,0.7)]">
               {FACTOIDS.map((f, i) => (
-                /* eslint-disable-next-line @next/next/no-img-element */
-                <img
+                <Image
                   key={f.image}
                   src={f.image}
                   alt=""
-                  loading="lazy"
-                  className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-out ${
+                  fill
+                  sizes="(max-width: 1024px) 0px, (max-width: 1280px) 304px, 336px"
+                  quality={75}
+                  className={`object-cover transition-all duration-700 ease-out ${
                     i === index ? "scale-100 opacity-100" : "scale-105 opacity-0"
                   }`}
                 />
@@ -113,13 +115,16 @@ export default function Factoids() {
 
       {/* Mobile photo */}
       <div className="relative z-10 -mt-4 px-5 pb-14 lg:hidden">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={slide.image}
-          alt={slide.alt}
-          loading="lazy"
-          className="mx-auto aspect-[4/3] w-full max-w-md border border-cream/15 object-cover"
-        />
+        <div className="relative mx-auto aspect-[4/3] w-full max-w-md overflow-hidden border border-cream/15">
+          <Image
+            src={slide.image}
+            alt={slide.alt}
+            fill
+            sizes="(max-width: 640px) 100vw, 448px"
+            quality={75}
+            className="object-cover"
+          />
+        </div>
       </div>
     </section>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Magnetic from "./Magnetic";
@@ -125,13 +126,15 @@ export default function Hero() {
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 overflow-hidden"
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src="/hero-bg.jpg"
             alt=""
             data-h="bgimg"
-            fetchPriority="high"
-            className="h-full w-full object-cover will-change-transform [filter:saturate(1.06)]"
+            fill
+            priority
+            sizes="100vw"
+            quality={78}
+            className="object-cover will-change-transform [filter:saturate(1.06)]"
           />
           {/* copy shade — dark only where the text sits, fully transparent on the right so the photo pops */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#0f0c08]/85 via-[#0f0c08]/25 to-transparent" />
@@ -286,12 +289,13 @@ export default function Hero() {
                 className="group flex items-center gap-3 justify-self-start rounded-md border border-[#f7efe4]/12 bg-[#f7efe4]/[0.04] p-1.5 pr-4 transition-colors hover:border-[#f7efe4]/30 hover:bg-[#f7efe4]/[0.08] sm:justify-self-end"
               >
                 <span className="relative block h-12 w-16 overflow-hidden rounded">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Image
                     src="/img/factoid-studio.jpg"
                     alt=""
-                    loading="lazy"
-                    className="h-full w-full object-cover"
+                    fill
+                    sizes="64px"
+                    quality={70}
+                    className="object-cover"
                   />
                   <span className="absolute inset-0 grid place-items-center bg-black/35">
                     <span className="grid h-6 w-6 place-items-center rounded-full bg-[#f7efe4] text-espresso transition-transform duration-300 group-hover:scale-110">

@@ -65,7 +65,7 @@ export default function Book() {
   return (
     <section
       id="book"
-      className="relative overflow-hidden bg-espresso text-cream"
+      className="cv-auto relative overflow-hidden bg-espresso text-cream"
     >
       <div className="bg-noise pointer-events-none absolute inset-0 opacity-[0.06]" />
       <span className="marginalia !text-cream-soft">appointments open</span>

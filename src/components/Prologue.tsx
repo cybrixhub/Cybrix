@@ -3,7 +3,7 @@
 import { useEffect, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SplitText } from "gsap/SplitText";
+import type { SplitText as SplitTextT } from "gsap/SplitText";
 
 const useIso = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
@@ -22,17 +22,19 @@ export default function Prologue() {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) return; // text stays fully lit
 
-    gsap.registerPlugin(ScrollTrigger, SplitText);
+    gsap.registerPlugin(ScrollTrigger);
 
-    let split: SplitText | null = null;
+    let split: SplitTextT | null = null;
     let cancelled = false;
     const ctx = gsap.context(() => {}, root);
 
-    document.fonts.ready.then(() => {
-      if (cancelled || !quoteRef.current) return;
-      ctx.add(() => {
+    Promise.all([document.fonts.ready, import("gsap/SplitText")]).then(
+      ([, mod]) => {
+        if (cancelled || !quoteRef.current) return;
+        gsap.registerPlugin(mod.SplitText);
+        ctx.add(() => {
         try {
-          split = new SplitText(quoteRef.current, { type: "words,chars" });
+          split = new mod.SplitText(quoteRef.current, { type: "words,chars" });
           gsap.fromTo(
             split.chars,
             { opacity: 0.13 },
@@ -52,8 +54,9 @@ export default function Prologue() {
         } catch {
           /* leave the quote fully visible */
         }
-      });
-    });
+        });
+      },
+    );
 
     return () => {
       cancelled = true;

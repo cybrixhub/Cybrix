@@ -4,7 +4,7 @@ import { useEffect, useLayoutEffect } from "react";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SplitText } from "gsap/SplitText";
+import type { SplitText as SplitTextT } from "gsap/SplitText";
 
 const useIso = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
@@ -22,7 +22,7 @@ export default function SmoothScroll() {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) return;
 
-    gsap.registerPlugin(ScrollTrigger, SplitText);
+    gsap.registerPlugin(ScrollTrigger);
 
     const lenis = new Lenis({
       duration: 1.1,
@@ -35,7 +35,7 @@ export default function SmoothScroll() {
     gsap.ticker.add(raf);
     gsap.ticker.lagSmoothing(0);
 
-    const splits: SplitText[] = [];
+    const splits: SplitTextT[] = [];
 
     const ctx = gsap.context(() => {
       // --- simple rise reveals -------------------------------------------
@@ -92,14 +92,18 @@ export default function SmoothScroll() {
       });
     });
 
-    // --- masked line reveals (after fonts load, so lines break correctly)
+    // --- masked line reveals (SplitText loaded lazily, after fonts) ---
     let cancelled = false;
-    document.fonts.ready.then(() => {
+    Promise.all([
+      document.fonts.ready,
+      import("gsap/SplitText"),
+    ]).then(([, mod]) => {
       if (cancelled) return;
+      gsap.registerPlugin(mod.SplitText);
       ctx.add(() => {
         gsap.utils.toArray<HTMLElement>("[data-split]").forEach((el) => {
           try {
-            const split = new SplitText(el, {
+            const split = new mod.SplitText(el, {
               type: "lines",
               mask: "lines",
               linesClass: "split-line",

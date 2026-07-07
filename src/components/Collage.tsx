@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Reveal from "./Reveal";
 import { COLLAGE } from "@/lib/site";
 
@@ -52,7 +53,7 @@ export default function Collage() {
   return (
     <section
       aria-label="From the studio floor"
-      className="relative overflow-hidden bg-paper py-24 sm:py-32"
+      className="cv-auto relative overflow-hidden bg-paper py-24 sm:py-32"
     >
       <PixelGlitch
         seed={3}
@@ -80,13 +81,16 @@ export default function Collage() {
           {/* Plate one */}
           <Reveal className="lg:-rotate-3 lg:mt-6">
             <figure className="w-72 bg-paper-2 p-3 pb-4 shadow-[0_30px_60px_-30px_rgba(36,30,22,0.55)] sm:w-80">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={COLLAGE[0].image}
-                alt={COLLAGE[0].alt}
-                loading="lazy"
-                className="aspect-[3/4] w-full border border-line object-cover"
-              />
+              <div className="relative aspect-[3/4] w-full overflow-hidden border border-line">
+                <Image
+                  src={COLLAGE[0].image}
+                  alt={COLLAGE[0].alt}
+                  fill
+                  sizes="(max-width: 640px) 288px, 320px"
+                  quality={75}
+                  className="object-cover"
+                />
+              </div>
               <figcaption className="mt-3 flex items-center justify-between gap-3">
                 <span className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-ink-soft">
                   {COLLAGE[0].caption}
@@ -105,13 +109,16 @@ export default function Collage() {
           {/* Plate two */}
           <Reveal delay={90} className="lg:rotate-2 lg:-mt-2">
             <figure className="w-72 bg-paper-2 p-3 pb-4 shadow-[0_30px_60px_-30px_rgba(36,30,22,0.55)] sm:w-80">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={COLLAGE[1].image}
-                alt={COLLAGE[1].alt}
-                loading="lazy"
-                className="aspect-[3/4] w-full border border-line object-cover"
-              />
+              <div className="relative aspect-[3/4] w-full overflow-hidden border border-line">
+                <Image
+                  src={COLLAGE[1].image}
+                  alt={COLLAGE[1].alt}
+                  fill
+                  sizes="(max-width: 640px) 288px, 320px"
+                  quality={75}
+                  className="object-cover"
+                />
+              </div>
               <figcaption className="mt-3 flex items-center justify-between gap-3">
                 <span className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-ink-soft">
                   {COLLAGE[1].caption}

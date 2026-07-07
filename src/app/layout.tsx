@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Instrument_Sans, IBM_Plex_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import { SITE, SOCIALS } from "@/lib/site";
 import "./globals.css";
 
@@ -11,9 +12,22 @@ const fraunces = Fraunces({
   display: "swap",
 });
 
+/** Body font — self-hosted Satoshi (3 weights, ~75 KB total) */
+const satoshi = localFont({
+  variable: "--font-satoshi",
+  display: "swap",
+  src: [
+    { path: "../../public/fonts/satoshi-400.woff2", weight: "400", style: "normal" },
+    { path: "../../public/fonts/satoshi-500.woff2", weight: "500", style: "normal" },
+    { path: "../../public/fonts/satoshi-700.woff2", weight: "700", style: "normal" },
+  ],
+});
+
+/** Fallback if Satoshi ever fails to load. Only the used weights. */
 const instrumentSans = Instrument_Sans({
   variable: "--font-instrument",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
   display: "swap",
 });
 
@@ -124,21 +138,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${instrumentSans.variable} ${plexMono.variable} h-full`}
+      className={`${fraunces.variable} ${satoshi.variable} ${instrumentSans.variable} ${plexMono.variable} h-full`}
     >
-      <head>
-        {/* Satoshi — the body voice. Fontshare CDN with Instrument Sans as
-            a self-hosted fallback via next/font. */}
-        <link
-          rel="preconnect"
-          href="https://api.fontshare.com"
-          crossOrigin=""
-        />
-        <link
-          rel="stylesheet"
-          href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap"
-        />
-      </head>
       <body className="min-h-full flex flex-col bg-paper text-ink font-sans antialiased">
         <script
           type="application/ld+json"
