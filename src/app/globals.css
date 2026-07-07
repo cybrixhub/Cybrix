@@ -36,8 +36,7 @@
 
   /* Fonts — all self-hosted via next/font (no third-party CDN) */
   --font-sans:
-    var(--font-satoshi), var(--font-instrument), ui-sans-serif, system-ui,
-    sans-serif;
+    var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-fraunces), Georgia, serif;
   --font-mono: var(--font-plex), ui-monospace, monospace;
 

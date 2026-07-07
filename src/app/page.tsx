@@ -1,7 +1,9 @@
 import SmoothScroll from "@/components/SmoothScroll";
 import ScrollProgress from "@/components/ScrollProgress";
-import Preloader from "@/components/Preloader";
-import InkCursor from "@/components/InkCursor";
+import {
+  ClientBeforeMain,
+  ClientAfterMain,
+} from "@/components/ClientWidgets";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Prologue from "@/components/Prologue";
@@ -16,7 +18,6 @@ import Reviews from "@/components/Reviews";
 import Collage from "@/components/Collage";
 import Faq from "@/components/Faq";
 import Book from "@/components/Book";
-import FloatingCta from "@/components/FloatingCta";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -24,8 +25,7 @@ export default function Home() {
     <>
       <SmoothScroll />
       <ScrollProgress />
-      <Preloader />
-      <InkCursor />
+      <ClientBeforeMain />
       <Header />
       <main id="main" tabIndex={-1} className="flex-1 outline-none">
         <Hero />
@@ -43,7 +43,7 @@ export default function Home() {
         <TornEdge color="var(--color-espresso)" className="-mb-px" />
         <Book />
       </main>
-      <FloatingCta />
+      <ClientAfterMain />
       <Footer />
     </>
   );
