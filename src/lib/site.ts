@@ -10,9 +10,9 @@ export const SITE = {
   description:
     "The social & content studio behind startups that punch above their size. We turn attention into pipeline — not vanity metrics.",
   /** Update this to your live domain before deploying. */
-  url: "https://cybrix.agency",
+  url: "https://cybrix.uk",
   /** Placeholder — point this at your real inbox before launch. */
-  email: "hello@cybrix.agency",
+  email: "hello@cybrix.uk",
   phone: "+1 (555) 012-3456",
   location: "Remote · Working worldwide",
   ogImage: "/opengraph-image",

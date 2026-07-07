@@ -84,7 +84,7 @@ export default function OpengraphImage() {
           }}
         >
           <span>Attention → pipeline. Not vanity metrics.</span>
-          <span style={{ color: "#e0a458" }}>cybrix.agency</span>
+          <span style={{ color: "#e0a458" }}>cybrix.uk</span>
         </div>
       </div>
     ),
