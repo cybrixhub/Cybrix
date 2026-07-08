@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SERVICE_GROUPS } from "@/lib/site";
 
 const PANEL_STYLES = [
@@ -86,45 +87,50 @@ export default function WhatWeDo() {
                   {group.items.map((item, idx) => (
                     <li
                       key={item.name}
-                      className={`group/item border-b transition-colors duration-300 ${s.line} ${s.itemHover}`}
+                      className={`border-b ${s.line}`}
                     >
-                      <div className="flex flex-col gap-4 py-5 sm:flex-row sm:items-start sm:justify-between sm:gap-8">
-                        <div className="min-w-0 flex-1">
-                          <div className="flex items-baseline gap-3">
-                            <span
-                              className={`font-mono text-[0.65rem] uppercase tracking-[0.16em] ${s.muted}`}
+                      <Link
+                        href={`/services/${item.slug}`}
+                        className={`group/item block transition-colors duration-300 ${s.itemHover}`}
+                      >
+                        <div className="flex flex-col gap-4 py-5 sm:flex-row sm:items-start sm:justify-between sm:gap-8">
+                          <div className="min-w-0 flex-1">
+                            <div className="flex items-baseline gap-3">
+                              <span
+                                className={`font-mono text-[0.65rem] uppercase tracking-[0.16em] ${s.muted}`}
+                              >
+                                {String(idx + 1).padStart(2, "0")}
+                              </span>
+                              <h4 className="font-display text-xl font-medium tracking-tight sm:text-2xl">
+                                {item.name}
+                              </h4>
+                            </div>
+                            <p
+                              className={`mt-1.5 pl-8 text-sm leading-relaxed ${s.muted}`}
                             >
-                              {String(idx + 1).padStart(2, "0")}
-                            </span>
-                            <h4 className="font-display text-xl font-medium tracking-tight sm:text-2xl">
-                              {item.name}
-                            </h4>
+                              {item.tagline}
+                            </p>
+                            {item.bullets && (
+                              <ul className="mt-3 flex flex-wrap gap-1.5 pl-8">
+                                {item.bullets.map((b) => (
+                                  <li
+                                    key={b}
+                                    className={`rounded-full border px-2.5 py-0.5 font-mono text-[0.6rem] uppercase tracking-wider ${s.itemBorder}`}
+                                  >
+                                    {b}
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
                           </div>
-                          <p
-                            className={`mt-1.5 pl-8 text-sm leading-relaxed ${s.muted}`}
+                          <span
+                            aria-hidden="true"
+                            className={`shrink-0 text-lg transition-transform duration-300 group-hover/item:translate-x-1 ${s.arrow}`}
                           >
-                            {item.tagline}
-                          </p>
-                          {item.bullets && (
-                            <ul className="mt-3 flex flex-wrap gap-1.5 pl-8">
-                              {item.bullets.map((b) => (
-                                <li
-                                  key={b}
-                                  className={`rounded-full border px-2.5 py-0.5 font-mono text-[0.6rem] uppercase tracking-wider ${s.itemBorder}`}
-                                >
-                                  {b}
-                                </li>
-                              ))}
-                            </ul>
-                          )}
+                            →
+                          </span>
                         </div>
-                        <span
-                          aria-hidden="true"
-                          className={`shrink-0 text-lg transition-transform duration-300 group-hover/item:translate-x-1 ${s.arrow}`}
-                        >
-                          →
-                        </span>
-                      </div>
+                      </Link>
                     </li>
                   ))}
                 </ol>

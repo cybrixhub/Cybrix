@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Reveal from "./Reveal";
 import Underlined from "./Underlined";
 import { WORK } from "@/lib/site";
@@ -80,8 +81,9 @@ export default function Work() {
             return (
               <Reveal key={project.client} delay={(i % 2) * 80}>
                 {/* Hanging rig: brass tack → sagging strings → pegged print */}
-                <div
-                  className="animate-sway relative pt-12"
+                <Link
+                  href={`/work/${project.slug}`}
+                  className="animate-sway relative block pt-12"
                   style={{ animationDelay: `${i * 0.9}s` }}
                 >
                   {/* brass tack */}
@@ -201,14 +203,14 @@ export default function Work() {
                       </div>
                     </div>
                   </article>
-                </div>
+                </Link>
               </Reveal>
             );
           })}
         </div>
 
         <p className="mt-8 text-center font-mono text-xs uppercase tracking-[0.14em] text-muted">
-          Placeholder results — swap in your client case studies
+          Verified from live ad accounts · click any print for the full case
         </p>
       </div>
     </section>
