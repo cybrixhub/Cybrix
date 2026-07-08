@@ -77,19 +77,21 @@ export default function Reviews() {
           ))}
         </div>
 
-        {/* Real client results — dashboards pulled from campaigns we ran */}
+        {/* Real client results — dashboards pulled from campaigns we ran.
+            `object-contain` (not cover) keeps the whole table readable —
+            dashboards are wider than 4:3 and cropping would eat the text. */}
         <div className="mt-10 grid gap-5 sm:grid-cols-3">
           {REVIEW_SCREENSHOTS.map((shot, i) => (
             <Reveal key={shot.src} delay={i * 70}>
               <figure className="group overflow-hidden rounded-lg border border-cream/15 bg-paper-2 shadow-[0_18px_36px_-16px_rgba(0,0,0,0.55)]">
-                <div className="relative aspect-[4/3] overflow-hidden bg-espresso-2">
+                <div className="relative aspect-[4/3] overflow-hidden bg-white">
                   <Image
                     src={shot.src}
                     alt={shot.alt}
                     fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 45vw, 320px"
-                    quality={75}
-                    className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 45vw, 380px"
+                    quality={85}
+                    className="object-contain object-top p-2 transition-transform duration-500 ease-out group-hover:scale-[1.02]"
                   />
                 </div>
                 <figcaption className="border-t border-line px-4 py-3 font-mono text-[0.62rem] uppercase tracking-[0.14em] text-ink-soft">

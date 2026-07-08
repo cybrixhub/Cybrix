@@ -68,7 +68,7 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 31536000,
     // Allowed quality values (Next 16 requires an allow-list); each JPG
     // asset picks the smallest quality that still looks right for its role.
-    qualities: [70, 75, 78],
+    qualities: [70, 75, 78, 85],
   },
 
   async headers() {
