@@ -1,13 +1,16 @@
-import { FLAGSHIPS } from "@/lib/site";
+import { SERVICE_GROUPS } from "@/lib/site";
 
 const PANEL_STYLES = [
   {
     section: "bg-espresso text-cream",
     line: "border-espresso-line",
-    displayNumber: "text-oxblood-bright", // large text only (≥3:1 on espresso)
-    pagination: "text-amber", // small text needs 4.5:1 on espresso
+    displayNumber: "text-oxblood-bright",
+    pagination: "text-amber",
     arrow: "text-amber",
     muted: "text-cream-soft",
+    itemBg: "bg-espresso-2",
+    itemBorder: "border-espresso-line",
+    itemHover: "hover:bg-[#3a2f22]",
   },
   {
     section: "bg-oxblood text-[#f7efe4]",
@@ -16,77 +19,115 @@ const PANEL_STYLES = [
     pagination: "text-[#f7efe4]",
     arrow: "text-[#e8c9b4]",
     muted: "text-[#eed9c8]/90",
+    itemBg: "bg-[#7a2424]",
+    itemBorder: "border-[#f7efe4]/15",
+    itemHover: "hover:bg-[#6d1e1e]",
   },
 ] as const;
 
 /**
  * "What we do" — the lock section. Each chapter is a full-viewport sticky
- * panel; scrolling turns the page, the next chapter sliding over the last
- * (CSS sticky) while GSAP dims and settles the outgoing page.
+ * panel; scrolling turns the page. Each panel now holds a whole service
+ * group (Growth Plans / Automated Systems) with its individual offerings
+ * as inline cards.
  */
 export default function WhatWeDo() {
   return (
     <section id="services" aria-label="What we do">
       <h2 className="sr-only">What we do</h2>
-      {FLAGSHIPS.map((flagship, i) => {
+      {SERVICE_GROUPS.map((group, i) => {
         const s = PANEL_STYLES[i % PANEL_STYLES.length];
         return (
           <article
-            key={flagship.number}
+            key={group.number}
             className={`chapter-shadow sticky top-0 flex min-h-svh flex-col justify-center overflow-hidden ${s.section}`}
           >
             <div className="bg-noise pointer-events-none absolute inset-0 opacity-[0.06]" />
-            {/* page-turn shade (driven by SmoothScroll) */}
             <div
               aria-hidden="true"
               className="js-panel-shade pointer-events-none absolute inset-0 z-20 bg-black opacity-0"
             />
 
-            <div className="container-x relative z-10 py-24">
+            <div className="container-x relative z-10 py-20 sm:py-24">
               <div
                 className={`flex items-baseline justify-between border-b pb-5 ${s.line}`}
               >
-                <span className="kicker">What we do</span>
+                <span className="kicker">{group.kicker}</span>
                 <span className="font-mono text-sm">
-                  <span className={s.pagination}>{flagship.number}</span>
+                  <span className={s.pagination}>{group.number}</span>
                   <span className={s.muted}>
                     {" "}
-                    / {String(FLAGSHIPS.length).padStart(2, "0")}
+                    / {String(SERVICE_GROUPS.length).padStart(2, "0")}
                   </span>
                 </span>
               </div>
 
-              <div className="mt-12 grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-20">
-                <div>
+              <div className="mt-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+                {/* Left — the group intro */}
+                <div className="lg:sticky lg:top-24 lg:self-start">
                   <span
                     aria-hidden="true"
-                    className={`font-display text-7xl font-medium italic sm:text-8xl ${s.displayNumber}`}
+                    className={`font-display text-6xl font-medium italic sm:text-7xl md:text-8xl ${s.displayNumber}`}
                   >
-                    {flagship.number}
+                    {group.number}
                   </span>
-                  <h3 className="mt-6 font-display text-4xl font-medium leading-[1.05] tracking-tight text-balance sm:text-5xl md:text-6xl">
-                    {flagship.title}
+                  <h3 className="mt-4 font-display text-3xl font-medium leading-[1.05] tracking-tight text-balance sm:text-4xl md:text-5xl">
+                    {group.title}
                   </h3>
                   <p
-                    className={`mt-6 max-w-xl text-lg leading-relaxed text-pretty ${s.muted}`}
+                    className={`mt-5 max-w-md text-base leading-relaxed text-pretty sm:text-lg ${s.muted}`}
                   >
-                    {flagship.description}
+                    {group.intro}
                   </p>
                 </div>
 
-                <ul className={`self-end border-t ${s.line}`}>
-                  {flagship.points.map((point) => (
+                {/* Right — the individual offerings */}
+                <ol className={`self-start border-t ${s.line}`}>
+                  {group.items.map((item, idx) => (
                     <li
-                      key={point}
-                      className={`flex items-center gap-4 border-b py-4 ${s.line}`}
+                      key={item.name}
+                      className={`group/item border-b transition-colors duration-300 ${s.line} ${s.itemHover}`}
                     >
-                      <span aria-hidden="true" className={s.arrow}>
-                        →
-                      </span>
-                      <span className="text-base font-medium">{point}</span>
+                      <div className="flex flex-col gap-4 py-5 sm:flex-row sm:items-start sm:justify-between sm:gap-8">
+                        <div className="min-w-0 flex-1">
+                          <div className="flex items-baseline gap-3">
+                            <span
+                              className={`font-mono text-[0.65rem] uppercase tracking-[0.16em] ${s.muted}`}
+                            >
+                              {String(idx + 1).padStart(2, "0")}
+                            </span>
+                            <h4 className="font-display text-xl font-medium tracking-tight sm:text-2xl">
+                              {item.name}
+                            </h4>
+                          </div>
+                          <p
+                            className={`mt-1.5 pl-8 text-sm leading-relaxed ${s.muted}`}
+                          >
+                            {item.tagline}
+                          </p>
+                          {item.bullets && (
+                            <ul className="mt-3 flex flex-wrap gap-1.5 pl-8">
+                              {item.bullets.map((b) => (
+                                <li
+                                  key={b}
+                                  className={`rounded-full border px-2.5 py-0.5 font-mono text-[0.6rem] uppercase tracking-wider ${s.itemBorder}`}
+                                >
+                                  {b}
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </div>
+                        <span
+                          aria-hidden="true"
+                          className={`shrink-0 text-lg transition-transform duration-300 group-hover/item:translate-x-1 ${s.arrow}`}
+                        >
+                          →
+                        </span>
+                      </div>
                     </li>
                   ))}
-                </ul>
+                </ol>
               </div>
             </div>
           </article>

@@ -77,37 +77,126 @@ export const FOUNDER = {
   role: "Founder",
 } as const;
 
-/** The two flagship systems we run. */
-export type Flagship = {
-  number: string;
-  title: string;
-  description: string;
-  points: string[];
+/** What Cybrix actually sells — grouped by intent. */
+export type ServiceItem = {
+  name: string;
+  tagline: string;
+  bullets?: string[];
 };
 
-export const FLAGSHIPS: Flagship[] = [
+export type ServiceGroup = {
+  number: string;
+  kicker: string;
+  title: string;
+  intro: string;
+  items: ServiceItem[];
+};
+
+export const SERVICE_GROUPS: ServiceGroup[] = [
   {
     number: "01",
-    title: "Social Media Marketing",
-    description:
-      "Always-on social that builds an audience you own. Strategy, content, community and paid — run as one system and measured on pipeline, not likes.",
-    points: [
-      "Paid social campaigns",
-      "Organic + community",
-      "Creator partnerships",
-      "Reporting & attribution",
+    kicker: "Your growth plan",
+    title: "Vertical-tuned playbooks.",
+    intro:
+      "Five plans, each built for a specific industry we've moved the numbers in. Pick the one that matches where you sell — we bring the strategy, creative and channels already dialed in.",
+    items: [
+      {
+        name: "Admission Booster",
+        tagline:
+          "Fill your classrooms with the students you actually want — schools, coaching centers, ed-tech.",
+        bullets: [
+          "Local + intent SEO",
+          "Season-timed ad campaigns",
+          "Lead-gen landing pages",
+          "Enrollment nurture flows",
+        ],
+      },
+      {
+        name: "Deal Drive · Real Estate",
+        tagline:
+          "Turn listings into signed offers, faster — for agents, brokerages and developers.",
+        bullets: [
+          "Geo-targeted paid social",
+          "Listing SEO + Google Business",
+          "Virtual tour content",
+          "Buyer-side lead nurture",
+        ],
+      },
+      {
+        name: "Healthcare Revenue Engine",
+        tagline:
+          "A steady flow of qualified patients, month over month — clinics and private practice.",
+        bullets: [
+          "Local medical SEO",
+          "Compliance-safe funnels",
+          "Booking automation",
+          "Review + reputation ops",
+        ],
+      },
+      {
+        name: "Personal Branding",
+        tagline:
+          "Become the founder your industry follows, not scrolls past.",
+        bullets: [
+          "LinkedIn ghostwriting",
+          "Short-form video system",
+          "PR + podcast positioning",
+          "Executive content calendar",
+        ],
+      },
+      {
+        name: "Trust-Building",
+        tagline:
+          "Reviews, testimonials and social proof that close the deal for you.",
+        bullets: [
+          "Review generation flows",
+          "Case study production",
+          "Testimonial video shoots",
+          "Media placements",
+        ],
+      },
     ],
   },
   {
     number: "02",
-    title: "Content Marketing",
-    description:
-      "Search-ready articles, founder thought leadership and newsletters that compound into a durable inbound channel you don't rent from an algorithm.",
-    points: [
-      "SEO articles",
-      "Founder ghostwriting",
-      "Newsletters",
-      "Short-form video",
+    kicker: "Automated systems",
+    title: "Engines that run themselves.",
+    intro:
+      "Set-and-forget systems that handle the repeatable work — capture, qualify, book, follow up — so you stay in your genius zone and never miss a lead.",
+    items: [
+      {
+        name: "Zero to Hero",
+        tagline:
+          "Brand, site, socials and content library — launched end-to-end in weeks.",
+        bullets: [
+          "Brand identity + guidelines",
+          "SEO-first website build",
+          "Social channel setup",
+          "First-30-days content bank",
+        ],
+      },
+      {
+        name: "AI Voice Bot",
+        tagline:
+          "Never miss a call, never miss a lead. 24/7 answering that sounds human.",
+        bullets: [
+          "24/7 inbound handling",
+          "Appointment booking",
+          "Lead qualification",
+          "CRM sync",
+        ],
+      },
+      {
+        name: "WhatsApp Chat Bot",
+        tagline:
+          "Instant replies where your customers already are — straight into your pipeline.",
+        bullets: [
+          "Auto-reply + FAQ",
+          "Lead capture forms",
+          "Booking + payment links",
+          "CRM + sheet sync",
+        ],
+      },
     ],
   },
 ];
