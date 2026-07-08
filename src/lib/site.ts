@@ -275,24 +275,45 @@ export const WORK: Project[] = [
   },
 ];
 
-/** Screenshot proof-plates rendered in the Reviews section. */
-export type ReviewShot = { src: string; alt: string; caption: string };
+/** Screenshot proof-plates rendered in the Reviews section as editorial
+ *  audit reports (masthead + meta + screenshot + source citation). */
+export type ReviewShot = {
+  src: string;
+  alt: string;
+  client: string;
+  vertical: string;
+  result: string;
+  source: string;
+  period?: string;
+};
 
 export const REVIEW_SCREENSHOTS: ReviewShot[] = [
   {
     src: "/case-results/case-07.png",
     alt: "Skincare campaign dashboard — 3,868 leads on $43,653 spend across seven campaigns",
-    caption: "Skincare DTC · 3,868 leads · $43K spend",
+    client: "Skincare DTC",
+    vertical: "Beauty · Canada",
+    result: "3,868 leads · $43K spend",
+    source: "Meta Ads Manager",
+    period: "Jun 2023 – Sep 2025",
   },
   {
     src: "/case-results/case-06.png",
     alt: "Grocery e-commerce campaign dashboard — 74.94× average purchase ROAS",
-    caption: "Grocery ecomm · 74.94× ROAS",
+    client: "Grocery E-commerce",
+    vertical: "Retail · ZA",
+    result: "74.94× average ROAS",
+    source: "Meta Ads Manager",
+    period: "June 2024",
   },
   {
     src: "/case-results/case-01.png",
     alt: "Podiatry campaign dashboard — 1,926 leads across 16 campaigns at $8.55–$23.36 CPL",
-    caption: "Meridian Podiatry · 1,926 leads",
+    client: "Meridian Podiatry",
+    vertical: "Healthcare · Canada",
+    result: "1,926 leads at $8–$23 CPL",
+    source: "Meta Ads Manager",
+    period: "Dec 2022 – Jan 2026",
   },
 ];
 

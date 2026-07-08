@@ -77,26 +77,72 @@ export default function Reviews() {
           ))}
         </div>
 
-        {/* Real client results — dashboards pulled from campaigns we ran.
-            `object-contain` (not cover) keeps the whole table readable —
-            dashboards are wider than 4:3 and cropping would eat the text. */}
+        {/* Real client results — mounted as editorial audit reports.
+            Each dashboard sits inside a masthead + meta + citation frame
+            so it reads like an official document, not a raw screenshot. */}
         <div className="mt-10 grid gap-5 sm:grid-cols-3">
           {REVIEW_SCREENSHOTS.map((shot, i) => (
             <Reveal key={shot.src} delay={i * 70}>
-              <figure className="group overflow-hidden rounded-lg border border-cream/15 bg-paper-2 shadow-[0_18px_36px_-16px_rgba(0,0,0,0.55)]">
-                <div className="relative aspect-[4/3] overflow-hidden bg-white">
+              <figure className="group flex h-full flex-col overflow-hidden rounded-lg border border-cream/15 bg-paper-2 text-ink shadow-[0_18px_36px_-16px_rgba(0,0,0,0.55)]">
+                {/* Masthead — dark bar, ledger-style number + amber rule */}
+                <div className="relative bg-espresso px-4 pb-3 pt-3 text-cream">
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-oxblood via-amber to-oxblood"
+                  />
+                  <div className="flex items-baseline justify-between font-mono text-[0.58rem] uppercase tracking-[0.18em] text-cream-soft">
+                    <span>Cybrix · Campaign Audit</span>
+                    <span>№ {String(i + 1).padStart(2, "0")} / {String(REVIEW_SCREENSHOTS.length).padStart(2, "0")}</span>
+                  </div>
+                </div>
+
+                {/* Case meta — client, result, period */}
+                <div className="border-b border-line-strong/60 bg-paper-2 px-4 py-4">
+                  <div className="flex items-baseline justify-between gap-3">
+                    <h3 className="font-display text-base font-medium tracking-tight">
+                      {shot.client}
+                    </h3>
+                    <span className="font-mono text-[0.55rem] uppercase tracking-[0.14em] text-muted">
+                      {shot.vertical}
+                    </span>
+                  </div>
+                  <p className="mt-1 font-display text-lg font-medium italic leading-tight text-oxblood-bright">
+                    {shot.result}
+                  </p>
+                </div>
+
+                {/* Dashboard plate — the actual screenshot */}
+                <div className="relative aspect-[4/3] flex-1 overflow-hidden bg-white">
                   <Image
                     src={shot.src}
                     alt={shot.alt}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 45vw, 380px"
                     quality={85}
-                    className="object-contain object-top p-2 transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+                    className="object-contain object-top p-3 transition-transform duration-500 ease-out group-hover:scale-[1.02]"
                   />
                 </div>
-                <figcaption className="border-t border-line px-4 py-3 font-mono text-[0.62rem] uppercase tracking-[0.14em] text-ink-soft">
-                  {shot.caption}
-                </figcaption>
+
+                {/* Footer — source citation + verified stamp */}
+                <div className="flex items-center justify-between gap-3 border-t border-line-strong/60 px-4 py-3 font-mono text-[0.58rem] uppercase tracking-[0.14em] text-ink-soft">
+                  <span className="flex items-center gap-1.5">
+                    <span aria-hidden="true" className="text-muted">Src /</span>
+                    {shot.source}
+                    {shot.period && (
+                      <>
+                        <span aria-hidden="true" className="text-muted">·</span>
+                        <span>{shot.period}</span>
+                      </>
+                    )}
+                  </span>
+                  <span
+                    className="flex items-center gap-1 text-oxblood-bright"
+                    title="Verified from live account"
+                  >
+                    <span aria-hidden="true">✓</span>
+                    Verified
+                  </span>
+                </div>
               </figure>
             </Reveal>
           ))}
