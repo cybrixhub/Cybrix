@@ -1,6 +1,7 @@
+import Image from "next/image";
 import Reveal from "./Reveal";
 import ThreadScene from "./ThreadScene";
-import { TESTIMONIALS } from "@/lib/site";
+import { REVIEW_SCREENSHOTS, TESTIMONIALS } from "@/lib/site";
 
 /** Renders a quote with its final word set in italic amber. */
 function EmQuote({ text }: { text: string }) {
@@ -76,16 +77,25 @@ export default function Reviews() {
           ))}
         </div>
 
-        {/* Screenshot plates */}
+        {/* Real client results — dashboards pulled from campaigns we ran */}
         <div className="mt-10 grid gap-5 sm:grid-cols-3">
-          {[0, 1, 2].map((i) => (
-            <Reveal key={i} delay={i * 70}>
-              <div className="flex aspect-[4/3] items-center justify-center rounded-lg border border-dashed border-cream/40 p-6 text-center">
-                <span className="font-mono text-[0.65rem] uppercase tracking-[0.14em] leading-relaxed text-cream">
-                  Client results screenshot
-                  <br />— drag &amp; drop later
-                </span>
-              </div>
+          {REVIEW_SCREENSHOTS.map((shot, i) => (
+            <Reveal key={shot.src} delay={i * 70}>
+              <figure className="group overflow-hidden rounded-lg border border-cream/15 bg-paper-2 shadow-[0_18px_36px_-16px_rgba(0,0,0,0.55)]">
+                <div className="relative aspect-[4/3] overflow-hidden bg-espresso-2">
+                  <Image
+                    src={shot.src}
+                    alt={shot.alt}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 45vw, 320px"
+                    quality={75}
+                    className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                  />
+                </div>
+                <figcaption className="border-t border-line px-4 py-3 font-mono text-[0.62rem] uppercase tracking-[0.14em] text-ink-soft">
+                  {shot.caption}
+                </figcaption>
+              </figure>
             </Reveal>
           ))}
         </div>

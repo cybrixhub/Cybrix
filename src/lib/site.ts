@@ -219,39 +219,80 @@ export type Project = {
   tags: string[];
 };
 
-/** Placeholder case studies — swap these for your real client results. */
+/**
+ * Real client case studies — metrics pulled from Meta / Ads Manager reports
+ * we ran. Screenshots at /public/case-results/case-*.png; the Reviews section
+ * renders three of them as proof plates (see REVIEW_SCREENSHOTS).
+ */
 export const WORK: Project[] = [
   {
-    client: "Nova Skincare",
-    category: "DTC · Beauty",
-    result: "+240% organic traffic",
+    client: "Skincare DTC",
+    category: "Beauty · Canada",
+    result: "3,868 leads on $43K spend",
     summary:
-      "Rebuilt the content engine and social presence, lifting organic traffic and revenue in six months.",
-    tags: ["Content", "SEO", "Social"],
+      "5.4M impressions and 484K link clicks across a seven-campaign paid-social program — driving qualified skincare leads at CPLs from $0.43 to $92 depending on funnel stage.",
+    tags: ["Paid Social", "Meta", "DTC"],
   },
   {
-    client: "Peak Fitness",
-    category: "Studio · Local",
-    result: "3× membership sign-ups",
+    client: "Meridian Podiatry Network",
+    category: "Healthcare · Canada",
+    result: "1,926 leads at $8–$23 CPL",
     summary:
-      "A social-first campaign and landing funnel that tripled monthly membership sign-ups.",
-    tags: ["Social", "Paid social"],
+      "16 concurrent campaigns across a podiatry network — toe fungus, heel pain, minimally-invasive surgery — spending $34K to hit nearly 2M in reach and half a million link clicks.",
+    tags: ["Paid Social", "Healthcare", "Local"],
   },
   {
-    client: "Lumen SaaS",
-    category: "B2B · Software",
-    result: "5× qualified leads",
+    client: "Grocery E-commerce",
+    category: "E-commerce · Retail",
+    result: "74.94× average ROAS",
     summary:
-      "Founder-led content and SEO articles that multiplied inbound qualified leads.",
-    tags: ["Ghostwriting", "SEO", "Newsletters"],
+      "R441,073 in tracked conversion value from R5,885 in ad spend across three catalogue and image ad sets — a purchase-optimized structure that cleared 502 purchases in 30 days.",
+    tags: ["Paid Social", "Ecommerce", "ROAS"],
   },
   {
-    client: "Ember Coffee",
-    category: "E-commerce · F&B",
-    result: "$480K tracked revenue",
+    client: "Back In Motion Chiropractic",
+    category: "Healthcare · Canada",
+    result: "890+ leads · $38K spend",
     summary:
-      "Full-funnel paid and organic program driving nearly half a million in tracked revenue.",
-    tags: ["Paid social", "Short-form video"],
+      "14 campaigns spanning StemWave promotions, injury lead-gen and awareness — 302K reach, 1.08M impressions and a $27 blended CPL across the top three ad sets.",
+    tags: ["Paid Social", "Healthcare", "Local"],
+  },
+  {
+    client: "High-Ticket Renovation",
+    category: "Real Estate · Ottawa",
+    result: "195 qualified leads at $41 CPL",
+    summary:
+      "Interest-based paid social targeting Ottawa homeowners for premium construction and renovation — $8,043 spend, 119K reach, a five-ad-set structure with a cold-to-warm audience ladder.",
+    tags: ["Paid Social", "Real Estate", "High-Ticket"],
+  },
+  {
+    client: "Fashion Apparel DTC",
+    category: "E-commerce · Fashion",
+    result: "9.66× average ROAS",
+    summary:
+      "R299,470 in purchase conversion value from R31K spend across six ad sets — 167 purchases at a blended R185 CPA on a purchase-optimized catalogue campaign.",
+    tags: ["Paid Social", "Ecommerce", "Fashion"],
+  },
+];
+
+/** Screenshot proof-plates rendered in the Reviews section. */
+export type ReviewShot = { src: string; alt: string; caption: string };
+
+export const REVIEW_SCREENSHOTS: ReviewShot[] = [
+  {
+    src: "/case-results/case-07.png",
+    alt: "Skincare campaign dashboard — 3,868 leads on $43,653 spend across seven campaigns",
+    caption: "Skincare DTC · 3,868 leads · $43K spend",
+  },
+  {
+    src: "/case-results/case-06.png",
+    alt: "Grocery e-commerce campaign dashboard — 74.94× average purchase ROAS",
+    caption: "Grocery ecomm · 74.94× ROAS",
+  },
+  {
+    src: "/case-results/case-01.png",
+    alt: "Podiatry campaign dashboard — 1,926 leads across 16 campaigns at $8.55–$23.36 CPL",
+    caption: "Meridian Podiatry · 1,926 leads",
   },
 ];
 
