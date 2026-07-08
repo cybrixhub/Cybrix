@@ -39,15 +39,25 @@ export const SOCIALS: { label: string; href: string; handle: string }[] = [
   { label: "X", href: "https://x.com/cybrix", handle: "@cybrix" },
 ];
 
-/** Rotating capability ticker (the editorial marquee). */
+/** Rotating capability ticker (the editorial marquee).
+ *  Interleaves packaged offerings (bigger, brand-y) with the tactics that
+ *  actually make them up (mono-styled by the Ticker component). */
 export const TICKER: string[] = [
+  "Admission Booster",
   "Social media",
+  "Deal Drive · Real Estate",
   "Content strategy",
+  "Healthcare Revenue Engine",
   "SEO",
+  "Personal Branding",
   "Newsletters",
+  "Trust-Building",
   "Paid social",
+  "Zero to Hero",
   "Ghostwriting",
+  "AI Voice Bot",
   "Short-form video",
+  "WhatsApp Chat Bot",
 ];
 
 /** Proof points shown inside the hero. */
