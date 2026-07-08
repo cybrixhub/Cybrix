@@ -1,6 +1,9 @@
-import dynamic from "next/dynamic";
 import SmoothScroll from "@/components/SmoothScroll";
 import ScrollProgress from "@/components/ScrollProgress";
+import {
+  ClientBeforeMain,
+  ClientAfterMain,
+} from "@/components/ClientWidgets";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Prologue from "@/components/Prologue";
@@ -17,23 +20,12 @@ import Faq from "@/components/Faq";
 import Book from "@/components/Book";
 import Footer from "@/components/Footer";
 
-/**
- * Non-critical widgets — code-split so they don't bloat the initial bundle,
- * but SSR-kept so their chunks stream in parallel with the main hydration
- * pass (avoids extra post-hydration parse events that hurt desktop TBT).
- * All three render null or hidden state on the server, so no visual diff.
- */
-const Preloader = dynamic(() => import("@/components/Preloader"));
-const InkCursor = dynamic(() => import("@/components/InkCursor"));
-const FloatingCta = dynamic(() => import("@/components/FloatingCta"));
-
 export default function Home() {
   return (
     <>
       <SmoothScroll />
       <ScrollProgress />
-      <Preloader />
-      <InkCursor />
+      <ClientBeforeMain />
       <Header />
       <main id="main" tabIndex={-1} className="flex-1 outline-none">
         <Hero />
@@ -51,7 +43,7 @@ export default function Home() {
         <TornEdge color="var(--color-espresso)" className="-mb-px" />
         <Book />
       </main>
-      <FloatingCta />
+      <ClientAfterMain />
       <Footer />
     </>
   );
