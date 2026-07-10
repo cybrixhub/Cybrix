@@ -30,6 +30,15 @@
   --color-amber: #c9772a; /* gold-leaf details */
   --color-amber-deep: #a55f16;
 
+  /* Logo-bridge accents — the cyan/blue from the brand mark, integrated as
+     secondary accents so the (colored) logo doesn't sit alien on the page. */
+  --color-navy: #0e1a3a; /* deep navy — logo chip backdrop */
+  --color-navy-2: #142354; /* raised navy — chip hover / section band */
+  --color-navy-line: #253570;
+  --color-teal: #7be5d8; /* the logo cyan */
+  --color-teal-bright: #6dd0c4; /* legible teal on dark surfaces */
+  --color-teal-soft: #1e3a3f; /* tint chip on dark */
+
   /* Card tints — dark */
   --color-blush: #382420;
   --color-butter: #392c17;

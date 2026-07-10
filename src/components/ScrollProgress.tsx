@@ -2,7 +2,8 @@
 
 import { useEffect, useRef } from "react";
 
-/** Thin amber progress bar pinned to the very top of the viewport. */
+/** Thin teal progress bar pinned to the very top of the viewport —
+ *  echoes the brand mark's cyan across the whole page. */
 export default function ScrollProgress() {
   const ref = useRef<HTMLDivElement | null>(null);
 
@@ -35,7 +36,7 @@ export default function ScrollProgress() {
     >
       <div
         ref={ref}
-        className="h-full origin-left bg-amber"
+        className="h-full origin-left bg-teal-bright"
         style={{ transform: "scaleX(0)" }}
       />
     </div>

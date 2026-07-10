@@ -1,4 +1,5 @@
 import { NAV_LINKS, SOCIALS, SITE } from "@/lib/site";
+import Logo from "./Logo";
 import ThreadScene from "./ThreadScene";
 import WovenWordmark from "./WovenWordmark";
 
@@ -71,13 +72,14 @@ export default function Footer() {
           className="mt-14 h-[23vw] max-h-[20rem] w-full"
         />
 
-        <div className="mt-10 flex flex-col gap-2 border-t border-[#f7efe4]/20 pt-5 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-[#e8c9b4] sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            © {year} {SITE.legalName} — all rights reserved
-          </p>
+        <div className="mt-10 flex flex-col gap-3 border-t border-[#f7efe4]/20 pt-5 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-[#e8c9b4] sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-center gap-3 text-[#f7efe4]/85">
+            <Logo variant="mono" className="!h-5 !w-[36px]" />
+            <p>© {year} {SITE.legalName} — all rights reserved</p>
+          </div>
           <a
             href={`mailto:${SITE.email}`}
-            className="transition-colors hover:text-amber"
+            className="transition-colors hover:text-teal-bright"
           >
             {SITE.email}
           </a>

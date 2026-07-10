@@ -135,7 +135,7 @@ export default function Ticker() {
             >
               <span
                 className={`font-display text-2xl italic tracking-tight ${
-                  ["text-cream", "text-amber", "text-[#e8c9b4]"][i % 3]
+                  ["text-cream", "text-teal-bright", "text-[#e8c9b4]"][i % 3]
                 }`}
               >
                 {item}
