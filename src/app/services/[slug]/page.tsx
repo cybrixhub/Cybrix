@@ -56,6 +56,51 @@ export default async function ServicePage({
   const positionInGroup = group?.items.findIndex((i) => i.slug === service.slug);
   const related = service.relatedCase ? findWork(service.relatedCase) : undefined;
 
+  // Automated Systems (group 02) wear the logo's navy+teal; Growth Plans stay
+  // warm. One accent object keeps the whole page committed to its temperature.
+  const isTech = group?.number === "02";
+  const a = isTech
+    ? {
+        tone: "teal" as const,
+        link: "hover:text-teal-bright",
+        name: "text-teal-bright",
+        kicker: "text-teal-bright",
+        num1: "text-teal-bright",
+        num2: "text-teal",
+        dot: "bg-teal-bright",
+        seeHover: "group-hover:border-teal-bright group-hover:text-teal-bright",
+        cta: "border-navy bg-navy text-cream shadow-[0_10px_20px_-8px_rgba(14,26,58,0.85)] [--ink-fill:var(--color-navy-2)]",
+        procTorn: "var(--color-navy)",
+        procSection: "bg-navy text-cream",
+        procMarg: "!text-[#b9cbe4]",
+        procCard: "border-teal/20 bg-navy-2 hover:bg-[#1b2c60]",
+        procGhost: "text-teal/10",
+        procText: "text-[#b9cbe4]",
+        relPlate: "bg-navy",
+        ctaBtn: "border-teal-bright bg-teal-bright text-navy [--ink-fill:#8ff0e0]",
+        ctaSecHover: "hover:border-teal-bright hover:text-teal-bright",
+      }
+    : {
+        tone: "amber" as const,
+        link: "hover:text-amber",
+        name: "text-oxblood-bright",
+        kicker: "text-amber",
+        num1: "text-oxblood-bright",
+        num2: "text-amber",
+        dot: "bg-oxblood-bright",
+        seeHover: "group-hover:border-amber group-hover:text-amber",
+        cta: "border-oxblood bg-oxblood text-[#f7efe4] shadow-[0_10px_20px_-8px_rgba(143,45,45,0.7)] [--ink-fill:var(--color-oxblood-deep)]",
+        procTorn: "var(--color-oxblood)",
+        procSection: "bg-oxblood text-[#f7efe4]",
+        procMarg: "!text-[#eed9c8]/90",
+        procCard: "border-[#f7efe4]/15 bg-[#7a2424] hover:bg-[#6d1e1e]",
+        procGhost: "text-[#f7efe4]/10",
+        procText: "text-[#eed9c8]/90",
+        relPlate: "bg-oxblood",
+        ctaBtn: "border-amber bg-amber text-espresso [--ink-fill:#e5b562]",
+        ctaSecHover: "hover:border-amber hover:text-amber",
+      };
+
   return (
     <>
       <Header />
@@ -72,11 +117,11 @@ export default async function ServicePage({
           <div className="container-x">
             <Reveal>
               <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-muted">
-                <Link href="/#services" className="hover:text-amber">
+                <Link href="/#services" className={a.link}>
                   Services
                 </Link>
                 <span aria-hidden="true">/</span>
-                <span className="text-oxblood-bright">{service.name}</span>
+                <span className={a.name}>{service.name}</span>
               </div>
             </Reveal>
 
@@ -86,7 +131,9 @@ export default async function ServicePage({
                 className="split-parent mt-6 max-w-4xl font-display text-5xl font-medium leading-[1.02] tracking-tight text-balance sm:text-6xl md:text-7xl"
               >
                 {service.name.split(" ").slice(0, -1).join(" ")}{" "}
-                <Underlined>{service.name.split(" ").slice(-1)[0]}</Underlined>
+                <Underlined tone={a.tone}>
+                  {service.name.split(" ").slice(-1)[0]}
+                </Underlined>
               </h1>
             </Reveal>
 
@@ -116,7 +163,7 @@ export default async function ServicePage({
                 <Link
                   href="/#book"
                   data-cursor="book"
-                  className="btn-ink btn-press inline-flex items-center gap-2 border border-oxblood bg-oxblood px-6 py-3 text-sm font-semibold text-[#f7efe4] shadow-[0_10px_20px_-8px_rgba(143,45,45,0.7)] [--ink-fill:var(--color-oxblood-deep)]"
+                  className={`btn-ink btn-press inline-flex items-center gap-2 border px-6 py-3 text-sm font-semibold ${a.cta}`}
                 >
                   Book a strategy call
                 </Link>
@@ -124,7 +171,7 @@ export default async function ServicePage({
                   href="#deliverables"
                   className="group inline-flex items-center gap-2 text-sm font-semibold text-ink"
                 >
-                  <span className="border-b border-ink/30 transition-colors group-hover:border-amber group-hover:text-amber">
+                  <span className={`border-b border-ink/30 transition-colors ${a.seeHover}`}>
                     See what&rsquo;s included
                   </span>
                   <span aria-hidden="true">↓</span>
@@ -152,11 +199,11 @@ export default async function ServicePage({
                       <div>
                         <span
                           aria-hidden="true"
-                          className="font-display text-6xl font-medium italic leading-none text-oxblood-bright sm:text-7xl"
+                          className={`font-display text-6xl font-medium italic leading-none sm:text-7xl ${a.num1}`}
                         >
                           01
                         </span>
-                        <span className="kicker mt-4 block text-amber">
+                        <span className={`kicker mt-4 block ${a.kicker}`}>
                           The problem
                         </span>
                         <p className="mt-5 font-display text-2xl font-medium leading-[1.25] tracking-tight text-balance sm:text-3xl">
@@ -170,11 +217,11 @@ export default async function ServicePage({
                       <div>
                         <span
                           aria-hidden="true"
-                          className="font-display text-6xl font-medium italic leading-none text-amber sm:text-7xl"
+                          className={`font-display text-6xl font-medium italic leading-none sm:text-7xl ${a.num2}`}
                         >
                           02
                         </span>
-                        <span className="kicker mt-4 block text-amber">
+                        <span className={`kicker mt-4 block ${a.kicker}`}>
                           What we do
                         </span>
                         <p className="mt-5 font-display text-2xl font-medium leading-[1.25] tracking-tight text-balance sm:text-3xl">
@@ -202,7 +249,7 @@ export default async function ServicePage({
               <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
                 <div>
                   <Reveal>
-                    <span className="kicker text-oxblood-bright">
+                    <span className={`kicker ${a.name}`}>
                       Deliverables
                     </span>
                   </Reveal>
@@ -212,7 +259,7 @@ export default async function ServicePage({
                       className="split-parent mt-4 font-display text-4xl font-medium tracking-tight text-balance sm:text-5xl"
                     >
                       What you actually{" "}
-                      <Underlined>get</Underlined>.
+                      <Underlined tone={a.tone}>get</Underlined>.
                     </h2>
                   </Reveal>
                   <Reveal delay={140}>
@@ -244,18 +291,18 @@ export default async function ServicePage({
         {/* Process — numbered chapter cards on oxblood */}
         {service.process && service.process.length > 0 && (
           <>
-            <TornEdge color="var(--color-oxblood)" className="-mb-px" />
+            <TornEdge color={a.procTorn} className="-mb-px" />
             <section
               aria-label="Our process"
-              className="relative overflow-hidden bg-oxblood py-24 text-[#f7efe4] sm:py-32"
+              className={`relative overflow-hidden py-24 sm:py-32 ${a.procSection}`}
             >
-              <span className="marginalia !text-[#eed9c8]/90">
+              <span className={`marginalia ${a.procMarg}`}>
                 ch. ii · the method
               </span>
               <div className="container-x relative z-10">
                 <div className="max-w-3xl">
                   <Reveal>
-                    <span className="kicker text-amber">The process</span>
+                    <span className={`kicker ${a.kicker}`}>The process</span>
                   </Reveal>
                   <Reveal delay={80}>
                     <h2
@@ -269,20 +316,20 @@ export default async function ServicePage({
                 <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                   {service.process.map((step, idx) => (
                     <Reveal key={step.step} delay={idx * 60}>
-                      <li className="group relative h-full overflow-hidden rounded-md border border-[#f7efe4]/15 bg-[#7a2424] p-6 transition-colors hover:bg-[#6d1e1e]">
+                      <li className={`group relative h-full overflow-hidden rounded-md border p-6 transition-colors ${a.procCard}`}>
                         <span
                           aria-hidden="true"
-                          className="pointer-events-none absolute -right-4 -top-3 select-none font-display text-8xl font-medium italic leading-none text-[#f7efe4]/10"
+                          className={`pointer-events-none absolute -right-4 -top-3 select-none font-display text-8xl font-medium italic leading-none ${a.procGhost}`}
                         >
                           {step.step}
                         </span>
-                        <span className="relative font-mono text-[0.65rem] uppercase tracking-[0.18em] text-amber">
+                        <span className={`relative font-mono text-[0.65rem] uppercase tracking-[0.18em] ${a.kicker}`}>
                           Step {step.step}
                         </span>
                         <h3 className="relative mt-3 font-display text-xl font-medium tracking-tight sm:text-2xl">
                           {step.title}
                         </h3>
-                        <p className="relative mt-3 text-sm leading-relaxed text-[#eed9c8]/90">
+                        <p className={`relative mt-3 text-sm leading-relaxed ${a.procText}`}>
                           {step.description}
                         </p>
                       </li>
@@ -307,7 +354,7 @@ export default async function ServicePage({
                 {service.fitFor && service.fitFor.length > 0 && (
                   <Reveal>
                     <div className="h-full rounded-md border border-line-strong bg-paper-2 p-8 sm:p-10">
-                      <span className="kicker text-oxblood-bright">Fit for</span>
+                      <span className={`kicker ${a.name}`}>Fit for</span>
                       <h3 className="mt-3 font-display text-2xl font-medium tracking-tight sm:text-3xl">
                         This is built for you if…
                       </h3>
@@ -319,7 +366,7 @@ export default async function ServicePage({
                           >
                             <span
                               aria-hidden="true"
-                              className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-oxblood-bright"
+                              className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${a.dot}`}
                             />
                             <span>{f}</span>
                           </li>
@@ -335,14 +382,14 @@ export default async function ServicePage({
                       href={`/work/${related.slug}`}
                       className="group flex h-full flex-col overflow-hidden rounded-md border border-line-strong bg-espresso text-cream transition-shadow hover:shadow-[0_20px_44px_-20px_rgba(36,30,22,0.65)]"
                     >
-                      <div className="relative overflow-hidden bg-oxblood p-8 sm:p-10">
+                      <div className={`relative overflow-hidden p-8 sm:p-10 ${a.relPlate}`}>
                         <span
                           aria-hidden="true"
                           className="pointer-events-none absolute -bottom-6 right-4 select-none font-display text-8xl font-medium italic leading-none text-[#f7efe4]/10"
                         >
                           {related.slug.charAt(0).toUpperCase()}
                         </span>
-                        <span className="kicker text-amber">Proof · case study</span>
+                        <span className={`kicker ${a.kicker}`}>Proof · case study</span>
                         <p className="mt-4 font-display text-3xl font-medium italic leading-tight text-[#f7efe4] sm:text-4xl">
                           {related.result}
                         </p>
@@ -377,7 +424,7 @@ export default async function ServicePage({
               <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-14">
                 <div>
                   <Reveal>
-                    <span className="kicker text-oxblood-bright">FAQ</span>
+                    <span className={`kicker ${a.name}`}>FAQ</span>
                   </Reveal>
                   <Reveal delay={80}>
                     <h2
@@ -422,7 +469,7 @@ export default async function ServicePage({
             <div className="grid items-end gap-8 lg:grid-cols-[1.4fr_1fr] lg:gap-14">
               <Reveal>
                 <div>
-                  <span className="kicker text-amber">Ready to start?</span>
+                  <span className={`kicker ${a.kicker}`}>Ready to start?</span>
                   <h2
                     data-split
                     className="split-parent mt-4 font-display text-4xl font-medium tracking-tight text-balance sm:text-5xl md:text-6xl"
@@ -440,13 +487,13 @@ export default async function ServicePage({
                   <Link
                     href="/#book"
                     data-cursor="book"
-                    className="btn-ink btn-press inline-flex items-center gap-2 border border-amber bg-amber px-6 py-3 text-sm font-semibold text-espresso [--ink-fill:#e5b562]"
+                    className={`btn-ink btn-press inline-flex items-center gap-2 border px-6 py-3 text-sm font-semibold ${a.ctaBtn}`}
                   >
                     Book a call
                   </Link>
                   <Link
                     href="/#services"
-                    className="inline-flex items-center gap-2 border border-cream/30 px-6 py-3 text-sm font-semibold text-cream transition-colors hover:border-amber hover:text-amber"
+                    className={`inline-flex items-center gap-2 border border-cream/30 px-6 py-3 text-sm font-semibold text-cream transition-colors ${a.ctaSecHover}`}
                   >
                     ← All services
                   </Link>

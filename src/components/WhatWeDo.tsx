@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { SERVICE_GROUPS } from "@/lib/site";
+import BrandMark from "./BrandMark";
 
 const PANEL_STYLES = [
   {
+    // Growth plans — warm editorial (the human, strategy-led work)
     section: "bg-espresso text-cream",
     line: "border-espresso-line",
     displayNumber: "text-oxblood-bright",
@@ -12,17 +14,20 @@ const PANEL_STYLES = [
     itemBg: "bg-espresso-2",
     itemBorder: "border-espresso-line",
     itemHover: "hover:bg-[#3a2f22]",
+    mark: "text-cream/[0.05]",
   },
   {
-    section: "bg-oxblood text-[#f7efe4]",
-    line: "border-[#f7efe4]/20",
-    displayNumber: "text-[#f7efe4]",
-    pagination: "text-[#f7efe4]",
-    arrow: "text-[#e8c9b4]",
-    muted: "text-[#eed9c8]/90",
-    itemBg: "bg-[#7a2424]",
-    itemBorder: "border-[#f7efe4]/15",
-    itemHover: "hover:bg-[#6d1e1e]",
+    // Automated systems — the logo's navy+teal (the tech, engine-led work)
+    section: "bg-navy text-cream",
+    line: "border-navy-line",
+    displayNumber: "text-teal-bright",
+    pagination: "text-teal-bright",
+    arrow: "text-teal-bright",
+    muted: "text-[#b9cbe4]",
+    itemBg: "bg-navy-2",
+    itemBorder: "border-teal/25",
+    itemHover: "hover:bg-[#1b2c60]",
+    mark: "text-teal/10",
   },
 ] as const;
 
@@ -44,6 +49,9 @@ export default function WhatWeDo() {
             className={`chapter-shadow sticky top-0 flex min-h-svh flex-col justify-center overflow-hidden ${s.section}`}
           >
             <div className="bg-noise pointer-events-none absolute inset-0 opacity-[0.06]" />
+            <BrandMark
+              className={`pointer-events-none absolute -right-[7%] top-1/2 z-0 h-[54vh] w-auto -translate-y-1/2 ${s.mark}`}
+            />
             <div
               aria-hidden="true"
               className="js-panel-shade pointer-events-none absolute inset-0 z-20 bg-black opacity-0"
