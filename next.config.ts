@@ -94,6 +94,24 @@ const nextConfig: NextConfig = {
         ],
       },
       {
+        source: "/brand/(.*)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/case-results/(.*)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
         source: "/hero-bg.jpg",
         headers: [
           {
