@@ -1,9 +1,15 @@
 import { ImageResponse } from "next/og";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { SITE } from "@/lib/site";
 
 export const alt = `${SITE.name} — ${SITE.tagline}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+
+const wordmark = `data:image/png;base64,${readFileSync(
+  join(process.cwd(), "public/brand/cybrix-wordmark.png"),
+).toString("base64")}`;
 
 export default function OpengraphImage() {
   return new ImageResponse(
@@ -30,19 +36,14 @@ export default function OpengraphImage() {
             paddingBottom: "26px",
           }}
         >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "baseline",
-              fontSize: "44px",
-              fontStyle: "italic",
-              fontWeight: 600,
-              color: "#f7efe4",
-            }}
-          >
-            <span>Cybrix</span>
-            <span style={{ color: "#e0a458", fontStyle: "normal" }}>.</span>
-          </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={wordmark}
+            alt={SITE.name}
+            width={220}
+            height={132}
+            style={{ objectFit: "contain" }}
+          />
           <div
             style={{
               fontSize: "20px",

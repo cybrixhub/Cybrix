@@ -61,7 +61,7 @@ export default function Header() {
         <a
           href="#top"
           aria-label="Cybrix — back to top"
-          className="flex items-baseline gap-3"
+          className="flex items-center gap-3"
         >
           <Logo />
           <span className="kicker hidden text-muted lg:inline">

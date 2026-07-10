@@ -109,7 +109,7 @@ const jsonLd = {
   name: SITE.name,
   description: SITE.description,
   url: SITE.url,
-  logo: `${SITE.url}/icon`,
+  logo: `${SITE.url}/brand/cybrix-mark.png`,
   image: `${SITE.url}${SITE.ogImage}`,
   email: SITE.email,
   telephone: SITE.phone,
