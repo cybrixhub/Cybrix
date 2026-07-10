@@ -90,7 +90,7 @@ export default function Book() {
                   key={item}
                   className="flex items-baseline gap-4 border-b border-espresso-line py-4 first:border-t"
                 >
-                  <span aria-hidden="true" className="font-mono text-oxblood-bright">
+                  <span aria-hidden="true" className="font-mono text-teal-bright">
                     ✓
                   </span>
                   <span className="text-base">{item}</span>
@@ -117,7 +117,7 @@ export default function Book() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="kicker text-cream-soft transition-colors hover:text-amber"
+                      className="kicker kicker-bare text-cream-soft transition-colors hover:text-teal-bright"
                     >
                       {social.label}
                     </a>

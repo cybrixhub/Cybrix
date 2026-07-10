@@ -147,6 +147,12 @@ export default function Hero() {
           aria-hidden="true"
           className="pointer-events-none absolute -top-[24%] left-[58%] h-[70vw] w-[70vw] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(232,162,92,0.28),rgba(232,162,92,0.06)_45%,transparent_72%)] opacity-25 will-change-transform"
         />
+        {/* cool counter-glow — a low teal wash under the pitch so the hero
+            carries the logo's cyan, not only the warm studio light */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-[12%] -left-[8%] h-[52vw] w-[52vw] rounded-full bg-[radial-gradient(closest-side,rgba(123,229,216,0.16),rgba(123,229,216,0.05)_50%,transparent_72%)] opacity-70"
+        />
         {/* the woven landscape */}
         <ThreadScene color="#f2d9c4" alpha={0.14} rise={0.3} />
         {/* scroll-exit veil */}
@@ -181,7 +187,7 @@ export default function Hero() {
                         aria-hidden="true"
                         viewBox="0 0 320 12"
                         preserveAspectRatio="none"
-                        className="absolute -bottom-2 left-0 h-2.5 w-[calc(100%-0.4em)] text-amber sm:-bottom-3"
+                        className="absolute -bottom-2 left-0 h-2.5 w-[calc(100%-0.4em)] text-teal-bright sm:-bottom-3"
                       >
                         <path
                           d="M2 9 C 60 3, 140 2, 318 6"
@@ -265,7 +271,7 @@ export default function Hero() {
                   <span className="font-mono text-[0.6rem] uppercase tracking-[0.14em] text-[#e8c9b4]">
                     48hrs — brief to first drop
                   </span>
-                  <span aria-hidden="true" className="text-amber">
+                  <span aria-hidden="true" className="text-teal-bright">
                     →
                   </span>
                 </a>
@@ -276,7 +282,7 @@ export default function Hero() {
                   <span className="font-mono text-[0.6rem] uppercase tracking-[0.14em] text-[#e8c9b4]">
                     Cases — numbers we&apos;re proud of
                   </span>
-                  <span aria-hidden="true" className="text-amber">
+                  <span aria-hidden="true" className="text-teal-bright">
                     →
                   </span>
                 </a>

@@ -130,13 +130,28 @@ html.lenis body {
     text-wrap: pretty;
   }
 
-  /* Monospace micro-label — the editorial kicker */
+  /* Monospace micro-label — the editorial kicker. A small inverted teal
+     triangle (the logo's mark) prefixes every kicker so the brand's colour
+     and form thread through every section label. Add `kicker-bare` to drop it. */
   .kicker {
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     font-weight: 500;
+  }
+  .kicker::before {
+    content: "";
+    display: inline-block;
+    width: 0.4em;
+    height: 0.36em;
+    margin-right: 0.55em;
+    vertical-align: 0.08em;
+    background-color: var(--color-teal-bright);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+  }
+  .kicker-bare::before {
+    display: none;
   }
 
   /* Serif italic emphasis — the brand's typographic signature */

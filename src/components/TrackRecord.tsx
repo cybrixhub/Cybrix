@@ -74,7 +74,7 @@ function CountUp({ value }: { value: string }) {
 
 const CARD_STYLES = [
   { card: "bg-blush", number: "text-oxblood-bright", label: "text-ink-soft" },
-  { card: "bg-espresso-2", number: "text-cream", label: "text-cream-soft" },
+  { card: "bg-navy", number: "text-teal-bright", label: "text-[#b9cbe4]" },
   { card: "bg-butter", number: "text-amber", label: "text-ink-soft" },
   { card: "bg-paper-2", number: "text-ink", label: "text-ink-soft" },
 ] as const;
