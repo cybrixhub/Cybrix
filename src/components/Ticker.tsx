@@ -140,7 +140,7 @@ export default function Ticker() {
               >
                 {item}
               </span>
-              <span className="font-mono text-sm text-amber">/</span>
+              <span className="font-mono text-sm text-teal-bright">/</span>
             </span>
           ))}
         </div>

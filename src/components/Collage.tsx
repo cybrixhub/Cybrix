@@ -66,7 +66,7 @@ export default function Collage() {
 
       <div className="container-x relative z-10">
         <Reveal>
-          <span className="kicker text-oxblood-bright">
+          <span className="kicker text-teal-bright">
             From the studio floor
           </span>
         </Reveal>
@@ -98,7 +98,7 @@ export default function Collage() {
                 <a
                   href="#work"
                   aria-label="See the work"
-                  className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-line-strong font-mono text-sm text-ink transition-colors hover:bg-oxblood hover:border-oxblood hover:text-[#f7efe4]"
+                  className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-line-strong font-mono text-sm text-ink transition-colors hover:bg-navy hover:border-navy hover:text-cream"
                 >
                   +
                 </a>
@@ -126,7 +126,7 @@ export default function Collage() {
                 <a
                   href="#book"
                   aria-label="Book a call"
-                  className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-line-strong font-mono text-sm text-ink transition-colors hover:bg-oxblood hover:border-oxblood hover:text-[#f7efe4]"
+                  className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-line-strong font-mono text-sm text-ink transition-colors hover:bg-navy hover:border-navy hover:text-cream"
                 >
                   +
                 </a>
@@ -138,13 +138,13 @@ export default function Collage() {
           <Reveal delay={160} className="lg:rotate-[3.5deg] lg:mt-14">
             <div
               aria-hidden="true"
-              className="relative grid h-56 w-64 place-items-center overflow-hidden rounded-md bg-oxblood-deep shadow-[inset_0_2px_14px_rgba(0,0,0,0.55),0_24px_48px_-24px_rgba(36,30,22,0.6)]"
+              className="relative grid h-56 w-64 place-items-center overflow-hidden rounded-md bg-navy shadow-[inset_0_2px_14px_rgba(0,0,0,0.55),0_24px_48px_-24px_rgba(14,26,58,0.6)]"
             >
               <div className="bg-noise absolute inset-0 opacity-25" />
               <div className="absolute inset-2 rounded-sm border-2 border-dashed border-[#f2d9c4]/50" />
               <div className="relative text-center">
                 <p className="font-display text-4xl font-semibold italic text-[#f7efe4]">
-                  Cybrix<span className="not-italic text-amber">.</span>
+                  Cybrix<span className="not-italic text-teal-bright">.</span>
                 </p>
                 <p className="kicker mt-2 text-[#e8c9b4]">
                   Studio · est. 2020

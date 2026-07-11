@@ -30,7 +30,7 @@ export default function Faq() {
         <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
           <div>
             <Reveal>
-              <span className="kicker text-oxblood-bright">FAQ</span>
+              <span className="kicker text-teal-bright">FAQ</span>
             </Reveal>
             <h2
               data-split
@@ -52,7 +52,7 @@ export default function Faq() {
                 <details className="group border-b border-line py-5 last:border-b-0">
                   <summary className="flex cursor-pointer list-none items-baseline justify-between gap-4">
                     <span className="flex items-baseline gap-4">
-                      <span className="font-mono text-xs text-amber">
+                      <span className="font-mono text-xs text-teal-bright">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <span className="font-display text-xl font-medium tracking-tight">
@@ -61,7 +61,7 @@ export default function Faq() {
                     </span>
                     <span
                       aria-hidden="true"
-                      className="font-mono text-lg text-amber transition-transform duration-300 group-open:rotate-45"
+                      className="font-mono text-lg text-teal-bright transition-transform duration-300 group-open:rotate-45"
                     >
                       +
                     </span>

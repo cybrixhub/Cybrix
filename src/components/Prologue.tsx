@@ -73,7 +73,7 @@ export default function Prologue() {
     >
       <div className="bg-noise pointer-events-none absolute inset-0 opacity-[0.05]" />
       <div className="container-x relative z-10 text-center">
-        <p className="kicker text-amber">
+        <p className="kicker text-teal-bright">
           <span aria-hidden="true">✦✦✦&ensp;</span>Prologue
           <span aria-hidden="true">&ensp;✦✦✦</span>
         </p>

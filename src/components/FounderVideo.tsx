@@ -18,7 +18,7 @@ export default function FounderVideo() {
         <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <div>
             <Reveal>
-              <span className="kicker text-oxblood-bright">{FOUNDER.kicker}</span>
+              <span className="kicker text-teal-bright">{FOUNDER.kicker}</span>
             </Reveal>
             <h2
               data-split
@@ -41,7 +41,7 @@ export default function FounderVideo() {
                 <span className="flex items-center gap-2">
                   <span
                     aria-hidden="true"
-                    className="h-2 w-2 rounded-full bg-oxblood"
+                    className="h-2 w-2 rounded-full bg-teal-bright"
                   />
                   <span className="kicker text-ink-soft">{FOUNDER.file}</span>
                 </span>

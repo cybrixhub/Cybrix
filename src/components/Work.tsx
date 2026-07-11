@@ -6,10 +6,10 @@ import { WORK } from "@/lib/site";
 /** Rotating cover colorways for the case prints. */
 const COVERS = [
   {
-    cover: "bg-oxblood",
-    ink: "text-[#f7efe4]",
-    chip: "text-[#e8c9b4]",
-    ghost: "text-[#f7efe4]/10",
+    cover: "bg-navy",
+    ink: "text-cream",
+    chip: "text-teal-bright",
+    ghost: "text-teal/10",
   },
   {
     cover: "bg-espresso",
@@ -18,16 +18,16 @@ const COVERS = [
     ghost: "text-cream/10",
   },
   {
-    cover: "bg-amber",
-    ink: "text-espresso",
-    chip: "text-espresso/70",
-    ghost: "text-espresso/10",
+    cover: "bg-navy-2",
+    ink: "text-cream",
+    chip: "text-teal-bright",
+    ghost: "text-teal/10",
   },
   {
-    cover: "bg-blush",
-    ink: "text-[#f2d9c4]",
-    chip: "text-cream-soft",
-    ghost: "text-[#f2d9c4]/10",
+    cover: "bg-espresso-2",
+    ink: "text-cream",
+    chip: "text-teal-bright",
+    ghost: "text-cream/10",
   },
 ] as const;
 
@@ -53,7 +53,7 @@ export default function Work() {
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <Reveal>
-              <span className="kicker text-oxblood-bright">Selected work</span>
+              <span className="kicker text-teal-bright">Selected work</span>
             </Reveal>
             <h2
               data-split
@@ -67,7 +67,7 @@ export default function Work() {
               href="#book"
               className="group inline-flex items-center gap-2 text-sm font-semibold text-ink"
             >
-              <span className="border-b border-ink/30 transition-colors group-hover:border-amber group-hover:text-amber">
+              <span className="border-b border-ink/30 transition-colors group-hover:border-teal-bright group-hover:text-teal-bright">
                 Start yours
               </span>
               <span aria-hidden="true">→</span>
@@ -196,7 +196,7 @@ export default function Work() {
                         <span>Cybrix studio · print {i + 1}/4</span>
                         <span
                           aria-hidden="true"
-                          className="transition-colors group-hover:text-amber"
+                          className="transition-colors group-hover:text-teal-bright"
                         >
                           View case →
                         </span>

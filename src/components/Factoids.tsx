@@ -30,7 +30,7 @@ export default function Factoids() {
       <div className="relative lg:grid lg:grid-cols-[1fr_19rem_1fr] xl:grid-cols-[1fr_21rem_1fr]">
         {/* Left — editorial context */}
         <div className="relative z-10 flex flex-col justify-center px-5 py-16 sm:px-10 lg:min-h-[80vh] lg:py-24 lg:pr-12 xl:pl-16">
-          <span className="kicker text-amber">Why founders pick us</span>
+          <span className="kicker text-teal-bright">Why founders pick us</span>
           <h2 className="mt-4 max-w-sm font-display text-4xl font-medium leading-[1.05] tracking-tight text-balance sm:text-5xl">
             The Cybrix <em className="italic">effect</em>.
           </h2>
@@ -95,7 +95,7 @@ export default function Factoids() {
                 type="button"
                 onClick={() => go(-1)}
                 aria-label="Previous"
-                className="btn-press grid h-11 w-11 place-items-center rounded-full border border-ink/30 text-ink transition-colors hover:border-oxblood hover:bg-oxblood hover:text-[#f7efe4]"
+                className="btn-press grid h-11 w-11 place-items-center rounded-full border border-ink/30 text-ink transition-colors hover:border-navy hover:bg-navy hover:text-cream"
               >
                 <span aria-hidden="true">‹</span>
               </button>
@@ -103,7 +103,7 @@ export default function Factoids() {
                 type="button"
                 onClick={() => go(1)}
                 aria-label="Next"
-                className="btn-press grid h-11 w-11 place-items-center rounded-full border border-ink/30 text-ink transition-colors hover:border-oxblood hover:bg-oxblood hover:text-[#f7efe4]"
+                className="btn-press grid h-11 w-11 place-items-center rounded-full border border-ink/30 text-ink transition-colors hover:border-navy hover:bg-navy hover:text-cream"
               >
                 <span aria-hidden="true">›</span>
               </button>

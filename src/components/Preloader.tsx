@@ -81,7 +81,7 @@ export default function Preloader() {
         data-p="mark"
         className="relative font-display text-6xl font-semibold italic tracking-tight text-ink sm:text-7xl"
       >
-        Cybrix<span className="not-italic text-oxblood-bright">.</span>
+        Cybrix<span className="not-italic text-teal-bright">.</span>
       </span>
       <span
         data-p="kicker"

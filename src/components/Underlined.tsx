@@ -8,7 +8,7 @@ import type { ReactNode } from "react";
  */
 export default function Underlined({
   children,
-  tone = "amber",
+  tone = "teal",
 }: {
   children: ReactNode;
   tone?: "amber" | "teal";

@@ -18,15 +18,15 @@ export default function FloatingCta() {
       href="#book"
       aria-hidden={!show}
       tabIndex={show ? 0 : -1}
-      className={`fixed bottom-5 right-5 z-50 inline-flex items-center gap-2.5 rounded-full bg-oxblood px-5 py-3 text-sm font-semibold text-[#f7efe4] shadow-[0_10px_30px_-8px_rgba(143,45,45,0.65)] transition-all duration-500 hover:bg-oxblood-deep ${
+      className={`fixed bottom-5 right-5 z-50 inline-flex items-center gap-2.5 rounded-full bg-navy px-5 py-3 text-sm font-semibold text-cream shadow-[0_10px_30px_-8px_rgba(14,26,58,0.7)] transition-all duration-500 hover:bg-navy-2 ${
         show
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-4 opacity-0"
       }`}
     >
       <span className="relative flex h-2 w-2">
-        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber opacity-80" />
-        <span className="relative inline-flex h-2 w-2 rounded-full bg-amber" />
+        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-bright opacity-80" />
+        <span className="relative inline-flex h-2 w-2 rounded-full bg-teal-bright" />
       </span>
       Book a call
     </a>

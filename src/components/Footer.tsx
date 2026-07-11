@@ -7,29 +7,29 @@ export default function Footer() {
   const year = 2026;
 
   return (
-    <footer className="relative overflow-hidden bg-oxblood text-[#f7efe4]">
+    <footer className="relative overflow-hidden bg-navy text-cream">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent to-[#6d2222]"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent to-[#0a1430]"
       />
-      <ThreadScene color="#f2d9c4" alpha={0.22} rise={0.5} />
+      <ThreadScene color="#bcd0e6" alpha={0.2} rise={0.5} />
       <div className="container-x relative z-10 pb-10 pt-16">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div className="max-w-sm">
-            <p className="font-display text-xl italic leading-snug text-[#f2e3d4]">
+            <p className="font-display text-xl italic leading-snug text-[#dbe6f2]">
               Social &amp; content for startups that refuse to be ignored.
             </p>
           </div>
 
           <div className="flex gap-14 sm:gap-20">
             <div>
-              <h3 className="kicker text-[#e8c9b4]">Navigate</h3>
+              <h3 className="kicker text-[#b9cbe4]">Navigate</h3>
               <ul className="mt-4 space-y-2.5">
                 {NAV_LINKS.map((link) => (
                   <li key={link.href}>
                     <a
                       href={link.href}
-                      className="text-sm transition-colors hover:text-amber"
+                      className="text-sm transition-colors hover:text-teal-bright"
                     >
                       {link.label}
                     </a>
@@ -38,7 +38,7 @@ export default function Footer() {
                 <li>
                   <a
                     href="#book"
-                    className="text-sm transition-colors hover:text-amber"
+                    className="text-sm transition-colors hover:text-teal-bright"
                   >
                     Book a call
                   </a>
@@ -46,7 +46,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h3 className="kicker text-[#e8c9b4]">Follow</h3>
+              <h3 className="kicker text-[#b9cbe4]">Follow</h3>
               <ul className="mt-4 space-y-2.5">
                 {SOCIALS.map((social) => (
                   <li key={social.label}>
@@ -54,7 +54,7 @@ export default function Footer() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm transition-colors hover:text-amber"
+                      className="text-sm transition-colors hover:text-teal-bright"
                     >
                       {social.label}
                     </a>
@@ -72,7 +72,7 @@ export default function Footer() {
           className="mt-14 h-[23vw] max-h-[20rem] w-full"
         />
 
-        <div className="mt-10 flex flex-col gap-3 border-t border-[#f7efe4]/20 pt-5 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-[#e8c9b4] sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-10 flex flex-col gap-3 border-t border-[#f7efe4]/20 pt-5 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-[#b9cbe4] sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3 text-[#f7efe4]/85">
             <Logo variant="mono" className="!h-5 !w-[36px]" />
             <p>© {year} {SITE.legalName} — all rights reserved</p>

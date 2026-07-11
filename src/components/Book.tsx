@@ -73,7 +73,7 @@ export default function Book() {
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
           {/* Left — the offer */}
           <div>
-            <span className="kicker text-amber">{BOOK.kicker}</span>
+            <span className="kicker text-teal-bright">{BOOK.kicker}</span>
             <h2
               data-split
               className="split-parent mt-4 font-display text-4xl font-medium leading-[1.05] tracking-tight text-balance sm:text-6xl"
@@ -103,7 +103,7 @@ export default function Book() {
                 href={`mailto:${SITE.email}`}
                 className="group flex w-fit items-baseline gap-3 text-lg font-medium"
               >
-                <span aria-hidden="true" className="font-mono text-sm text-amber">
+                <span aria-hidden="true" className="font-mono text-sm text-teal-bright">
                   ✉
                 </span>
                 <span className="border-b border-cream/25 transition-colors group-hover:border-cream/70">
@@ -135,7 +135,7 @@ export default function Book() {
                 aria-live="polite"
                 className="flex h-full min-h-[320px] flex-col items-center justify-center text-center"
               >
-                <div className="grid h-14 w-14 place-items-center rounded-full bg-oxblood-soft font-mono text-2xl text-oxblood-bright">
+                <div className="grid h-14 w-14 place-items-center rounded-full bg-teal-soft font-mono text-2xl text-teal-bright">
                   ✓
                 </div>
                 <h3
@@ -150,7 +150,7 @@ export default function Book() {
                   it didn&apos;t open, email us directly at{" "}
                   <a
                     href={`mailto:${SITE.email}`}
-                    className="font-medium text-oxblood-bright underline"
+                    className="font-medium text-teal-bright underline"
                   >
                     {SITE.email}
                   </a>
@@ -230,7 +230,7 @@ export default function Book() {
                 <button
                   type="submit"
                   data-cursor="book"
-                  className="btn-ink btn-press inline-flex w-full items-center justify-center bg-oxblood px-6 py-3.5 text-sm font-semibold text-[#f7efe4] [--ink-fill:var(--color-oxblood-deep)]"
+                  className="btn-ink btn-press inline-flex w-full items-center justify-center bg-navy px-6 py-3.5 text-sm font-semibold text-cream [--ink-fill:var(--color-navy-2)]"
                 >
                   Book my strategy call
                 </button>

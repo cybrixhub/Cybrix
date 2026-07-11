@@ -10,7 +10,7 @@ function EmQuote({ text }: { text: string }) {
   return (
     <>
       {match[1]}
-      <em className="italic text-amber">{match[2]}</em>
+      <em className="italic text-teal-bright">{match[2]}</em>
       {match[3]}
     </>
   );
@@ -31,7 +31,7 @@ export default function Reviews() {
       <span className="marginalia !text-cream-soft">verbatim — client notes</span>
       <div className="container-x relative z-10">
         <Reveal>
-          <span className="kicker text-amber">What founders say</span>
+          <span className="kicker text-teal-bright">What founders say</span>
         </Reveal>
 
         {/* Lead pull-quote */}
@@ -62,7 +62,7 @@ export default function Reviews() {
               <figure className="flex h-full flex-col rounded-lg border border-cream/15 bg-paper p-7 text-ink">
                 <span
                   aria-hidden="true"
-                  className="font-display text-4xl italic leading-none text-oxblood-bright"
+                  className="font-display text-4xl italic leading-none text-teal-bright"
                 >
                   &ldquo;
                 </span>
@@ -88,7 +88,7 @@ export default function Reviews() {
                 <div className="relative bg-espresso px-4 pb-3 pt-3 text-cream">
                   <div
                     aria-hidden="true"
-                    className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-oxblood via-amber to-oxblood"
+                    className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-navy via-teal-bright to-navy"
                   />
                   <div className="flex items-baseline justify-between font-mono text-[0.58rem] uppercase tracking-[0.18em] text-cream-soft">
                     <span>Cybrix · Campaign Audit</span>
@@ -106,7 +106,7 @@ export default function Reviews() {
                       {shot.vertical}
                     </span>
                   </div>
-                  <p className="mt-1 font-display text-lg font-medium italic leading-tight text-oxblood-bright">
+                  <p className="mt-1 font-display text-lg font-medium italic leading-tight text-teal-bright">
                     {shot.result}
                   </p>
                 </div>
@@ -136,7 +136,7 @@ export default function Reviews() {
                     )}
                   </span>
                   <span
-                    className="flex items-center gap-1 text-oxblood-bright"
+                    className="flex items-center gap-1 text-teal-bright"
                     title="Verified from live account"
                   >
                     <span aria-hidden="true">✓</span>

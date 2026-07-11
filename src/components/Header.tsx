@@ -47,7 +47,7 @@ export default function Header() {
       {/* gilded rail the tags hang from */}
       <div
         aria-hidden="true"
-        className="h-0.5 bg-gradient-to-r from-oxblood via-amber to-oxblood"
+        className="h-0.5 bg-gradient-to-r from-navy via-teal-bright to-navy"
       />
       <div
         aria-hidden="true"
@@ -80,7 +80,7 @@ export default function Header() {
               { tint: "bg-paper-2", angle: "-3.5deg", string: 11 },
               { tint: "bg-blush", angle: "2.6deg", string: 18 },
               { tint: "bg-butter", angle: "-2.2deg", string: 8 },
-              { tint: "bg-oxblood-soft", angle: "3.2deg", string: 15 },
+              { tint: "bg-[#d6efe9]", angle: "3.2deg", string: 15 },
             ][i % 4];
             return (
               <a
@@ -100,7 +100,7 @@ export default function Header() {
                   style={{ height: t.string }}
                 />
                 <span
-                  className={`relative rounded-b-md rounded-t-[3px] border border-line-strong px-3.5 pb-1.5 pt-2.5 font-display text-[0.85rem] font-medium italic leading-none text-ink shadow-[0_6px_12px_-4px_rgba(36,30,22,0.35)] transition-all duration-200 group-hover:border-amber/70 group-hover:text-amber group-hover:shadow-[0_9px_16px_-4px_rgba(36,30,22,0.45)] ${t.tint}`}
+                  className={`relative rounded-b-md rounded-t-[3px] border border-line-strong px-3.5 pb-1.5 pt-2.5 font-display text-[0.85rem] font-medium italic leading-none text-ink shadow-[0_6px_12px_-4px_rgba(36,30,22,0.35)] transition-all duration-200 group-hover:border-teal-bright/70 group-hover:text-teal-bright group-hover:shadow-[0_9px_16px_-4px_rgba(36,30,22,0.45)] ${t.tint}`}
                 >
                   {/* punched grommet */}
                   <span
@@ -118,7 +118,7 @@ export default function Header() {
           <a
             href="#book"
             data-cursor="book"
-            className="btn-ink btn-press inline-flex items-center gap-2 border border-oxblood bg-oxblood px-5 py-2.5 text-sm font-semibold text-[#f7efe4] shadow-[0_10px_20px_-8px_rgba(143,45,45,0.7)] [--ink-fill:var(--color-oxblood-deep)]"
+            className="btn-ink btn-press inline-flex items-center gap-2 border border-navy bg-navy px-5 py-2.5 text-sm font-semibold text-cream shadow-[0_10px_20px_-8px_rgba(14,26,58,0.85)] [--ink-fill:var(--color-navy-2)]"
           >
             Book a call
           </a>
@@ -179,7 +179,7 @@ export default function Header() {
           <a
             href="#book"
             onClick={() => setOpen(false)}
-            className="mt-4 inline-flex items-center justify-center bg-oxblood px-5 py-3 text-sm font-semibold text-[#f7efe4]"
+            className="mt-4 inline-flex items-center justify-center bg-navy px-5 py-3 text-sm font-semibold text-cream"
           >
             Book a call
           </a>

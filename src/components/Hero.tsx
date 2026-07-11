@@ -145,7 +145,7 @@ export default function Hero() {
         <div
           data-h="glow"
           aria-hidden="true"
-          className="pointer-events-none absolute -top-[24%] left-[58%] h-[70vw] w-[70vw] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(232,162,92,0.28),rgba(232,162,92,0.06)_45%,transparent_72%)] opacity-25 will-change-transform"
+          className="pointer-events-none absolute -top-[24%] left-[58%] h-[70vw] w-[70vw] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(60,111,224,0.26),rgba(60,111,224,0.06)_45%,transparent_72%)] opacity-30 will-change-transform"
         />
         {/* cool counter-glow — a low teal wash under the pitch so the hero
             carries the logo's cyan, not only the warm studio light */}
@@ -219,7 +219,7 @@ export default function Hero() {
                   <a
                     href="#book"
                     data-cursor="book"
-                    className="btn-ink btn-press inline-flex items-center justify-center gap-2 bg-oxblood px-8 py-4 text-sm font-semibold text-[#f7efe4] shadow-[0_14px_28px_-12px_rgba(143,45,45,0.7)] [--ink-fill:var(--color-oxblood-deep)]"
+                    className="btn-ink btn-press inline-flex items-center justify-center gap-2 bg-navy px-8 py-4 text-sm font-semibold text-cream shadow-[0_14px_28px_-12px_rgba(14,26,58,0.85)] [--ink-fill:var(--color-navy-2)]"
                   >
                     Book a strategy call
                   </a>
