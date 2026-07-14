@@ -195,7 +195,7 @@ export default function Work() {
                       </ul>
                       {/* colophon row */}
                       <div className="mt-5 flex items-center justify-between border-t border-line pt-3 font-mono text-[0.6rem] uppercase tracking-[0.16em] text-muted">
-                        <span>Cybrix studio · print {i + 1}/4</span>
+                        <span>Cybrix studio · print {i + 1}/{WORK.length}</span>
                         <span
                           aria-hidden="true"
                           className="transition-colors group-hover:text-teal-bright"

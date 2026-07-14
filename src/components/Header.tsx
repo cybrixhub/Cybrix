@@ -54,9 +54,10 @@ export default function Header() {
         className="bg-noise pointer-events-none absolute inset-0 opacity-[0.04]"
       />
       <div
-        className={`container-x flex items-center justify-between border-b border-line transition-all duration-300 ${
-          scrolled ? "h-16" : "h-20"
+        className={`container-x flex items-center justify-between border-b transition-all duration-300 ${
+          scrolled ? "h-14" : "h-16"
         }`}
+        style={{ borderColor: "rgba(255,255,255,0.06)" }}
       >
         <a
           href="/"
@@ -168,11 +169,11 @@ export default function Header() {
         id="mobile-menu"
         inert={!open}
         aria-hidden={!open}
-        className={`grid md:hidden transition-[grid-template-rows] duration-300 ease-out ${
-          open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-        }`}
+        className={`overflow-hidden bg-black text-ink md:hidden ${
+          open ? "max-h-[420px] border-b border-line" : "max-h-0"
+        } transition-all duration-300 ease-out`}
       >
-        <div className={`min-h-0 overflow-hidden bg-paper text-ink ${open ? "border-b border-line" : ""}`}>
+        <div className={`min-h-0 overflow-hidden bg-black text-ink`}>
         <nav className="container-x flex flex-col py-4" aria-label="Mobile">
           {NAV_LINKS.map((link, i) => (
             <a
