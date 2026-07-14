@@ -38,7 +38,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 bg-paper/95 text-ink backdrop-blur-sm transition-shadow duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 bg-black/96 text-ink backdrop-blur-sm transition-shadow duration-300 ${
         scrolled
           ? "shadow-[0_1px_0_var(--color-line-strong),0_14px_34px_-20px_rgba(36,30,22,0.45)]"
           : "shadow-[0_10px_28px_-22px_rgba(36,30,22,0.35)]"
@@ -80,7 +80,7 @@ export default function Header() {
               { tint: "bg-paper-2", angle: "-3.5deg", string: 11 },
               { tint: "bg-blush", angle: "2.6deg", string: 18 },
               { tint: "bg-butter", angle: "-2.2deg", string: 8 },
-              { tint: "bg-[#d6efe9]", angle: "3.2deg", string: 15 },
+              { tint: "bg-teal-soft", angle: "3.2deg", string: 15 },
             ][i % 4];
             return (
               <a
