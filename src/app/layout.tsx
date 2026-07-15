@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, IBM_Plex_Mono } from "next/font/google";
 import localFont from "next/font/local";
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
 import { SITE, SOCIALS } from "@/lib/site";
 import "./globals.css";
 
