@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
 import Underlined from "@/components/Underlined";
 import TornEdge from "@/components/TornEdge";
+import ServiceVideo from "@/components/ServiceVideo";
 import {
   ALL_SERVICES,
   SERVICE_GROUPS,
@@ -180,6 +181,9 @@ export default async function ServicePage({
             </Reveal>
           </div>
         </section>
+
+        {/* Service overview video — auto-plays on load; drop the file to activate */}
+        <ServiceVideo slug={service.slug} name={service.name} />
 
         {/* Problem / Solution — split editorial spread on espresso */}
         {(service.problem || service.solution) && (

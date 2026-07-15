@@ -1,0 +1,74 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
+export default function ServiceVideo({ slug, name }: { slug: string; name: string }) {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [missing, setMissing] = useState(false);
+
+  useEffect(() => {
+    const vid = videoRef.current;
+    if (!vid) return;
+    vid.play().catch(() => {});
+  }, []);
+
+  return (
+    <div className="container-x py-16 sm:py-20">
+      <div className="overflow-hidden rounded-lg border border-line-strong shadow-[0_24px_56px_-24px_rgba(36,30,22,0.22)]">
+        {/* Chrome bar */}
+        <div className="flex items-center justify-between border-b border-line-strong bg-blush px-4 py-2.5">
+          <span className="flex items-center gap-2">
+            <span aria-hidden="true" className="h-2 w-2 rounded-full bg-teal-bright" />
+            <span className="font-mono text-[0.6rem] uppercase tracking-[0.16em] text-ink-soft">
+              {slug}.mp4
+            </span>
+          </span>
+          <span className="font-mono text-[0.6rem] uppercase tracking-[0.12em] text-muted">
+            Service overview
+          </span>
+        </div>
+
+        {/* Video */}
+        <div className="relative aspect-video bg-espresso">
+          <video
+            ref={videoRef}
+            src={`/videos/${slug}.mp4`}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            onError={() => setMissing(true)}
+            onCanPlay={() => setMissing(false)}
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${
+              missing ? "opacity-0" : "opacity-100"
+            }`}
+          />
+
+          {/* Placeholder */}
+          <div
+            aria-hidden="true"
+            className={`absolute inset-0 flex flex-col items-center justify-center gap-5 transition-opacity duration-300 ${
+              missing ? "opacity-100" : "opacity-0 pointer-events-none"
+            }`}
+          >
+            <div className="bg-grain absolute inset-0 opacity-20" />
+            <div className="relative flex flex-col items-center gap-4 text-center">
+              <span className="grid h-16 w-16 place-items-center rounded-full bg-[#f7efe4] text-espresso">
+                <svg width="16" height="19" viewBox="0 0 16 19" fill="none" aria-hidden="true">
+                  <path d="M1 1.5 L15 9.5 L1 17.5 Z" fill="currentColor" />
+                </svg>
+              </span>
+              <p className="font-display text-lg font-medium italic text-cream-soft">
+                {name} — overview video
+              </p>
+              <p className="font-mono text-[0.6rem] uppercase tracking-[0.18em] text-[#8ba0c0]">
+                Drop /public/videos/{slug}.mp4 to activate
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
