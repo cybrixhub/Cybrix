@@ -38,17 +38,22 @@ export default function SmoothScroll() {
     const splits: SplitTextT[] = [];
 
     const ctx = gsap.context(() => {
-      // --- simple rise reveals -------------------------------------------
-      gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
-        const delay = parseFloat(el.dataset.revealDelay || "0");
-        gsap.from(el, {
-          opacity: 0,
-          y: 28,
-          duration: 0.9,
-          ease: "power3.out",
-          delay,
-          scrollTrigger: { trigger: el, start: "top 88%", once: true },
-        });
+      // --- simple rise reveals (batched to avoid per-element ScrollTrigger overhead) ---
+      ScrollTrigger.batch("[data-reveal]", {
+        start: "top 90%",
+        once: true,
+        onEnter: (els) => {
+          els.forEach((el) => {
+            const delay = parseFloat((el as HTMLElement).dataset.revealDelay || "0");
+            gsap.from(el, {
+              opacity: 0,
+              y: 24,
+              duration: 0.75,
+              ease: "power3.out",
+              delay,
+            });
+          });
+        },
       });
 
       // --- hand-drawn flourishes -----------------------------------------
@@ -120,11 +125,9 @@ export default function SmoothScroll() {
             // If splitting fails, leave the element visible & unanimated.
           }
         });
-        ScrollTrigger.refresh();
       });
     });
 
-    ScrollTrigger.refresh();
     const onLoad = () => ScrollTrigger.refresh();
     window.addEventListener("load", onLoad);
 

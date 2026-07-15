@@ -117,7 +117,7 @@ export default function PlanVideos() {
 
           {/* Right — video plate */}
           <Reveal delay={60}>
-            <div className="sticky top-24">
+            <div>
               <div className="overflow-hidden rounded-lg border border-navy-line bg-[#0a1230] shadow-[0_32px_64px_-24px_rgba(0,0,0,0.7)]">
                 {/* Chrome bar */}
                 <div className="flex items-center justify-between border-b border-navy-line bg-[#0e1640] px-4 py-2.5">
