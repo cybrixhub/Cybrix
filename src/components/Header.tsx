@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Logo from "./Logo";
+import Image from "next/image";
 import { NAV_LINKS, SITE } from "@/lib/site";
 
 /**
@@ -63,7 +63,15 @@ export default function Header() {
           aria-label="Cybrix — back to top"
           className="flex items-center gap-3"
         >
-          <Logo variant="raw" className="h-9 sm:h-11" />
+          <Image
+            src="/brand/cybrix-mark.png"
+            alt="Cybrix"
+            width={120}
+            height={120}
+            priority
+            sizes="64px"
+            className="h-12 w-auto sm:h-14"
+          />
           <span className="kicker hidden text-muted lg:inline">
             [ est. {SITE.established} ]
           </span>
