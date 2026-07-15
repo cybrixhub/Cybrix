@@ -63,7 +63,7 @@ export default function Header() {
           aria-label="Cybrix — back to top"
           className="flex items-center gap-3"
         >
-          <Logo />
+          <Logo variant="raw" className="h-9 sm:h-11" />
           <span className="kicker hidden text-muted lg:inline">
             [ est. {SITE.established} ]
           </span>

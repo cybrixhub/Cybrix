@@ -49,9 +49,7 @@ export default function Logo({
 
   if (variant === "raw") {
     return (
-      <span
-        className={`inline-flex h-9 items-center sm:h-10 ${className}`}
-      >
+      <span className={`inline-flex items-center ${className}`}>
         {img}
       </span>
     );
