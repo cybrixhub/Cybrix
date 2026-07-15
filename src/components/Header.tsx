@@ -88,7 +88,7 @@ export default function Header() {
               { tint: "bg-paper-2", angle: "-3.5deg", string: 11 },
               { tint: "bg-blush", angle: "2.6deg", string: 18 },
               { tint: "bg-butter", angle: "-2.2deg", string: 8 },
-              { tint: "bg-teal-soft", angle: "3.2deg", string: 15 },
+              { tint: "bg-espresso", angle: "3.2deg", string: 15 },
             ][i % 4];
             return (
               <a
