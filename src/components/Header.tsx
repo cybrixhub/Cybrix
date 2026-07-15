@@ -59,8 +59,8 @@ export default function Header() {
         }`}
       >
         <a
-          href="#top"
-          aria-label="Cybrix — back to top"
+          href="/"
+          aria-label="Cybrix — home"
           className="flex items-center gap-3"
         >
           <Image
