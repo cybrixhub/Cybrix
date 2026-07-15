@@ -38,7 +38,7 @@ export default function SmoothScroll() {
     const splits: SplitTextT[] = [];
 
     const ctx = gsap.context(() => {
-      // --- simple rise reveals (batched to avoid per-element ScrollTrigger overhead) ---
+      // --- simple rise reveals (batched; will-change set only during animation) ---
       ScrollTrigger.batch("[data-reveal]", {
         start: "top 90%",
         once: true,
@@ -51,6 +51,8 @@ export default function SmoothScroll() {
               duration: 0.75,
               ease: "power3.out",
               delay,
+              onStart() { (el as HTMLElement).style.willChange = "transform, opacity"; },
+              onComplete() { (el as HTMLElement).style.willChange = "auto"; },
             });
           });
         },

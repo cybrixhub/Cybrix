@@ -113,7 +113,6 @@ const jsonLd = {
   logo: `${SITE.url}/brand/cybrix-mark.png`,
   image: `${SITE.url}${SITE.ogImage}`,
   email: SITE.email,
-  telephone: SITE.phone,
   areaServed: "Worldwide",
   slogan: SITE.tagline,
   foundingDate: SITE.established,

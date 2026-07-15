@@ -136,7 +136,7 @@ export default function Header() {
           ref={toggleRef}
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="inline-flex h-10 w-10 items-center justify-center md:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center md:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           aria-controls="mobile-menu"
@@ -161,15 +161,16 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu — grid-rows transition is compositor-only (no layout/paint per frame) */}
       <div
         id="mobile-menu"
         inert={!open}
         aria-hidden={!open}
-        className={`overflow-hidden bg-paper text-ink md:hidden ${
-          open ? "max-h-[420px] border-b border-line" : "max-h-0"
-        } transition-all duration-300 ease-out`}
+        className={`grid md:hidden transition-[grid-template-rows] duration-300 ease-out ${
+          open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+        }`}
       >
+        <div className={`min-h-0 overflow-hidden bg-paper text-ink ${open ? "border-b border-line" : ""}`}>
         <nav className="container-x flex flex-col py-4" aria-label="Mobile">
           {NAV_LINKS.map((link, i) => (
             <a
@@ -192,6 +193,7 @@ export default function Header() {
             Book a call
           </a>
         </nav>
+        </div>
       </div>
     </header>
   );

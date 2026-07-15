@@ -29,7 +29,7 @@ type Day = { y: number; m: number; d: number };
  */
 export default function MeetingBooking() {
   const [today, setToday] = useState<Day | null>(null);
-  const [view, setView] = useState({ y: 2026, m: 6 });
+  const [view, setView] = useState<{ y: number; m: number } | null>(null);
   const [picked, setPicked] = useState<Day | null>(null);
   const [slot, setSlot] = useState("");
 
@@ -40,6 +40,7 @@ export default function MeetingBooking() {
   }, []);
 
   const cells = useMemo(() => {
+    if (!view) return [];
     const firstDow = new Date(view.y, view.m, 1).getDay();
     const total = new Date(view.y, view.m + 1, 0).getDate();
     const arr: (number | null)[] = Array.from({ length: firstDow }, () => null);
@@ -47,16 +48,16 @@ export default function MeetingBooking() {
     return arr;
   }, [view]);
 
-  const monthsAhead = today
+  const monthsAhead = today && view
     ? (view.y - today.y) * 12 + (view.m - today.m)
     : 0;
   const atStart = monthsAhead <= 0;
   const atEnd = monthsAhead >= 3;
 
   function isDisabled(d: number) {
-    if (!today) return true;
+    if (!today || !view) return true;
     const dow = new Date(view.y, view.m, d).getDay();
-    if (dow === 0 || dow === 6) return true; // weekends unavailable
+    if (dow === 0 || dow === 6) return true;
     if (view.y < today.y) return true;
     if (view.y === today.y && view.m < today.m) return true;
     if (view.y === today.y && view.m === today.m && d < today.d) return true;
@@ -65,13 +66,14 @@ export default function MeetingBooking() {
 
   function shiftMonth(delta: number) {
     setView((v) => {
+      if (!v) return v;
       const m = v.m + delta;
       return { y: v.y + Math.floor(m / 12), m: ((m % 12) + 12) % 12 };
     });
   }
 
   const isPicked = (d: number) =>
-    !!picked && picked.d === d && picked.m === view.m && picked.y === view.y;
+    !!picked && !!view && picked.d === d && picked.m === view.m && picked.y === view.y;
 
   const pickedLabel = picked
     ? `${MONTHS[picked.m]} ${picked.d}, ${picked.y}`
@@ -163,7 +165,7 @@ export default function MeetingBooking() {
                   ←
                 </button>
                 <span className="font-display text-lg font-medium">
-                  {MONTHS[view.m]} {view.y}
+                  {view ? `${MONTHS[view.m]} ${view.y}` : "—"}
                 </span>
                 <button
                   type="button"
@@ -194,8 +196,8 @@ export default function MeetingBooking() {
                       type="button"
                       disabled={isDisabled(d)}
                       aria-pressed={isPicked(d)}
-                      aria-label={`${MONTHS[view.m]} ${d}, ${view.y}`}
-                      onClick={() => setPicked({ y: view.y, m: view.m, d })}
+                      aria-label={view ? `${MONTHS[view.m]} ${d}, ${view.y}` : `Day ${d}`}
+                      onClick={() => view && setPicked({ y: view.y, m: view.m, d })}
                       className={`h-10 rounded-md font-mono text-sm transition-colors ${
                         isPicked(d)
                           ? "bg-teal-bright font-semibold text-navy"

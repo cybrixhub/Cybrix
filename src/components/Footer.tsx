@@ -4,7 +4,7 @@ import ThreadScene from "./ThreadScene";
 import WovenWordmark from "./WovenWordmark";
 
 export default function Footer() {
-  const year = 2026;
+  const year = new Date().getFullYear();
 
   return (
     <footer className="relative overflow-hidden bg-navy text-cream">

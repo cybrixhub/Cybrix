@@ -134,7 +134,7 @@ export default function Hero() {
             priority
             sizes="100vw"
             quality={78}
-            className="object-cover will-change-transform [filter:saturate(1.06)]"
+            className="object-cover"
           />
           {/* copy shade — dark only where the text sits, fully transparent on the right so the photo pops */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#0f0c08]/85 via-[#0f0c08]/25 to-transparent" />

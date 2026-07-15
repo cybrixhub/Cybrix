@@ -130,11 +130,6 @@ html.lenis body {
     text-wrap: pretty;
   }
 
-  /* Pre-promote reveal targets so the browser composites them before animation fires */
-  [data-reveal] {
-    will-change: transform, opacity;
-  }
-
   /* Monospace micro-label — the editorial kicker. A small inverted teal
      triangle (the logo's mark) prefixes every kicker so the brand's colour
      and form thread through every section label. Add `kicker-bare` to drop it. */
