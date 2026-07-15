@@ -34,10 +34,10 @@ export default function Home() {
         <Prologue />
         <TornEdge color="var(--color-paper)" className="-mt-6 sm:-mt-7" />
         <FounderVideo />
+        <PlanVideos />
         <Ticker />
         <TrackRecord />
         <WhatWeDo />
-        <PlanVideos />
         <Factoids />
         <Work />
         <Reviews />
