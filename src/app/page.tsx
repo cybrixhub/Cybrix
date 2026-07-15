@@ -17,6 +17,7 @@ import Work from "@/components/Work";
 import Reviews from "@/components/Reviews";
 import Collage from "@/components/Collage";
 import Faq from "@/components/Faq";
+import MeetingBooking from "@/components/MeetingBooking";
 import Book from "@/components/Book";
 import Footer from "@/components/Footer";
 
@@ -40,6 +41,8 @@ export default function Home() {
         <Reviews />
         <Collage />
         <Faq />
+        <TornEdge color="var(--color-navy)" className="-mb-px" />
+        <MeetingBooking />
         <TornEdge color="var(--color-espresso)" className="-mb-px" />
         <Book />
       </main>
