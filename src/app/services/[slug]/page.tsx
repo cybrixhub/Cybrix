@@ -129,7 +129,7 @@ export default async function ServicePage({
             <Reveal delay={80}>
               <h1
                 data-split
-                className="split-parent mt-6 max-w-4xl font-display text-5xl font-medium leading-[1.02] tracking-tight text-balance sm:text-6xl md:text-7xl"
+                className="split-parent mt-6 max-w-4xl font-display text-4xl font-medium leading-[1.04] tracking-tight text-balance sm:text-5xl md:text-6xl lg:text-7xl"
               >
                 {service.name.split(" ").slice(0, -1).join(" ")}{" "}
                 <Underlined tone={a.tone}>

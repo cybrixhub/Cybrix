@@ -16,14 +16,14 @@ export default function ServiceVideo({ slug, name }: { slug: string; name: strin
     <div className="container-x py-16 sm:py-20">
       <div className="overflow-hidden rounded-lg border border-line-strong shadow-[0_24px_56px_-24px_rgba(36,30,22,0.22)]">
         {/* Chrome bar */}
-        <div className="flex items-center justify-between border-b border-line-strong bg-blush px-4 py-2.5">
-          <span className="flex items-center gap-2">
-            <span aria-hidden="true" className="h-2 w-2 rounded-full bg-teal-bright" />
-            <span className="font-mono text-[0.6rem] uppercase tracking-[0.16em] text-ink-soft">
+        <div className="flex items-center justify-between border-b border-line-strong bg-blush px-3 py-2 sm:px-4 sm:py-2.5">
+          <span className="flex min-w-0 items-center gap-2">
+            <span aria-hidden="true" className="h-2 w-2 shrink-0 rounded-full bg-teal-bright" />
+            <span className="truncate font-mono text-[0.6rem] uppercase tracking-[0.16em] text-ink-soft">
               {slug}.mp4
             </span>
           </span>
-          <span className="font-mono text-[0.6rem] uppercase tracking-[0.12em] text-muted">
+          <span className="ml-3 shrink-0 font-mono text-[0.6rem] uppercase tracking-[0.12em] text-muted">
             Service overview
           </span>
         </div>
@@ -63,7 +63,8 @@ export default function ServiceVideo({ slug, name }: { slug: string; name: strin
                 {name} — overview video
               </p>
               <p className="font-mono text-[0.6rem] uppercase tracking-[0.18em] text-[#8ba0c0]">
-                Drop /public/videos/{slug}.mp4 to activate
+                <span className="sm:hidden">Video coming soon</span>
+                <span className="hidden sm:inline">Drop /public/videos/{slug}.mp4 to activate</span>
               </p>
             </div>
           </div>
