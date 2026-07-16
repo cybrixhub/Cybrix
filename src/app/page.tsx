@@ -12,7 +12,6 @@ import FounderVideo from "@/components/FounderVideo";
 import Ticker from "@/components/Ticker";
 import TrackRecord from "@/components/TrackRecord";
 import WhatWeDo from "@/components/WhatWeDo";
-import PlanVideos from "@/components/PlanVideos";
 import Factoids from "@/components/Factoids";
 import Work from "@/components/Work";
 import Reviews from "@/components/Reviews";
@@ -34,7 +33,6 @@ export default function Home() {
         <Prologue />
         <TornEdge color="var(--color-paper)" className="-mt-6 sm:-mt-7" />
         <FounderVideo />
-        <PlanVideos />
         <Ticker />
         <TrackRecord />
         <WhatWeDo />
