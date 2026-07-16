@@ -40,6 +40,8 @@ export default function WovenWordmark({
     }
 
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // Cap at 1.5 — matches ThreadScene; beyond that the gain is invisible
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     let raf = 0;
     let last = 0;
     let visible = true;
@@ -55,8 +57,10 @@ export default function WovenWordmark({
       const rect = host.getBoundingClientRect();
       width = Math.max(1, Math.round(rect.width));
       height = Math.max(1, Math.round(rect.height));
-      canvas.width = width;
-      canvas.height = height;
+      // Scale backing store for retina; drawing stays in CSS px via setTransform
+      canvas.width = Math.round(width * dpr);
+      canvas.height = Math.round(height * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       // next/font renames the family — read the real one off the host.
       const family = getComputedStyle(host).fontFamily || "Georgia, serif";
