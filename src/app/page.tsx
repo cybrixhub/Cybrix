@@ -19,7 +19,7 @@ import Work from "@/components/Work";
 import Reviews from "@/components/Reviews";
 import Collage from "@/components/Collage";
 import Faq from "@/components/Faq";
-import CalBooking from "@/components/CalBooking";
+import MeetingBooking from "@/components/MeetingBooking";
 import Book from "@/components/Book";
 import Footer from "@/components/Footer";
 
@@ -56,19 +56,7 @@ export default function Home() {
         <Reviews />
         <Collage />
         <Faq />
-        <TornEdge color="var(--color-navy)" className="-mb-px" />
-        <section id="book" className="bg-espresso py-16 sm:py-20">
-          <div className="container-x mb-10 text-center">
-            <p className="kicker text-muted">Get started</p>
-            <h2 className="mt-3 font-display text-3xl font-medium italic tracking-tight text-ink sm:text-4xl">
-              Book a strategy call
-            </h2>
-            <p className="mt-3 text-sm text-ink-soft">
-              30 minutes. No pitch, no pressure — just a plan.
-            </p>
-          </div>
-          <CalBooking />
-        </section>
+        <MeetingBooking />
         <TornEdge color="var(--color-espresso)" className="-mb-px" />
         <Book />
       </main>
