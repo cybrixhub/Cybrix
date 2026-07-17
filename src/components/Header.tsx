@@ -55,7 +55,7 @@ export default function Header() {
       />
       <div
         className={`container-x flex items-center justify-between border-b border-line transition-all duration-300 ${
-          scrolled ? "h-14" : "h-16"
+          scrolled ? "h-16" : "h-20"
         }`}
       >
         <a
@@ -70,7 +70,7 @@ export default function Header() {
             height={120}
             priority
             sizes="64px"
-            className="h-12 w-auto sm:h-14"
+            className="h-14 w-auto sm:h-16"
           />
           <span className="kicker hidden text-muted lg:inline">
             [ est. {SITE.established} ]
