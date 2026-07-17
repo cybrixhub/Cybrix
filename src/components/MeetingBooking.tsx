@@ -53,11 +53,11 @@ export default function MeetingBooking() {
 
         {/* Calendar embed */}
         <Reveal delay={100}>
-          <div className="mx-auto mt-12 max-w-xl overflow-hidden rounded-lg border border-navy-line shadow-[0_24px_48px_-24px_rgba(0,0,0,0.6)]">
+          <div className="mx-auto mt-12 max-w-3xl overflow-hidden rounded-lg border border-navy-line shadow-[0_24px_48px_-24px_rgba(0,0,0,0.6)]">
             <iframe
               src="https://cal.com/cybrix-talha/30min?embed=true&theme=dark&layout=month_view&hideEventTypeDetails=true"
               className="w-full"
-              style={{ height: 660, border: "none", display: "block" }}
+              style={{ height: 700, border: "none", display: "block" }}
               title="Book a strategy call with Cybrix"
               loading="lazy"
             />
