@@ -12,11 +12,7 @@ type ThreadSceneProps = {
   rise?: number;
 };
 
-/** Deterministic pseudo-random from an integer (stable across frames). */
-function hash(n: number) {
-  const s = Math.sin(n * 127.1) * 43758.5453;
-  return s - Math.floor(s);
-}
+import { hash } from "@/lib/hash";
 
 /**
  * Woven-thread landscape (inspired by sondaven.com): the background is drawn

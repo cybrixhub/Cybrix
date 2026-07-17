@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -9,10 +9,9 @@ import PlatformLogos from "./PlatformLogos";
 import Stamp from "./Stamp";
 import ThreadScene from "./ThreadScene";
 import WovenWordmark from "./WovenWordmark";
-import { FOUNDER, SITE } from "@/lib/site"; // SITE still used by wordmark; FOUNDER still used by video card
+import { FOUNDER, SITE } from "@/lib/site";
 import { willPreload, PRELOADER_HERO_DELAY } from "@/lib/preload";
-
-const useIso = typeof window !== "undefined" ? useLayoutEffect : useEffect;
+import { useIso } from "@/lib/useIso";
 
 export default function Hero() {
   const root = useRef<HTMLDivElement | null>(null);

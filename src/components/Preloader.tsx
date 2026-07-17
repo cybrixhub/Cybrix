@@ -1,10 +1,9 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { PRELOADER_KEY, willPreload } from "@/lib/preload";
-
-const useIso = typeof window !== "undefined" ? useLayoutEffect : useEffect;
+import { useIso } from "@/lib/useIso";
 
 /**
  * Letterpress intro: the wordmark stamps into a parchment sheet, which then

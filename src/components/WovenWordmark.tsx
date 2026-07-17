@@ -9,10 +9,7 @@ type WovenWordmarkProps = {
   className?: string;
 };
 
-function hash(n: number) {
-  const s = Math.sin(n * 311.7) * 43758.5453;
-  return s - Math.floor(s);
-}
+import { hash } from "@/lib/hash";
 
 /**
  * Giant display type rendered as woven vertical threads (the sondaven.com
@@ -114,11 +111,11 @@ export default function WovenWordmark({
       ctx.lineWidth = STEP - 1.5;
       for (let i = 0; i < strands.length; i++) {
         const s = strands[i];
-        const r = hash(i);
+        const r = hash(i, 311.7);
         // frayed, shimmering thread ends
         const fray = reduce ? 0 : 5 * Math.sin(t * 0.002 + i * 0.7) * (0.3 + r);
         const drop =
-          hash(i * 3.7) > 0.96 ? height * 0.03 * hash(i * 1.3) : 0;
+          hash(i * 3.7, 311.7) > 0.96 ? height * 0.03 * hash(i * 1.3, 311.7) : 0;
         ctx.globalAlpha = 0.82 + 0.18 * r;
         ctx.beginPath();
         ctx.moveTo(s.x + 0.5, Math.max(0, s.top - Math.abs(fray) * 0.4));

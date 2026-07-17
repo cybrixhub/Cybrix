@@ -1,12 +1,11 @@
 "use client";
 
-import { useEffect, useLayoutEffect } from "react";
+import { useEffect } from "react";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import type { SplitText as SplitTextT } from "gsap/SplitText";
-
-const useIso = typeof window !== "undefined" ? useLayoutEffect : useEffect;
+import { useIso } from "@/lib/useIso";
 
 /**
  * Global smooth-scroll + scroll-animation engine.

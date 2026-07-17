@@ -13,8 +13,6 @@ export const SITE = {
   url: "https://cybrix.uk",
   /** Placeholder — point this at your real inbox before launch. */
   email: "hello@cybrix.uk",
-  phone: "+1 (555) 012-3456",
-  location: "Remote · Working worldwide",
   ogImage: "/opengraph-image",
   established: "2020",
   calendarUrl: "https://cal.com/cybrix-talha/30min",
@@ -61,14 +59,7 @@ export const TICKER: string[] = [
   "WhatsApp Chat Bot",
 ];
 
-/** Proof points shown inside the hero. */
 export type Stat = { value: string; label: string };
-
-export const HERO_STATS: Stat[] = [
-  { value: "3.4×", label: "average pipeline growth" },
-  { value: "68%", label: "lift in qualified replies" },
-  { value: "4.9/5", label: "founder satisfaction" },
-];
 
 /** The big track-record band. */
 export const TRACK_RECORD: Stat[] = [
@@ -81,7 +72,6 @@ export const TRACK_RECORD: Stat[] = [
 /** From-the-founder video panel (drop your real video in /public). */
 export const FOUNDER = {
   kicker: "From the founder",
-  blurb: "Two minutes on how we actually think about growth.",
   duration: "02:14",
   file: "founder-intro.mp4",
   name: "A. Rahman",
@@ -808,7 +798,6 @@ export const TESTIMONIALS: Testimonial[] = [
 /** The booking section. */
 export const BOOK = {
   kicker: "Book",
-  title: "Let's map your growth.",
   copy: "A free 30-minute strategy call on Google Meet. Come with your goals; leave with a plan.",
   checkmarks: [
     "A teardown of your current social & content",

@@ -1,11 +1,10 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import type { SplitText as SplitTextT } from "gsap/SplitText";
-
-const useIso = typeof window !== "undefined" ? useLayoutEffect : useEffect;
+import { useIso } from "@/lib/useIso";
 
 const QUOTE =
   "“Attention is earned, never bought. In a feed full of noise, the startups that win are the ones with a voice worth remembering — we exist to build that voice, and to turn it into pipeline”";

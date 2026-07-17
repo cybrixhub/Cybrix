@@ -1,12 +1,7 @@
 import Image from "next/image";
 import Reveal from "./Reveal";
 import { COLLAGE, SITE } from "@/lib/site";
-
-/** Deterministic pseudo-random (stable across server/client renders). */
-function hash(n: number) {
-  const s = Math.sin(n * 91.7) * 43758.5453;
-  return s - Math.floor(s);
-}
+import { hash } from "@/lib/hash";
 
 /** Scattered pixel marks, like ink misregistration on a press sheet. */
 function PixelGlitch({
