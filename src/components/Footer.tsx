@@ -1,4 +1,4 @@
-import { NAV_LINKS, SOCIALS, SITE } from "@/lib/site";
+import { NAV_LINKS, SOCIALS, SITE, ALL_SERVICES, WORK } from "@/lib/site";
 import Logo from "./Logo";
 import ThreadScene from "./ThreadScene";
 import WovenWordmark from "./WovenWordmark";
@@ -21,16 +21,13 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="flex gap-14 sm:gap-20">
+          <div className="grid grid-cols-2 gap-x-10 gap-y-10 sm:grid-cols-4 sm:gap-x-14">
             <div>
               <h3 className="kicker text-[#b9cbe4]">Navigate</h3>
               <ul className="mt-4 space-y-2.5">
                 {NAV_LINKS.map((link) => (
                   <li key={link.href}>
-                    <a
-                      href={link.href}
-                      className="text-sm transition-colors hover:text-teal-bright"
-                    >
+                    <a href={link.href} className="text-sm transition-colors hover:text-teal-bright">
                       {link.label}
                     </a>
                   </li>
@@ -47,6 +44,39 @@ export default function Footer() {
                 </li>
               </ul>
             </div>
+
+            <div>
+              <h3 className="kicker text-[#b9cbe4]">Services</h3>
+              <ul className="mt-4 space-y-2.5">
+                {ALL_SERVICES.map((s) => (
+                  <li key={s.slug}>
+                    <a
+                      href={`/services/${s.slug}`}
+                      className="text-sm leading-snug transition-colors hover:text-teal-bright"
+                    >
+                      {s.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="kicker text-[#b9cbe4]">Work</h3>
+              <ul className="mt-4 space-y-2.5">
+                {WORK.map((w) => (
+                  <li key={w.slug}>
+                    <a
+                      href={`/work/${w.slug}`}
+                      className="text-sm leading-snug transition-colors hover:text-teal-bright"
+                    >
+                      {w.client}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
             <div>
               <h3 className="kicker text-[#b9cbe4]">Follow</h3>
               <ul className="mt-4 space-y-2.5">
