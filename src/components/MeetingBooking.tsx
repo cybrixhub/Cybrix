@@ -57,9 +57,9 @@ export default function MeetingBooking() {
           <Reveal delay={100}>
             <div className="overflow-hidden rounded-lg border border-navy-line shadow-[0_24px_48px_-24px_rgba(0,0,0,0.6)]">
               <iframe
-                src="https://cal.com/cybrix-talha/30min?embed=true&theme=dark&layout=month_view&hideEventTypeDetails=true"
+                src="https://cal.com/cybrix-talha/30min?embed=true&theme=dark&layout=column_view&hideEventTypeDetails=true"
                 className="w-full"
-                style={{ height: 620, border: "none", display: "block" }}
+                style={{ height: 740, border: "none", display: "block" }}
                 title="Book a strategy call with Cybrix"
                 loading="lazy"
               />
