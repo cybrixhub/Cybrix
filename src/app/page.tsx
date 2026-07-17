@@ -9,6 +9,7 @@ import Hero from "@/components/Hero";
 import Prologue from "@/components/Prologue";
 import TornEdge from "@/components/TornEdge";
 import FounderVideo from "@/components/FounderVideo";
+import ShakeCta from "@/components/ShakeCta";
 import Ticker from "@/components/Ticker";
 import TrackRecord from "@/components/TrackRecord";
 import WhatWeDo from "@/components/WhatWeDo";
@@ -33,6 +34,17 @@ export default function Home() {
         <Prologue />
         <TornEdge color="var(--color-paper)" className="-mt-6 sm:-mt-7" />
         <FounderVideo />
+        <div className="bg-paper pb-12 text-center sm:pb-16">
+          <ShakeCta>
+            <a
+              href="#book"
+              data-cursor="book"
+              className="btn-ink btn-press inline-flex items-center gap-2 border border-navy bg-navy px-8 py-4 text-sm font-semibold text-cream [--ink-fill:var(--color-navy-2)]"
+            >
+              Book a strategy call
+            </a>
+          </ShakeCta>
+        </div>
         <Ticker />
         <TrackRecord />
         <WhatWeDo />
