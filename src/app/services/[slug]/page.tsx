@@ -164,7 +164,7 @@ export default async function ServicePage({
                 <Link
                   href="/#book"
                   data-cursor="book"
-                  className={`shake-cta btn-ink btn-press inline-flex items-center gap-2 border px-6 py-3 text-sm font-semibold ${a.cta}`}
+                  className={`btn-ink btn-press inline-flex items-center gap-2 border px-6 py-3 text-sm font-semibold ${a.cta}`}
                 >
                   Book a strategy call
                 </Link>
@@ -184,6 +184,17 @@ export default async function ServicePage({
 
         {/* Service overview video — auto-plays on load; drop the file to activate */}
         <ServiceVideo slug={service.slug} name={service.name} />
+
+        {/* Book CTA — shakes after 2 s to pull the eye */}
+        <div className="container-x -mt-4 pb-12 text-center sm:pb-16">
+          <Link
+            href="/#book"
+            data-cursor="book"
+            className={`shake-cta btn-ink btn-press inline-flex items-center gap-2 border px-8 py-4 text-sm font-semibold ${a.ctaBtn}`}
+          >
+            Book a strategy call
+          </Link>
+        </div>
 
         {/* Problem / Solution — split editorial spread on espresso */}
         {(service.problem || service.solution) && (
