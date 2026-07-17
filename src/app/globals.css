@@ -393,6 +393,23 @@ html.lenis body {
 }
 
 /* ------------------------------------------------------------------ */
+/*  CTA shake — fires once after 1.5 s to pull the eye to the button */
+/* ------------------------------------------------------------------ */
+@keyframes shake-cta {
+  0%,  100% { transform: translateX(0) rotate(0deg); }
+  15%        { transform: translateX(-5px) rotate(-1.5deg); }
+  30%        { transform: translateX(5px)  rotate(1.5deg); }
+  45%        { transform: translateX(-4px) rotate(-0.8deg); }
+  60%        { transform: translateX(4px)  rotate(0.8deg); }
+  75%        { transform: translateX(-2px); }
+  90%        { transform: translateX(2px); }
+}
+.shake-cta {
+  animation: shake-cta 0.65s ease-in-out 1.5s 1;
+  transform-origin: center;
+}
+
+/* ------------------------------------------------------------------ */
 /*  Reduced motion                                                    */
 /* ------------------------------------------------------------------ */
 @media (prefers-reduced-motion: reduce) {

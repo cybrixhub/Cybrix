@@ -145,7 +145,7 @@ export default async function ServicePage({
             </Reveal>
 
             {service.bullets && (
-              <Reveal delay={200}>
+              <Reveal delay={200} className="hidden sm:block">
                 <ul className="mt-8 flex flex-wrap gap-2">
                   {service.bullets.map((b) => (
                     <li
@@ -164,7 +164,7 @@ export default async function ServicePage({
                 <Link
                   href="/#book"
                   data-cursor="book"
-                  className={`btn-ink btn-press inline-flex items-center gap-2 border px-6 py-3 text-sm font-semibold ${a.cta}`}
+                  className={`shake-cta btn-ink btn-press inline-flex items-center gap-2 border px-6 py-3 text-sm font-semibold ${a.cta}`}
                 >
                   Book a strategy call
                 </Link>
