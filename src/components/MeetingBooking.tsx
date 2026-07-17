@@ -3,9 +3,6 @@
 import { useEffect, useMemo, useState } from "react";
 import Reveal from "./Reveal";
 import BrandMark from "./BrandMark";
-import { SITE } from "@/lib/site";
-
-const SLOTS = ["10:00 AM", "11:00 AM", "2:00 PM", "4:00 PM"];
 const WEEKDAYS = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 const MONTHS = [
   "January", "February", "March", "April", "May", "June",
@@ -24,7 +21,6 @@ export default function MeetingBooking() {
   const [today, setToday] = useState<Day | null>(null);
   const [view, setView] = useState<{ y: number; m: number } | null>(null);
   const [picked, setPicked] = useState<Day | null>(null);
-  const [slot, setSlot] = useState("");
 
   useEffect(() => {
     const n = new Date();
@@ -73,21 +69,15 @@ export default function MeetingBooking() {
     : null;
 
   function book() {
-    if (!picked || !slot) return;
-    const subject = `Strategy call — ${pickedLabel} at ${slot}`;
-    const body = [
-      "I'd like to book a 30-minute strategy call.",
-      "",
-      `Date: ${pickedLabel}`,
-      `Time: ${slot}`,
-      "",
-      "Name: ",
-      "Company: ",
-      "What I want to grow: ",
-    ].join("\n");
-    window.location.href = `mailto:${SITE.email}?subject=${encodeURIComponent(
-      subject,
-    )}&body=${encodeURIComponent(body)}`;
+    if (!picked) return;
+    const mm = String(picked.m + 1).padStart(2, "0");
+    const dd = String(picked.d).padStart(2, "0");
+    const dateStr = `${picked.y}-${mm}-${dd}`;
+    window.open(
+      `https://cal.com/cybrix-talha/30min?date=${dateStr}`,
+      "_blank",
+      "noopener,noreferrer",
+    );
   }
 
   return (
@@ -205,61 +195,33 @@ export default function MeetingBooking() {
                 )}
               </div>
 
-              {/* Slots */}
-              <h4 className="mt-8 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-[#8ba0c0]">
-                Available slots
-              </h4>
-              <div className="mt-3 grid grid-cols-2 gap-2.5">
-                {SLOTS.map((s) => (
-                  <button
-                    key={s}
-                    type="button"
-                    aria-pressed={slot === s}
-                    onClick={() => setSlot(s)}
-                    className={`rounded-md border py-2.5 font-mono text-sm transition-colors ${
-                      slot === s
-                        ? "border-teal-bright bg-teal-bright font-semibold text-navy"
-                        : "border-navy-line text-cream hover:border-teal-bright hover:text-teal-bright"
-                    }`}
-                  >
-                    {s}
-                  </button>
-                ))}
-              </div>
-
               {/* Summary + CTA */}
               <div className="mt-7 flex flex-wrap items-baseline justify-between gap-2 border-t border-navy-line pt-5 font-mono text-[0.7rem] uppercase tracking-[0.14em] text-[#8ba0c0]">
                 <span>
                   {pickedLabel ? (
                     <span className="text-teal-bright">{pickedLabel}</span>
                   ) : (
-                    "Pick a date"
+                    "Pick a date above"
                   )}
                 </span>
-                <span>
-                  {slot ? (
-                    <span className="text-teal-bright">{slot}</span>
-                  ) : (
-                    "Pick a slot"
-                  )}
-                </span>
+                <span>30 min · Google Meet</span>
               </div>
 
               <button
                 type="button"
                 onClick={book}
-                disabled={!picked || !slot}
+                disabled={!picked}
                 data-cursor="book"
                 className={`btn-press mt-5 inline-flex w-full items-center justify-center gap-2 rounded-md py-3.5 text-sm font-semibold transition-colors ${
-                  !picked || !slot
+                  !picked
                     ? "cursor-not-allowed bg-navy text-[#46587a]"
                     : "bg-teal-bright text-navy hover:bg-[#8ff0e0]"
                 }`}
               >
-                Book my Google Meet
+                See available times →
               </button>
               <p className="mt-4 text-center font-mono text-[0.6rem] uppercase tracking-[0.12em] text-[#8ba0c0]">
-                Confirmation + Meet link sent by email
+                Opens Cal.com · confirmation + Meet link sent instantly
               </p>
             </div>
           </Reveal>
