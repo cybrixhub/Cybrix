@@ -20,52 +20,49 @@ export default function MeetingBooking() {
       <span className="marginalia !text-[#b9cbe4]">appointments — pick a slot</span>
 
       <div className="container-x relative z-10">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
-          {/* Left — the offer */}
-          <div>
-            <Reveal>
-              <span className="kicker text-teal-bright">Book a call</span>
-            </Reveal>
-            <Reveal delay={80}>
-              <h2
-                data-split
-                className="split-parent mt-4 font-display text-4xl font-medium leading-[1.05] tracking-tight text-balance sm:text-5xl md:text-6xl"
-              >
-                Grab a time that works.
-              </h2>
-            </Reveal>
-            <Reveal delay={140}>
-              <p className="mt-6 max-w-md text-lg leading-relaxed text-[#b9cbe4] text-pretty">
-                Pick a day and slot — we&rsquo;ll send a Google Meet link to your
-                inbox. Thirty focused minutes on your growth, nothing to prep.
-              </p>
-            </Reveal>
-            <ul className="mt-10 max-w-md">
+        {/* Top — copy + perks */}
+        <div className="mx-auto max-w-2xl text-center">
+          <Reveal>
+            <span className="kicker text-teal-bright">Book a call</span>
+          </Reveal>
+          <Reveal delay={80}>
+            <h2
+              data-split
+              className="split-parent mt-4 font-display text-4xl font-medium leading-[1.05] tracking-tight text-balance sm:text-5xl"
+            >
+              Grab a time that works.
+            </h2>
+          </Reveal>
+          <Reveal delay={140}>
+            <p className="mt-5 text-lg leading-relaxed text-[#b9cbe4]">
+              Pick a day and slot — we&rsquo;ll send a Google Meet link to your
+              inbox. Thirty focused minutes on your growth, nothing to prep.
+            </p>
+          </Reveal>
+          <Reveal delay={180}>
+            <ul className="mt-8 grid grid-cols-2 gap-x-8 gap-y-3 text-left sm:grid-cols-4">
               {PERKS.map((perk) => (
-                <li
-                  key={perk}
-                  className="flex items-baseline gap-4 border-b border-navy-line py-3.5 first:border-t"
-                >
-                  <span aria-hidden="true" className="font-mono text-teal-bright">✓</span>
-                  <span className="text-base">{perk}</span>
+                <li key={perk} className="flex items-start gap-2 text-sm text-[#b9cbe4]">
+                  <span aria-hidden="true" className="mt-0.5 font-mono text-teal-bright">✓</span>
+                  {perk}
                 </li>
               ))}
             </ul>
-          </div>
-
-          {/* Right — Cal.com embed */}
-          <Reveal delay={100}>
-            <div className="overflow-hidden rounded-lg border border-navy-line shadow-[0_24px_48px_-24px_rgba(0,0,0,0.6)]">
-              <iframe
-                src="https://cal.com/cybrix-talha/30min?embed=true&theme=dark&layout=column_view&hideEventTypeDetails=true"
-                className="w-full"
-                style={{ height: 740, border: "none", display: "block" }}
-                title="Book a strategy call with Cybrix"
-                loading="lazy"
-              />
-            </div>
           </Reveal>
         </div>
+
+        {/* Calendar embed */}
+        <Reveal delay={100}>
+          <div className="mx-auto mt-12 max-w-xl overflow-hidden rounded-lg border border-navy-line shadow-[0_24px_48px_-24px_rgba(0,0,0,0.6)]">
+            <iframe
+              src="https://cal.com/cybrix-talha/30min?embed=true&theme=dark&layout=month_view&hideEventTypeDetails=true"
+              className="w-full"
+              style={{ height: 660, border: "none", display: "block" }}
+              title="Book a strategy call with Cybrix"
+              loading="lazy"
+            />
+          </div>
+        </Reveal>
       </div>
     </section>
   );
