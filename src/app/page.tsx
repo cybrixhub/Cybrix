@@ -10,6 +10,7 @@ import Prologue from "@/components/Prologue";
 import TornEdge from "@/components/TornEdge";
 import FounderVideo from "@/components/FounderVideo";
 import ShakeCta from "@/components/ShakeCta";
+import { SITE } from "@/lib/site";
 import Ticker from "@/components/Ticker";
 import TrackRecord from "@/components/TrackRecord";
 import WhatWeDo from "@/components/WhatWeDo";
@@ -37,7 +38,9 @@ export default function Home() {
         <div className="bg-paper pb-12 text-center sm:pb-16">
           <ShakeCta>
             <a
-              href="#book"
+              href={SITE.calendarUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               data-cursor="book"
               className="btn-ink btn-press inline-flex items-center gap-2 border border-navy bg-navy px-8 py-4 text-sm font-semibold text-cream [--ink-fill:var(--color-navy-2)]"
             >

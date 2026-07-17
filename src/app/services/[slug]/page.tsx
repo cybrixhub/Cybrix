@@ -162,7 +162,9 @@ export default async function ServicePage({
             <Reveal delay={260}>
               <div className="mt-10 flex flex-wrap items-center gap-4">
                 <Link
-                  href="/#book"
+                  href={SITE.calendarUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   data-cursor="book"
                   className={`btn-ink btn-press inline-flex items-center gap-2 border px-6 py-3 text-sm font-semibold ${a.cta}`}
                 >
@@ -188,7 +190,9 @@ export default async function ServicePage({
         {/* Book CTA — shakes after 2 s to pull the eye */}
         <div className="container-x -mt-4 pb-12 text-center sm:pb-16">
           <Link
-            href="/#book"
+            href={SITE.calendarUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             data-cursor="book"
             className={`shake-cta btn-ink btn-press inline-flex items-center gap-2 border px-8 py-4 text-sm font-semibold ${a.ctaBtn}`}
           >
@@ -500,7 +504,9 @@ export default async function ServicePage({
               <Reveal delay={100}>
                 <div className="flex flex-wrap gap-4 lg:justify-end">
                   <Link
-                    href="/#book"
+                    href={SITE.calendarUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     data-cursor="book"
                     className={`btn-ink btn-press inline-flex items-center gap-2 border px-6 py-3 text-sm font-semibold ${a.ctaBtn}`}
                   >

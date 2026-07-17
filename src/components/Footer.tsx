@@ -37,7 +37,9 @@ export default function Footer() {
                 ))}
                 <li>
                   <a
-                    href="#book"
+                    href={SITE.calendarUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-sm transition-colors hover:text-teal-bright"
                   >
                     Book a call

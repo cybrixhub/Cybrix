@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Reveal from "./Reveal";
 import Underlined from "./Underlined";
-import { WORK } from "@/lib/site";
+import { WORK, SITE } from "@/lib/site";
 
 /** Rotating cover colorways for the case prints. */
 const COVERS = [
@@ -64,7 +64,9 @@ export default function Work() {
           </div>
           <Reveal delay={100}>
             <a
-              href="#book"
+              href={SITE.calendarUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 text-sm font-semibold text-ink"
             >
               <span className="border-b border-ink/30 transition-colors group-hover:border-teal-bright group-hover:text-teal-bright">

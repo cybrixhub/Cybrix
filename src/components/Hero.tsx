@@ -217,7 +217,9 @@ export default function Hero() {
               >
                 <Magnetic>
                   <a
-                    href="#book"
+                    href={SITE.calendarUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     data-cursor="book"
                     className="btn-ink btn-press inline-flex items-center justify-center gap-2 bg-navy px-8 py-4 text-sm font-semibold text-cream shadow-[0_14px_28px_-12px_rgba(14,26,58,0.85)] [--ink-fill:var(--color-navy-2)]"
                   >

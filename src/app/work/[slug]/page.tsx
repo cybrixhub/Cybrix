@@ -461,7 +461,9 @@ export default async function WorkPage({
               <Reveal delay={100}>
                 <div className="flex flex-wrap gap-4 lg:justify-end">
                   <Link
-                    href="/#book"
+                    href={SITE.calendarUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     data-cursor="book"
                     className="btn-ink btn-press inline-flex items-center gap-2 border border-amber bg-amber px-6 py-3 text-sm font-semibold text-espresso [--ink-fill:#e5b562]"
                   >

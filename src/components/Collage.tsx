@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Reveal from "./Reveal";
-import { COLLAGE } from "@/lib/site";
+import { COLLAGE, SITE } from "@/lib/site";
 
 /** Deterministic pseudo-random (stable across server/client renders). */
 function hash(n: number) {
@@ -124,7 +124,9 @@ export default function Collage() {
                   {COLLAGE[1].caption}
                 </span>
                 <a
-                  href="#book"
+                  href={SITE.calendarUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="Book a call"
                   className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-line-strong font-mono text-sm text-ink transition-colors hover:bg-navy hover:border-navy hover:text-cream"
                 >

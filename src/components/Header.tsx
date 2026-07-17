@@ -124,7 +124,9 @@ export default function Header() {
 
         <div className="hidden md:block">
           <a
-            href="#book"
+            href={SITE.calendarUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             data-cursor="book"
             className="btn-ink btn-press inline-flex items-center gap-2 border border-navy bg-navy px-5 py-2.5 text-sm font-semibold text-cream shadow-[0_10px_20px_-8px_rgba(14,26,58,0.85)] [--ink-fill:var(--color-navy-2)]"
           >
@@ -186,7 +188,9 @@ export default function Header() {
             </a>
           ))}
           <a
-            href="#book"
+            href={SITE.calendarUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setOpen(false)}
             className="mt-4 inline-flex items-center justify-center bg-navy px-5 py-3 text-sm font-semibold text-cream"
           >

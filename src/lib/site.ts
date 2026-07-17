@@ -17,6 +17,8 @@ export const SITE = {
   location: "Remote · Working worldwide",
   ogImage: "/opengraph-image",
   established: "2020",
+  /** Replace with your Calendly/Cal.com booking URL before launch. */
+  calendarUrl: "#",
 } as const;
 
 export type NavLink = { label: string; href: string };

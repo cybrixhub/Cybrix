@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { SITE } from "@/lib/site";
 
 /** Oxblood "Book a call" pill that fades in once past the hero. */
 export default function FloatingCta() {
@@ -15,7 +16,9 @@ export default function FloatingCta() {
 
   return (
     <a
-      href="#book"
+      href={SITE.calendarUrl}
+      target="_blank"
+      rel="noopener noreferrer"
       aria-hidden={!show}
       tabIndex={show ? 0 : -1}
       className={`fixed bottom-5 right-5 z-50 inline-flex items-center gap-2.5 rounded-full bg-navy px-5 py-3 text-sm font-semibold text-cream shadow-[0_10px_30px_-8px_rgba(14,26,58,0.7)] transition-all duration-500 hover:bg-navy-2 ${
