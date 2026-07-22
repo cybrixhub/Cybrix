@@ -43,10 +43,10 @@ export default function ContentEditor() {
   const [saved, setSaved] = useState(false);
 
   // Site fields
-  const [tagline, setTagline] = useState(SITE.tagline);
-  const [description, setDescription] = useState(SITE.description);
-  const [email, setEmail] = useState(SITE.email);
-  const [calUrl, setCalUrl] = useState(SITE.calendarUrl);
+  const [tagline, setTagline] = useState<string>(SITE.tagline);
+  const [description, setDescription] = useState<string>(SITE.description);
+  const [email, setEmail] = useState<string>(SITE.email);
+  const [calUrl, setCalUrl] = useState<string>(SITE.calendarUrl);
 
   // Track record
   const [track, setTrack] = useState(TRACK_RECORD.map((s) => ({ ...s })));
@@ -58,8 +58,8 @@ export default function ContentEditor() {
   const [testimonials, setTestimonials] = useState(TESTIMONIALS.map((t) => ({ ...t })));
 
   // Book section
-  const [bookCopy, setBookCopy] = useState(BOOK.copy);
-  const [bookChecks, setBookChecks] = useState([...BOOK.checkmarks]);
+  const [bookCopy, setBookCopy] = useState<string>(BOOK.copy);
+  const [bookChecks, setBookChecks] = useState<string[]>([...BOOK.checkmarks]);
 
   function handleSave() {
     const draft = {
