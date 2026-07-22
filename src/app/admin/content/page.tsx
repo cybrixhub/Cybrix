@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { SITE, TRACK_RECORD, FAQS, BOOK } from "@/lib/site";
+import { SITE, TRACK_RECORD, FAQS, BOOK, TESTIMONIALS } from "@/lib/site";
 
-type Tab = "site" | "track" | "faqs" | "book";
+type Tab = "site" | "track" | "testimonials" | "faqs" | "book";
 
 function Field({
   label,
@@ -54,6 +54,9 @@ export default function ContentEditor() {
   // FAQs
   const [faqs, setFaqs] = useState(FAQS.map((f) => ({ ...f })));
 
+  // Testimonials
+  const [testimonials, setTestimonials] = useState(TESTIMONIALS.map((t) => ({ ...t })));
+
   // Book section
   const [bookCopy, setBookCopy] = useState(BOOK.copy);
   const [bookChecks, setBookChecks] = useState([...BOOK.checkmarks]);
@@ -62,6 +65,7 @@ export default function ContentEditor() {
     const draft = {
       site: { tagline, description, email, calendarUrl: calUrl },
       trackRecord: track,
+      testimonials,
       faqs,
       book: { copy: bookCopy, checkmarks: bookChecks },
     };
@@ -84,6 +88,7 @@ export default function ContentEditor() {
   const TABS: { key: Tab; label: string }[] = [
     { key: "site", label: "Site info" },
     { key: "track", label: "Track record" },
+    { key: "testimonials", label: "Testimonials" },
     { key: "faqs", label: "FAQs" },
     { key: "book", label: "Booking" },
   ];
@@ -166,6 +171,60 @@ export default function ContentEditor() {
               </div>
             </div>
           ))}
+        </div>
+      )}
+
+      {/* Testimonials */}
+      {tab === "testimonials" && (
+        <div className="space-y-6">
+          {testimonials.map((t, i) => (
+            <div key={i} className="rounded-md border border-line bg-paper-2 p-4 space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="kicker text-muted">
+                  Testimonial {i + 1}{t.lead ? " · Lead quote" : ""}
+                </span>
+                <button
+                  onClick={() => setTestimonials(testimonials.filter((_, j) => j !== i))}
+                  className="text-xs text-oxblood-bright hover:underline"
+                >
+                  Remove
+                </button>
+              </div>
+              <Field
+                label="Quote"
+                value={t.quote}
+                onChange={(v) => setTestimonials(testimonials.map((x, j) => j === i ? { ...x, quote: v } : x))}
+                multiline
+              />
+              <div className="grid grid-cols-2 gap-3">
+                <Field
+                  label="Name / Title"
+                  value={t.name}
+                  onChange={(v) => setTestimonials(testimonials.map((x, j) => j === i ? { ...x, name: v } : x))}
+                />
+                <Field
+                  label="Role / Company"
+                  value={t.role}
+                  onChange={(v) => setTestimonials(testimonials.map((x, j) => j === i ? { ...x, role: v } : x))}
+                />
+              </div>
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={!!t.lead}
+                  onChange={(e) => setTestimonials(testimonials.map((x, j) => j === i ? { ...x, lead: e.target.checked } : x))}
+                  className="accent-teal-bright"
+                />
+                <span className="text-sm text-muted">Feature as lead quote (extra large)</span>
+              </label>
+            </div>
+          ))}
+          <button
+            onClick={() => setTestimonials([...testimonials, { quote: "", name: "", role: "" }])}
+            className="text-sm text-teal-bright hover:underline"
+          >
+            + Add testimonial
+          </button>
         </div>
       )}
 
