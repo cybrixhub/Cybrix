@@ -1,8 +1,15 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+
+function getSessionUser(): string {
+  if (typeof document === "undefined") return "";
+  const match = document.cookie.match(/(?:^|;\s*)admin-session=([^;]+)/);
+  return match ? decodeURIComponent(match[1]) : "";
+}
 
 const NAV = [
   { href: "/admin", label: "Dashboard", icon: "⊞" },
@@ -23,6 +30,8 @@ const PAGE_LABELS: Record<string, string> = {
 export default function AdminShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
+  const [user, setUser] = useState("");
+  useEffect(() => { setUser(getSessionUser()); }, []);
 
   async function logout() {
     await fetch("/api/admin/auth", { method: "DELETE" });
@@ -60,6 +69,14 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
         </nav>
 
         <div className="border-t border-line px-3 py-3 space-y-1">
+          {user && (
+            <div className="flex items-center gap-3 px-3 py-2">
+              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-navy text-[0.6rem] font-bold text-cream uppercase">
+                {user[0]}
+              </span>
+              <span className="text-sm text-ink-soft truncate">{user}</span>
+            </div>
+          )}
           <a
             href="/"
             target="_blank"
