@@ -46,7 +46,7 @@ export default function WhatWeDo() {
         return (
           <article
             key={group.number}
-            className={`chapter-shadow sticky top-0 flex min-h-max flex-col overflow-hidden sm:min-h-svh sm:justify-center ${s.section}`}
+            className={`chapter-shadow flex flex-col overflow-hidden sm:sticky sm:top-0 sm:min-h-svh sm:justify-center ${s.section}`}
           >
             <div className="bg-noise pointer-events-none absolute inset-0 opacity-[0.06]" />
             <BrandMark
