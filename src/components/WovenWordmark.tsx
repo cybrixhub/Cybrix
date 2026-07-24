@@ -177,11 +177,11 @@ export default function WovenWordmark({
     <div
       ref={hostRef}
       aria-hidden="true"
-      className={`pointer-events-none relative select-none font-display ${className}`}
+      className={`pointer-events-none relative select-none font-fraunces ${className}`}
     >
       {failed ? (
         <span
-          className="block text-center font-display font-medium italic leading-[0.85]"
+          className="block text-center font-fraunces font-medium italic leading-[0.85]"
           style={{ color, fontSize: "min(20vw, 16rem)" }}
         >
           {text}

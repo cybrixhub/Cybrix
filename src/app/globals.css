@@ -43,11 +43,10 @@
   --color-blush: #382420;
   --color-butter: #392c17;
 
-  /* Fonts — all self-hosted via next/font (no third-party CDN) */
-  --font-sans:
-    var(--font-satoshi), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-fraunces), Georgia, serif;
-  --font-mono: var(--font-plex), ui-monospace, monospace;
+  /* Fonts — fallbacks only; runtime vars injected directly below */
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --font-display: ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
 
   /* Radii — editorial: mostly square, softly rounded cards */
   --radius-sm: 0.25rem;
@@ -73,7 +72,7 @@ html {
 body {
   background: var(--color-paper);
   color: var(--color-ink);
-  font-family: var(--font-sans);
+  font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -154,9 +153,23 @@ html.lenis body {
     display: none;
   }
 
-  /* Serif italic emphasis — the brand's typographic signature */
+  /* next/font runtime overrides — bypasses @theme build-time resolution */
+  .font-sans {
+    font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  }
+  .font-display {
+    font-family: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  }
+  .font-mono {
+    font-family: var(--font-plex), ui-monospace, monospace;
+  }
+  .font-fraunces {
+    font-family: var(--font-fraunces), Georgia, serif;
+  }
+
+  /* Serif italic emphasis */
   .em-serif {
-    font-family: var(--font-display);
+    font-family: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
     font-style: italic;
   }
 

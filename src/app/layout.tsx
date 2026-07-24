@@ -1,9 +1,23 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, IBM_Plex_Mono } from "next/font/google";
-import localFont from "next/font/local";
+import { Poppins, Montserrat, Fraunces, IBM_Plex_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SITE, SOCIALS } from "@/lib/site";
 import "./globals.css";
+
+const poppins = Poppins({
+  variable: "--font-poppins",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -11,23 +25,6 @@ const fraunces = Fraunces({
   style: ["normal", "italic"],
   axes: ["opsz"],
   display: "swap",
-});
-
-/**
- * Body font — self-hosted Satoshi (3 weights, ~75 KB total).
- * Loads same-origin with `immutable, max-age=1yr` so it hits from cache on
- * repeat visits. If it ever fails, the CSS stack falls through to
- * `system-ui / ui-sans-serif / sans-serif` (no Instrument Sans fallback —
- * removed to shave ~65 KB of unused font data + its preload requests).
- */
-const satoshi = localFont({
-  variable: "--font-satoshi",
-  display: "swap",
-  src: [
-    { path: "../../public/fonts/satoshi-400.woff2", weight: "400", style: "normal" },
-    { path: "../../public/fonts/satoshi-500.woff2", weight: "500", style: "normal" },
-    { path: "../../public/fonts/satoshi-700.woff2", weight: "700", style: "normal" },
-  ],
 });
 
 const plexMono = IBM_Plex_Mono({
@@ -136,7 +133,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${satoshi.variable} ${plexMono.variable} h-full`}
+      className={`${poppins.variable} ${montserrat.variable} ${fraunces.variable} ${plexMono.variable} h-full`}
     >
       <body className="min-h-full flex flex-col bg-paper text-ink font-sans antialiased">
         <script

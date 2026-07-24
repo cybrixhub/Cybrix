@@ -78,7 +78,7 @@ export default function Preloader() {
       <div className="bg-grain absolute inset-0 opacity-40" />
       <span
         data-p="mark"
-        className="relative font-display text-6xl font-semibold italic tracking-tight text-ink sm:text-7xl"
+        className="relative font-fraunces text-6xl font-semibold italic tracking-tight text-ink sm:text-7xl"
       >
         Cybrix<span className="not-italic text-teal-bright">.</span>
       </span>
