@@ -46,16 +46,16 @@ export default function WhatWeDo() {
         return (
           <article
             key={group.number}
-            className={`chapter-shadow sticky top-0 flex min-h-svh flex-col justify-center ${s.section}`}
+            className={`chapter-shadow sticky top-0 flex min-h-max flex-col overflow-hidden sm:min-h-svh sm:justify-center ${s.section}`}
           >
-            {/* Decorative layer clipped independently so panel can grow on mobile */}
-            <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-              <div className="bg-noise absolute inset-0 opacity-[0.06]" />
-              <BrandMark
-                className={`absolute -right-[7%] top-1/2 z-0 h-[54vh] w-auto -translate-y-1/2 ${s.mark}`}
-              />
-              <div className="js-panel-shade absolute inset-0 z-20 bg-black opacity-0" />
-            </div>
+            <div className="bg-noise pointer-events-none absolute inset-0 opacity-[0.06]" />
+            <BrandMark
+              className={`pointer-events-none absolute -right-[7%] top-1/2 z-0 h-[54vh] w-auto -translate-y-1/2 ${s.mark}`}
+            />
+            <div
+              aria-hidden="true"
+              className="js-panel-shade pointer-events-none absolute inset-0 z-20 bg-black opacity-0"
+            />
 
             <div className="container-x relative z-10 py-20 sm:py-24">
               <div
