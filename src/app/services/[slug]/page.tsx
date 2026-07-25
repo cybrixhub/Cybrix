@@ -7,6 +7,7 @@ import Reveal from "@/components/Reveal";
 import Underlined from "@/components/Underlined";
 import TornEdge from "@/components/TornEdge";
 import ServiceVideo from "@/components/ServiceVideo";
+import ServiceProcess from "@/components/ServiceProcess";
 import {
   ALL_SERVICES,
   SERVICE_GROUPS,
@@ -332,29 +333,9 @@ export default async function ServicePage({
                     </h2>
                   </Reveal>
                 </div>
-                <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                  {service.process.map((step, idx) => (
-                    <Reveal key={step.step} delay={idx * 60}>
-                      <li className={`group relative h-full overflow-hidden rounded-md border p-6 transition-colors ${a.procCard}`}>
-                        <span
-                          aria-hidden="true"
-                          className={`pointer-events-none absolute -right-4 -top-3 select-none font-display text-8xl font-medium italic leading-none ${a.procGhost}`}
-                        >
-                          {step.step}
-                        </span>
-                        <span className={`relative font-mono text-[0.65rem] uppercase tracking-[0.18em] ${a.kicker}`}>
-                          Step {step.step}
-                        </span>
-                        <h3 className="relative mt-3 font-display text-xl font-medium tracking-tight sm:text-2xl">
-                          {step.title}
-                        </h3>
-                        <p className={`relative mt-3 text-sm leading-relaxed ${a.procText}`}>
-                          {step.description}
-                        </p>
-                      </li>
-                    </Reveal>
-                  ))}
-                </ol>
+                <div className="mt-12">
+                  <ServiceProcess steps={service.process} isTech={isTech} />
+                </div>
               </div>
             </section>
             <TornEdge color="var(--color-paper)" className="-mt-6 sm:-mt-7" />
