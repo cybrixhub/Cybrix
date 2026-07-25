@@ -14,23 +14,26 @@ export default function SmoothScroll() {
 
     gsap.registerPlugin(ScrollTrigger);
 
-    const lenis = new Lenis({
-      duration: 1.1,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-      syncTouch: false,
-      touchMultiplier: 1,
-    });
+    const isTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
 
-    lenis.on("scroll", ScrollTrigger.update);
-    const raf = (time: number) => lenis.raf(time * 1000);
-    gsap.ticker.add(raf);
-    gsap.ticker.lagSmoothing(0);
+    let lenis: Lenis | null = null;
+    let raf: ((time: number) => void) | null = null;
+
+    if (!isTouch) {
+      lenis = new Lenis({
+        duration: 1.1,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+      });
+      lenis.on("scroll", ScrollTrigger.update);
+      raf = (time: number) => lenis!.raf(time * 1000);
+      gsap.ticker.add(raf);
+      gsap.ticker.lagSmoothing(0);
+    }
 
     const splits: SplitTextT[] = [];
 
     const ctx = gsap.context(() => {
-      // --- simple rise reveals ---
       ScrollTrigger.batch("[data-reveal]", {
         start: "top 90%",
         once: true,
@@ -50,15 +53,11 @@ export default function SmoothScroll() {
         },
       });
 
-      // --- hand-drawn flourishes ---
       gsap.utils
         .toArray<SVGPathElement>(".js-flourish path")
         .forEach((path) => {
           const length = path.getTotalLength();
-          gsap.set(path, {
-            strokeDasharray: length,
-            strokeDashoffset: length,
-          });
+          gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
           gsap.to(path, {
             strokeDashoffset: 0,
             duration: 0.9,
@@ -67,7 +66,6 @@ export default function SmoothScroll() {
           });
         });
 
-      // --- chapter page-turn (sticky panels in #services) ---
       gsap.matchMedia().add("(min-width: 640px)", () => {
         const panels = gsap.utils.toArray<HTMLElement>("#services article");
         panels.forEach((panel, i) => {
@@ -93,7 +91,6 @@ export default function SmoothScroll() {
       });
     });
 
-    // --- masked line reveals (SplitText loaded lazily, after fonts) ---
     let cancelled = false;
     Promise.all([
       document.fonts.ready,
@@ -118,7 +115,7 @@ export default function SmoothScroll() {
               scrollTrigger: { trigger: el, start: "top 86%", once: true },
             });
           } catch {
-            // If splitting fails, leave the element visible & unanimated.
+            // leave visible & unanimated
           }
         });
       });
@@ -132,8 +129,8 @@ export default function SmoothScroll() {
       window.removeEventListener("load", onLoad);
       splits.forEach((s) => s.revert());
       ctx.revert();
-      gsap.ticker.remove(raf);
-      lenis.destroy();
+      if (raf) gsap.ticker.remove(raf);
+      if (lenis) lenis.destroy();
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
