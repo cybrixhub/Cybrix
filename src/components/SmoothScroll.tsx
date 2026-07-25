@@ -7,15 +7,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import type { SplitText as SplitTextT } from "gsap/SplitText";
 import { useIso } from "@/lib/useIso";
 
-/**
- * Global smooth-scroll + scroll-animation engine.
- * - Lenis smooth scrolling, driven by GSAP's ticker.
- * - `[data-reveal]`  → fade/rise on scroll (server components just add the attr)
- * - `[data-split]`   → masked line-by-line headline reveals (SplitText)
- * - `.js-flourish`   → hand-drawn underlines draw themselves on scroll
- * - `#services article` → page-turn dim + settle between sticky chapters
- * Fully disabled under prefers-reduced-motion; content stays visible.
- */
 export default function SmoothScroll() {
   useIso(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -23,22 +14,29 @@ export default function SmoothScroll() {
 
     gsap.registerPlugin(ScrollTrigger);
 
-    const lenis = new Lenis({
-      duration: 1.1,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-      smoothTouch: false,  // native touch scroll — avoids getting stuck in sticky panels
-    });
+    // Lenis only on desktop — touch devices use native scroll
+    const isDesktop = window.matchMedia("(min-width: 1024px)").matches
+      && !("ontouchstart" in window);
 
-    lenis.on("scroll", ScrollTrigger.update);
-    const raf = (time: number) => lenis.raf(time * 1000);
-    gsap.ticker.add(raf);
-    gsap.ticker.lagSmoothing(0);
+    let lenis: Lenis | null = null;
+    let raf: ((time: number) => void) | null = null;
+
+    if (isDesktop) {
+      lenis = new Lenis({
+        duration: 1.1,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+      });
+      lenis.on("scroll", ScrollTrigger.update);
+      raf = (time: number) => lenis!.raf(time * 1000);
+      gsap.ticker.add(raf);
+      gsap.ticker.lagSmoothing(0);
+    }
 
     const splits: SplitTextT[] = [];
 
     const ctx = gsap.context(() => {
-      // --- simple rise reveals (batched; will-change set only during animation) ---
+      // --- simple rise reveals ---
       ScrollTrigger.batch("[data-reveal]", {
         start: "top 90%",
         once: true,
@@ -58,7 +56,7 @@ export default function SmoothScroll() {
         },
       });
 
-      // --- hand-drawn flourishes -----------------------------------------
+      // --- hand-drawn flourishes ---
       gsap.utils
         .toArray<SVGPathElement>(".js-flourish path")
         .forEach((path) => {
@@ -75,7 +73,7 @@ export default function SmoothScroll() {
           });
         });
 
-      // --- chapter page-turn (sticky panels in #services, desktop only) ----
+      // --- chapter page-turn (desktop only) ---
       gsap.matchMedia().add("(min-width: 1024px)", () => {
         const panels = gsap.utils.toArray<HTMLElement>("#services article");
         panels.forEach((panel, i) => {
@@ -140,8 +138,8 @@ export default function SmoothScroll() {
       window.removeEventListener("load", onLoad);
       splits.forEach((s) => s.revert());
       ctx.revert();
-      gsap.ticker.remove(raf);
-      lenis.destroy();
+      if (raf) gsap.ticker.remove(raf);
+      if (lenis) lenis.destroy();
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
