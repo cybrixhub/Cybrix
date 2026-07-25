@@ -27,6 +27,7 @@ export default function SmoothScroll() {
       duration: 1.1,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
+      smoothTouch: false,  // native touch scroll — avoids getting stuck in sticky panels
     });
 
     lenis.on("scroll", ScrollTrigger.update);

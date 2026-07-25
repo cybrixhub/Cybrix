@@ -334,7 +334,7 @@ export default async function ServicePage({
                   </Reveal>
                 </div>
                 <div className="mt-12">
-                  <ServiceProcess steps={service.process} isTech={isTech} />
+                  <ServiceProcess steps={service.process} isTech={isTech} slug={service.slug} />
                 </div>
               </div>
             </section>
