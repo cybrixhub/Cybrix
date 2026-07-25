@@ -1,100 +1,43 @@
 const STEPS = [
   {
+    week: "Week 1",
     number: "01",
-    title: "We audit your world",
-    summary: "We dig into your data to find the real gaps — not the ones you think you have.",
-    bullets: [
-      "Market & competitor analysis",
-      "Audience behaviour insights",
-      "Channel performance audit",
-      "Funnel & conversion review",
-      "Current content gaps",
-    ],
+    label: "Audit",
+    title: "We pull everything apart.",
+    body: "Ad account history, organic analytics, competitor spend data, funnel screenshots. Most brands find they've been running the same creative to five different audiences and wondering why CPL keeps climbing. We find the actual leak — not the obvious one.",
+    deliverables: "Audit deck · competitor map · channel priority ranking",
     accent: "text-oxblood-bright",
-    border: "border-oxblood/30",
-    dot: "bg-oxblood",
-    glow: "from-oxblood/10",
+    rule: "bg-oxblood/40",
   },
   {
+    week: "Weeks 1–2",
     number: "02",
-    title: "We build the strategy",
-    summary: "The right plan, mapped to your market — platform, message and format locked before anything ships.",
-    bullets: [
-      "Platform-specific content plan",
-      "Messaging hierarchy",
-      "90-day roadmap",
-      "Creative direction & formats",
-      "Posting & campaign calendar",
-    ],
+    label: "Strategy",
+    title: "One plan. Nothing ships until it's locked.",
+    body: "Platform prioritisation, content pillars, messaging hierarchy, paid social structure, 90-day roadmap. Changing direction mid-campaign costs twice as much as getting it right upfront — so we don't rush this part.",
+    deliverables: "Strategy deck · 90-day roadmap · creative direction",
     accent: "text-amber",
-    border: "border-amber/30",
-    dot: "bg-amber",
-    glow: "from-amber/10",
+    rule: "bg-amber/40",
   },
   {
+    week: "Weeks 2–6",
     number: "03",
-    title: "We execute ruthlessly",
-    summary: "Ads live, content shipping, SEO compounding — one team driving every channel.",
-    bullets: [
-      "High-converting ad creative",
-      "Paid social & organic content",
-      "SEO + short-form video",
-      "Weekly A/B optimisation",
-      "Bot & automation activation",
-    ],
+    label: "Execute",
+    title: "Ads live in two weeks. Content ships from day one.",
+    body: "We don't batch creative for a month then launch. We ship, test, kill what's losing, and double what's winning — every week. SEO compounds in the background. Video is in production by week three. Everything is moving.",
+    deliverables: "Live ads · weekly optimisation · content calendar · video",
     accent: "text-teal-bright",
-    border: "border-teal/30",
-    dot: "bg-teal-bright",
-    glow: "from-teal/10",
+    rule: "bg-teal/40",
   },
   {
+    week: "Ongoing",
     number: "04",
-    title: "We turn attention into pipeline",
-    summary: "Leads qualified, calls booked, revenue tracked — not impressions, not likes.",
-    bullets: [
-      "Qualified lead capture",
-      "CRM & WhatsApp sync",
-      "Weekly performance reports",
-      "Scale winners, kill waste",
-      "Monthly strategic review",
-    ],
+    label: "Pipeline",
+    title: "Qualified means budget, intent, and timeline — all three.",
+    body: "A lead who can't afford you isn't a lead. We filter for budget, intent and timeline before anything hits your calendar. You close. We keep the pipe full. Monthly review tells us what to scale, what to cut, and what's next.",
+    deliverables: "Qualified leads · CRM sync · monthly strategy review",
     accent: "text-cream-soft",
-    border: "border-navy-line",
-    dot: "bg-navy",
-    glow: "from-navy/20",
-  },
-] as const;
-
-const PILLARS = [
-  {
-    icon: "◎",
-    label: "Data-driven",
-    note: "Decisions from real numbers, not gut feel.",
-    color: "text-oxblood-bright",
-  },
-  {
-    icon: "⊞",
-    label: "Full-stack",
-    note: "One team. Zero vendor coordination.",
-    color: "text-amber",
-  },
-  {
-    icon: "↑",
-    label: "Built to compound",
-    note: "Month 3 always beats month 1.",
-    color: "text-teal-bright",
-  },
-  {
-    icon: "◷",
-    label: "Automated",
-    note: "Systems that follow up while you sleep.",
-    color: "text-ink-soft",
-  },
-  {
-    icon: "◈",
-    label: "No vanity metrics",
-    note: "Pipeline or it didn't count.",
-    color: "text-cream-soft",
+    rule: "bg-ink/20",
   },
 ] as const;
 
@@ -103,112 +46,107 @@ export default function HowWeWork() {
     <section
       id="process"
       aria-label="How we work"
-      className="bg-paper border-t border-line py-20 sm:py-28"
+      className="bg-paper py-20 sm:py-28"
     >
       <div className="container-x">
+
         {/* Header */}
-        <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="kicker text-muted">Our process</p>
-            <h2 className="mt-2 font-display text-3xl font-medium leading-[1.05] tracking-tight text-balance sm:text-4xl md:text-5xl">
-              Strategy to pipeline,{" "}
-              <em className="italic text-oxblood-bright">no gaps.</em>
-            </h2>
+        <div className="border-b border-line pb-8 sm:pb-10">
+          <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+            <p className="kicker text-muted">Process</p>
+            <p className="font-mono text-[0.65rem] uppercase tracking-[0.14em] text-muted">
+              four phases · every engagement
+            </p>
           </div>
-          <p className="max-w-xs text-sm leading-relaxed text-muted text-pretty sm:text-right">
-            Every engagement runs through the same four phases — built on six years of what actually moves numbers.
-          </p>
+          <h2 className="mt-4 font-display text-4xl font-medium italic leading-[1.05] tracking-tight text-balance sm:text-5xl md:text-6xl">
+            Strategy to pipeline,{" "}
+            <span className="not-italic text-oxblood-bright">no gaps.</span>
+          </h2>
         </div>
 
-        {/* Steps grid */}
-        <div className="mt-12 grid gap-px bg-line sm:mt-16 sm:grid-cols-2 lg:grid-cols-4">
-          {STEPS.map((step) => (
+        {/* Steps */}
+        <div className="relative">
+          {/* Vertical timeline rail (desktop) */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute bottom-0 left-[6.5rem] top-0 hidden w-px bg-line lg:block"
+          />
+
+          {STEPS.map((step, i) => (
             <div
               key={step.number}
-              className={`group relative flex flex-col bg-paper-2 p-6 transition-colors duration-300 hover:bg-paper-3 sm:p-7`}
+              className={`group relative grid gap-6 border-b border-line py-10 sm:py-12 lg:grid-cols-[7rem_1fr] lg:gap-14 ${
+                i === STEPS.length - 1 ? "border-b-0" : ""
+              }`}
             >
-              {/* Top gradient glow */}
-              <div
-                className={`pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r ${step.glow} via-transparent to-transparent`}
-              />
+              {/* Left — number + timeline dot */}
+              <div className="flex items-start gap-4 lg:flex-col lg:gap-3">
+                {/* Timeline dot (desktop) */}
+                <div
+                  aria-hidden="true"
+                  className="relative hidden lg:block"
+                >
+                  <div className={`absolute left-1/2 top-3 h-2 w-2 -translate-x-1/2 rounded-full ${step.rule} ring-2 ring-paper`} />
+                </div>
 
-              {/* Step number */}
-              <span
-                className={`font-display text-5xl font-medium italic leading-none sm:text-6xl ${step.accent}`}
-              >
-                {step.number}
-              </span>
+                <div className="lg:pt-1">
+                  <span
+                    className={`block font-display text-5xl font-medium italic leading-none sm:text-6xl lg:text-7xl ${step.accent}`}
+                  >
+                    {step.number}
+                  </span>
+                  <span className="mt-1.5 block font-mono text-[0.6rem] uppercase tracking-[0.16em] text-muted">
+                    {step.week}
+                  </span>
+                </div>
+              </div>
 
-              {/* Title */}
-              <h3 className="mt-4 font-display text-xl font-medium leading-snug tracking-tight sm:text-2xl">
-                {step.title}
-              </h3>
-
-              {/* Summary */}
-              <p className="mt-2 text-sm leading-relaxed text-muted text-pretty">
-                {step.summary}
-              </p>
-
-              {/* Bullets */}
-              <ul className="mt-5 space-y-2 border-t border-line pt-5">
-                {step.bullets.map((b) => (
-                  <li key={b} className="flex items-start gap-2.5 text-sm text-ink-soft">
-                    <span className={`mt-[0.35rem] h-1.5 w-1.5 shrink-0 rounded-full ${step.dot}`} />
-                    {b}
-                  </li>
-                ))}
-              </ul>
-
-              {/* Arrow connector (desktop only — shows on all but last) */}
-              <span
-                aria-hidden="true"
-                className={`pointer-events-none absolute -right-3.5 top-8 z-10 hidden text-lg lg:block ${step.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
-              >
-                →
-              </span>
+              {/* Right — content */}
+              <div className="min-w-0">
+                <div className="flex items-baseline gap-3">
+                  <span className="font-mono text-[0.6rem] uppercase tracking-[0.16em] text-muted">
+                    {step.label}
+                  </span>
+                </div>
+                <h3 className="mt-2 font-display text-2xl font-medium leading-snug tracking-tight sm:text-3xl md:text-4xl">
+                  {step.title}
+                </h3>
+                <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft text-pretty sm:text-lg">
+                  {step.body}
+                </p>
+                <p className="mt-5 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-muted">
+                  <span className={`mr-2 ${step.accent}`}>→</span>
+                  {step.deliverables}
+                </p>
+              </div>
             </div>
           ))}
         </div>
 
-        {/* Connector line between steps (desktop) */}
-        <div className="mt-0 hidden lg:block" aria-hidden="true">
-          <div className="relative h-px w-full bg-line">
-            <div className="absolute inset-0 bg-gradient-to-r from-oxblood/40 via-amber/40 via-teal/40 to-navy/40" />
+        {/* Bottom editorial pull */}
+        <div className="mt-12 border-t border-line pt-10 sm:mt-14">
+          <div className="grid gap-6 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3">
+            <div className="lg:col-span-2">
+              <p className="font-display text-2xl font-medium italic leading-snug text-ink-soft sm:text-3xl">
+                &ldquo;We&rsquo;ve run this system across 120+ founders — beauty, healthcare, real estate, SaaS. The phases don&rsquo;t change. The speed does.&rdquo;
+              </p>
+              <p className="mt-4 kicker text-muted">A. Rahman · Founder</p>
+            </div>
+            <div className="flex flex-col justify-end gap-4 border-t border-line pt-6 sm:border-l sm:border-t-0 sm:pl-10 sm:pt-0">
+              {[
+                { value: "48 hrs", note: "Brief to first content drop" },
+                { value: "2 wks", note: "Ads live and spending" },
+                { value: "Month 2", note: "When compounding kicks in" },
+              ].map((f) => (
+                <div key={f.value} className="flex items-baseline gap-3">
+                  <span className="font-display text-2xl font-medium italic text-oxblood-bright">
+                    {f.value}
+                  </span>
+                  <span className="text-sm text-muted">{f.note}</span>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-
-        {/* "Why it works" pillars */}
-        <div className="mt-14 sm:mt-16">
-          <p className="kicker text-muted">Why it works</p>
-          <div className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5 lg:gap-5">
-            {PILLARS.map((p) => (
-              <div
-                key={p.label}
-                className="rounded-md border border-line-strong/50 bg-paper-2 p-4 transition-colors hover:bg-paper-3 sm:p-5"
-              >
-                <span className={`text-xl ${p.color}`} aria-hidden="true">
-                  {p.icon}
-                </span>
-                <p className={`mt-2 font-mono text-[0.65rem] uppercase tracking-[0.14em] ${p.color}`}>
-                  {p.label}
-                </p>
-                <p className="mt-1.5 text-xs leading-relaxed text-muted">{p.note}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Bottom pull-quote */}
-        <div className="mt-14 border-t border-line pt-10 sm:mt-16">
-          <blockquote className="mx-auto max-w-2xl text-center">
-            <p className="font-display text-xl font-medium italic leading-snug text-ink-soft sm:text-2xl md:text-3xl">
-              &ldquo;We don&rsquo;t just generate leads —{" "}
-              <span className="text-oxblood-bright">we deliver clients ready to buy.&rdquo;</span>
-            </p>
-            <footer className="mt-4">
-              <p className="kicker text-muted">A. Rahman · Founder, Cybrix</p>
-            </footer>
-          </blockquote>
         </div>
       </div>
     </section>
