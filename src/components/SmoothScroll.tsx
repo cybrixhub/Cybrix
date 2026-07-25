@@ -76,7 +76,7 @@ export default function SmoothScroll() {
         });
 
       // --- chapter page-turn (sticky panels in #services, desktop only) ----
-      gsap.matchMedia().add("(min-width: 640px)", () => {
+      gsap.matchMedia().add("(min-width: 1024px)", () => {
         const panels = gsap.utils.toArray<HTMLElement>("#services article");
         panels.forEach((panel, i) => {
           const next = panels[i + 1];
