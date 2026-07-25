@@ -14,6 +14,7 @@ import { SITE } from "@/lib/site";
 import Ticker from "@/components/Ticker";
 import TrackRecord from "@/components/TrackRecord";
 import WhatWeDo from "@/components/WhatWeDo";
+import HowWeWork from "@/components/HowWeWork";
 import Factoids from "@/components/Factoids";
 import Work from "@/components/Work";
 import Reviews from "@/components/Reviews";
@@ -51,6 +52,7 @@ export default function Home() {
         <Ticker />
         <TrackRecord />
         <WhatWeDo />
+        <HowWeWork />
         <Factoids />
         <Work />
         <Reviews />
