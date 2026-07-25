@@ -20,7 +20,8 @@ export default function SmoothScroll() {
       duration: isTouch ? 1.0 : 1.1,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      smoothTouch: true,
+      syncTouch: true,
+      syncTouchLerp: 0.075,
       touchMultiplier: 1.5,
     });
 
