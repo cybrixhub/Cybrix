@@ -14,24 +14,20 @@ export default function SmoothScroll() {
 
     gsap.registerPlugin(ScrollTrigger);
 
-    // Lenis only on desktop — touch devices use native scroll
-    const isDesktop = window.matchMedia("(min-width: 1024px)").matches
-      && !("ontouchstart" in window);
+    const isTouch = "ontouchstart" in window;
 
-    let lenis: Lenis | null = null;
-    let raf: ((time: number) => void) | null = null;
+    const lenis = new Lenis({
+      duration: isTouch ? 1.0 : 1.1,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      smoothTouch: true,
+      touchMultiplier: 1.5,
+    });
 
-    if (isDesktop) {
-      lenis = new Lenis({
-        duration: 1.1,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        smoothWheel: true,
-      });
-      lenis.on("scroll", ScrollTrigger.update);
-      raf = (time: number) => lenis!.raf(time * 1000);
-      gsap.ticker.add(raf);
-      gsap.ticker.lagSmoothing(0);
-    }
+    lenis.on("scroll", ScrollTrigger.update);
+    const raf = (time: number) => lenis.raf(time * 1000);
+    gsap.ticker.add(raf);
+    gsap.ticker.lagSmoothing(0);
 
     const splits: SplitTextT[] = [];
 
@@ -73,8 +69,8 @@ export default function SmoothScroll() {
           });
         });
 
-      // --- chapter page-turn (desktop only) ---
-      gsap.matchMedia().add("(min-width: 1024px)", () => {
+      // --- chapter page-turn (sticky panels in #services) ---
+      gsap.matchMedia().add("(min-width: 640px)", () => {
         const panels = gsap.utils.toArray<HTMLElement>("#services article");
         panels.forEach((panel, i) => {
           const next = panels[i + 1];
@@ -138,8 +134,8 @@ export default function SmoothScroll() {
       window.removeEventListener("load", onLoad);
       splits.forEach((s) => s.revert());
       ctx.revert();
-      if (raf) gsap.ticker.remove(raf);
-      if (lenis) lenis.destroy();
+      gsap.ticker.remove(raf);
+      lenis.destroy();
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);

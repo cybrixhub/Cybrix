@@ -46,7 +46,7 @@ export default function WhatWeDo() {
         return (
           <article
             key={group.number}
-            className={`chapter-shadow flex flex-col lg:sticky lg:top-0 lg:min-h-svh lg:justify-center ${s.section}`}
+            className={`chapter-shadow flex flex-col sm:sticky sm:top-0 sm:min-h-svh sm:justify-center ${s.section}`}
           >
             {/* overflow-hidden on inner wrapper only — prevents scroll trap on the sticky article itself */}
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
