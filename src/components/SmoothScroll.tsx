@@ -66,7 +66,7 @@ export default function SmoothScroll() {
           });
         });
 
-      gsap.matchMedia().add("(min-width: 640px)", () => {
+      gsap.matchMedia().add("(min-width: 768px)", () => {
         const panels = gsap.utils.toArray<HTMLElement>("#services article");
         panels.forEach((panel, i) => {
           const next = panels[i + 1];

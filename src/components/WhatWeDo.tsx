@@ -46,7 +46,7 @@ export default function WhatWeDo() {
         return (
           <article
             key={group.number}
-            className={`chapter-shadow flex flex-col sm:sticky sm:top-0 sm:min-h-svh sm:justify-center ${s.section}`}
+            className={`chapter-shadow flex flex-col md:sticky md:top-0 md:min-h-svh md:justify-center ${s.section}`}
           >
             {/* overflow-hidden on inner wrapper only — prevents scroll trap on the sticky article itself */}
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -60,7 +60,7 @@ export default function WhatWeDo() {
               />
             </div>
 
-            <div className="container-x relative z-10 py-20 sm:py-24">
+            <div className="container-x relative z-10 py-16 sm:py-16">
               <div
                 className={`flex items-baseline justify-between border-b pb-5 ${s.line}`}
               >
@@ -74,9 +74,9 @@ export default function WhatWeDo() {
                 </span>
               </div>
 
-              <div className="mt-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+              <div className="mt-10 grid gap-8 md:grid-cols-[0.9fr_1.1fr] md:gap-14">
                 {/* Left — the group intro */}
-                <div className="lg:sticky lg:top-24 lg:self-start">
+                <div className="md:sticky md:top-24 md:self-start">
                   <span
                     aria-hidden="true"
                     className={`font-display text-6xl font-medium italic sm:text-7xl md:text-8xl ${s.displayNumber}`}
@@ -104,7 +104,7 @@ export default function WhatWeDo() {
                         href={`/services/${item.slug}`}
                         className={`group/item block transition-colors duration-300 ${s.itemHover}`}
                       >
-                        <div className="flex flex-col gap-4 py-5 sm:flex-row sm:items-start sm:justify-between sm:gap-8">
+                        <div className="flex flex-col gap-4 py-5 sm:flex-row sm:items-start sm:justify-between sm:gap-8 md:py-3">
                           <div className="min-w-0 flex-1">
                             <div className="flex items-baseline gap-3">
                               <span
@@ -122,7 +122,7 @@ export default function WhatWeDo() {
                               {item.tagline}
                             </p>
                             {item.bullets && (
-                              <ul className="mt-3 flex flex-wrap gap-1.5 pl-8">
+                              <ul className="mt-3 flex flex-wrap gap-1.5 pl-8 md:hidden">
                                 {item.bullets.map((b) => (
                                   <li
                                     key={b}
