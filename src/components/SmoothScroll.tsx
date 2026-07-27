@@ -66,28 +66,27 @@ export default function SmoothScroll() {
           });
         });
 
-      gsap.matchMedia().add("(min-width: 768px)", () => {
-        const panels = gsap.utils.toArray<HTMLElement>("#services article");
-        panels.forEach((panel, i) => {
-          const next = panels[i + 1];
-          if (!next) return;
-          const shade = panel.querySelector(".js-panel-shade");
-          const trigger = {
-            trigger: next,
-            start: "top bottom",
-            end: "top top",
-            scrub: true,
-          };
-          gsap.to(panel, {
-            scale: 0.965,
-            transformOrigin: "center top",
-            ease: "none",
-            scrollTrigger: trigger,
-          });
-          if (shade) {
-            gsap.to(shade, { opacity: 0.45, ease: "none", scrollTrigger: trigger });
-          }
+      // Chapter page-turn — all viewport sizes (panels are always sticky)
+      const panels = gsap.utils.toArray<HTMLElement>("#services article");
+      panels.forEach((panel, i) => {
+        const next = panels[i + 1];
+        if (!next) return;
+        const shade = panel.querySelector(".js-panel-shade");
+        const trigger = {
+          trigger: next,
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+        };
+        gsap.to(panel, {
+          scale: 0.965,
+          transformOrigin: "center top",
+          ease: "none",
+          scrollTrigger: trigger,
         });
+        if (shade) {
+          gsap.to(shade, { opacity: 0.45, ease: "none", scrollTrigger: trigger });
+        }
       });
     });
 

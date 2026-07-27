@@ -31,12 +31,6 @@ const PANEL_STYLES = [
   },
 ] as const;
 
-/**
- * "What we do" — the lock section. Each chapter is a full-viewport sticky
- * panel; scrolling turns the page. Each panel now holds a whole service
- * group (Growth Plans / Automated Systems) with its individual offerings
- * as inline cards.
- */
 export default function WhatWeDo() {
   return (
     <section id="services" aria-label="What we do">
@@ -46,9 +40,8 @@ export default function WhatWeDo() {
         return (
           <article
             key={group.number}
-            className={`chapter-shadow flex flex-col md:sticky md:top-0 md:min-h-svh md:justify-center ${s.section}`}
+            className={`chapter-shadow sticky top-0 flex min-h-svh flex-col justify-center ${s.section}`}
           >
-            {/* overflow-hidden on inner wrapper only — prevents scroll trap on the sticky article itself */}
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
               <div className="bg-noise absolute inset-0 opacity-[0.06]" />
               <BrandMark
@@ -60,9 +53,9 @@ export default function WhatWeDo() {
               />
             </div>
 
-            <div className="container-x relative z-10 py-16 sm:py-16">
+            <div className="container-x relative z-10 py-8 md:py-16">
               <div
-                className={`flex items-baseline justify-between border-b pb-5 ${s.line}`}
+                className={`flex items-baseline justify-between border-b pb-3 md:pb-5 ${s.line}`}
               >
                 <span className="kicker">{group.kicker}</span>
                 <span className="font-mono text-sm">
@@ -74,9 +67,9 @@ export default function WhatWeDo() {
                 </span>
               </div>
 
-              <div className="mt-10 grid gap-8 md:grid-cols-[0.9fr_1.1fr] md:gap-14">
-                {/* Left — the group intro */}
-                <div className="md:sticky md:top-24 md:self-start">
+              <div className="mt-4 grid gap-6 md:mt-10 md:grid-cols-[0.9fr_1.1fr] md:gap-14">
+                {/* Left — the group intro (desktop only; mobile shows items only) */}
+                <div className="hidden md:block md:sticky md:top-24 md:self-start">
                   <span
                     aria-hidden="true"
                     className={`font-display text-6xl font-medium italic sm:text-7xl md:text-8xl ${s.displayNumber}`}
@@ -104,7 +97,7 @@ export default function WhatWeDo() {
                         href={`/services/${item.slug}`}
                         className={`group/item block transition-colors duration-300 ${s.itemHover}`}
                       >
-                        <div className="flex flex-col gap-4 py-5 sm:flex-row sm:items-start sm:justify-between sm:gap-8 md:py-3">
+                        <div className="flex items-start justify-between gap-4 py-3">
                           <div className="min-w-0 flex-1">
                             <div className="flex items-baseline gap-3">
                               <span
@@ -112,31 +105,19 @@ export default function WhatWeDo() {
                               >
                                 {String(idx + 1).padStart(2, "0")}
                               </span>
-                              <h4 className="font-display text-xl font-medium tracking-tight sm:text-2xl">
+                              <h4 className="font-display text-lg font-medium tracking-tight md:text-xl">
                                 {item.name}
                               </h4>
                             </div>
                             <p
-                              className={`mt-1.5 pl-8 text-sm leading-relaxed ${s.muted}`}
+                              className={`mt-1 pl-8 text-sm leading-relaxed line-clamp-1 md:line-clamp-none ${s.muted}`}
                             >
                               {item.tagline}
                             </p>
-                            {item.bullets && (
-                              <ul className="mt-3 flex flex-wrap gap-1.5 pl-8 md:hidden">
-                                {item.bullets.map((b) => (
-                                  <li
-                                    key={b}
-                                    className={`rounded-full border px-2.5 py-0.5 font-mono text-[0.6rem] uppercase tracking-wider ${s.itemBorder}`}
-                                  >
-                                    {b}
-                                  </li>
-                                ))}
-                              </ul>
-                            )}
                           </div>
                           <span
                             aria-hidden="true"
-                            className={`shrink-0 text-lg transition-transform duration-300 group-hover/item:translate-x-1 ${s.arrow}`}
+                            className={`mt-1 shrink-0 text-base transition-transform duration-300 group-hover/item:translate-x-1 ${s.arrow}`}
                           >
                             →
                           </span>
