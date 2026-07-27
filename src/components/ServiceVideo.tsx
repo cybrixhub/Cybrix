@@ -14,7 +14,7 @@ export default function ServiceVideo({ slug, name }: { slug: string; name: strin
 
   return (
     <div className="container-x py-16 sm:py-20">
-      <div className="overflow-hidden rounded-lg border border-line-strong shadow-[0_24px_56px_-24px_rgba(36,30,22,0.22)]">
+      <div className="overflow-hidden rounded-lg border border-line-strong shadow-[0_24px_56px_-24px_rgba(20,49,122,0.15)]">
         {/* Chrome bar */}
         <div className="flex items-center justify-between border-b border-line-strong bg-blush px-3 py-2 sm:px-4 sm:py-2.5">
           <span className="flex min-w-0 items-center gap-2">
@@ -29,7 +29,7 @@ export default function ServiceVideo({ slug, name }: { slug: string; name: strin
         </div>
 
         {/* Video */}
-        <div className="relative aspect-video bg-espresso">
+        <div className="relative aspect-video bg-navy">
           <video
             ref={videoRef}
             src={`/videos/${slug}.mp4`}
@@ -54,12 +54,12 @@ export default function ServiceVideo({ slug, name }: { slug: string; name: strin
           >
             <div className="bg-grain absolute inset-0 opacity-20" />
             <div className="relative flex flex-col items-center gap-4 text-center">
-              <span className="grid h-16 w-16 place-items-center rounded-full bg-[#f7efe4] text-espresso">
+              <span className="grid h-16 w-16 place-items-center rounded-full bg-white text-navy">
                 <svg width="16" height="19" viewBox="0 0 16 19" fill="none" aria-hidden="true">
                   <path d="M1 1.5 L15 9.5 L1 17.5 Z" fill="currentColor" />
                 </svg>
               </span>
-              <p className="font-display text-lg font-medium italic text-cream-soft">
+              <p className="font-display text-lg font-medium italic text-[#B9CBE4]">
                 {name} — overview video
               </p>
               <p className="font-mono text-[0.6rem] uppercase tracking-[0.18em] text-[#8ba0c0]">

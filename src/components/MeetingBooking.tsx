@@ -84,7 +84,7 @@ export default function MeetingBooking() {
     <section
       id="book"
       aria-label="Schedule a call"
-      className="relative overflow-hidden bg-navy py-24 text-cream sm:py-32"
+      className="relative overflow-hidden bg-navy py-24 text-white sm:py-32"
     >
       <div className="bg-noise pointer-events-none absolute inset-0 opacity-[0.06]" />
       <BrandMark className="pointer-events-none absolute -right-[6%] top-1/2 z-0 h-[52vh] w-auto -translate-y-1/2 text-teal/10" />
@@ -143,7 +143,7 @@ export default function MeetingBooking() {
                   onClick={() => shiftMonth(-1)}
                   disabled={atStart}
                   aria-label="Previous month"
-                  className="grid h-9 w-9 place-items-center rounded-md border border-navy-line text-lg text-cream transition-colors hover:border-teal-bright hover:text-teal-bright disabled:opacity-25 disabled:hover:border-navy-line disabled:hover:text-cream"
+                  className="grid h-9 w-9 place-items-center rounded-md border border-navy-line text-lg text-white transition-colors hover:border-teal-bright hover:text-teal-bright disabled:opacity-25 disabled:hover:border-navy-line disabled:hover:text-white"
                 >
                   ←
                 </button>
@@ -155,7 +155,7 @@ export default function MeetingBooking() {
                   onClick={() => shiftMonth(1)}
                   disabled={atEnd}
                   aria-label="Next month"
-                  className="grid h-9 w-9 place-items-center rounded-md border border-navy-line text-lg text-cream transition-colors hover:border-teal-bright hover:text-teal-bright disabled:opacity-25 disabled:hover:border-navy-line disabled:hover:text-cream"
+                  className="grid h-9 w-9 place-items-center rounded-md border border-navy-line text-lg text-white transition-colors hover:border-teal-bright hover:text-teal-bright disabled:opacity-25 disabled:hover:border-navy-line disabled:hover:text-white"
                 >
                   →
                 </button>
@@ -186,7 +186,7 @@ export default function MeetingBooking() {
                           ? "bg-teal-bright font-semibold text-navy"
                           : isDisabled(d)
                             ? "cursor-not-allowed text-[#46587a]"
-                            : "bg-navy text-cream hover:bg-[#1b2c60] hover:text-teal-bright"
+                            : "bg-navy text-white hover:bg-[#1b2c60] hover:text-teal-bright"
                       }`}
                     >
                       {d}

@@ -58,7 +58,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
                 key={item.href}
                 href={item.href}
                 className={`flex items-center gap-3 rounded px-3 py-2 text-sm transition-colors ${
-                  active ? "bg-navy text-cream" : "text-ink-soft hover:bg-paper-3 hover:text-ink"
+                  active ? "bg-navy text-white" : "text-ink-soft hover:bg-paper-3 hover:text-ink"
                 }`}
               >
                 <span className="w-4 text-center font-mono text-xs opacity-70">{item.icon}</span>
@@ -71,7 +71,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
         <div className="border-t border-line px-3 py-3 space-y-1">
           {user && (
             <div className="flex items-center gap-3 px-3 py-2">
-              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-navy text-[0.6rem] font-bold text-cream uppercase">
+              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-navy text-[0.6rem] font-bold text-white uppercase">
                 {user[0]}
               </span>
               <span className="text-sm text-ink-soft truncate">{user}</span>
@@ -87,7 +87,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
           </a>
           <button
             onClick={logout}
-            className="flex w-full items-center gap-3 rounded px-3 py-2 text-sm text-muted hover:bg-paper-3 hover:text-oxblood-bright transition-colors"
+            className="flex w-full items-center gap-3 rounded px-3 py-2 text-sm text-muted hover:bg-paper-3 hover:text-red-500 transition-colors"
           >
             <span className="w-4 text-center font-mono text-xs opacity-70">⏻</span>
             Sign out

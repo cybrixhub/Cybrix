@@ -61,7 +61,7 @@ export default function Collage() {
 
       <div className="container-x relative z-10">
         <Reveal>
-          <span className="kicker text-teal-bright">
+          <span className="kicker text-navy">
             From the studio floor
           </span>
         </Reveal>
@@ -75,7 +75,7 @@ export default function Collage() {
         <div className="mt-16 flex flex-col items-center gap-10 lg:flex-row lg:items-start lg:justify-between">
           {/* Plate one */}
           <Reveal className="lg:-rotate-3 lg:mt-6">
-            <figure className="w-72 bg-paper-2 p-3 pb-4 shadow-[0_30px_60px_-30px_rgba(36,30,22,0.55)] sm:w-80">
+            <figure className="w-72 bg-paper-2 p-3 pb-4 shadow-[0_30px_60px_-30px_rgba(20,49,122,0.2)] sm:w-80">
               <div className="relative aspect-[3/4] w-full overflow-hidden border border-line">
                 <Image
                   src={COLLAGE[0].image}
@@ -93,7 +93,7 @@ export default function Collage() {
                 <a
                   href="#work"
                   aria-label="See the work"
-                  className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-line-strong font-mono text-sm text-ink transition-colors hover:bg-navy hover:border-navy hover:text-cream"
+                  className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-line-strong font-mono text-sm text-ink transition-colors hover:bg-navy hover:border-navy hover:text-white"
                 >
                   +
                 </a>
@@ -103,7 +103,7 @@ export default function Collage() {
 
           {/* Plate two */}
           <Reveal delay={90} className="lg:rotate-2 lg:-mt-2">
-            <figure className="w-72 bg-paper-2 p-3 pb-4 shadow-[0_30px_60px_-30px_rgba(36,30,22,0.55)] sm:w-80">
+            <figure className="w-72 bg-paper-2 p-3 pb-4 shadow-[0_30px_60px_-30px_rgba(20,49,122,0.2)] sm:w-80">
               <div className="relative aspect-[3/4] w-full overflow-hidden border border-line">
                 <Image
                   src={COLLAGE[1].image}
@@ -123,7 +123,7 @@ export default function Collage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Book a call"
-                  className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-line-strong font-mono text-sm text-ink transition-colors hover:bg-navy hover:border-navy hover:text-cream"
+                  className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-line-strong font-mono text-sm text-ink transition-colors hover:bg-navy hover:border-navy hover:text-white"
                 >
                   +
                 </a>
@@ -138,12 +138,12 @@ export default function Collage() {
               className="relative grid h-56 w-64 place-items-center overflow-hidden rounded-md bg-navy shadow-[inset_0_2px_14px_rgba(0,0,0,0.55),0_24px_48px_-24px_rgba(14,26,58,0.6)]"
             >
               <div className="bg-noise absolute inset-0 opacity-25" />
-              <div className="absolute inset-2 rounded-sm border-2 border-dashed border-[#f2d9c4]/50" />
+              <div className="absolute inset-2 rounded-sm border-2 border-dashed border-white/30" />
               <div className="relative text-center">
-                <p className="font-display text-4xl font-semibold italic text-[#f7efe4]">
-                  Cybrix<span className="not-italic text-teal-bright">.</span>
+                <p className="font-display text-4xl font-semibold italic text-white">
+                  Cybrix<span className="not-italic text-[#78efeb]">.</span>
                 </p>
-                <p className="kicker mt-2 text-[#e8c9b4]">
+                <p className="kicker mt-2 text-[#B9CBE4]">
                   Studio · est. 2020
                 </p>
               </div>

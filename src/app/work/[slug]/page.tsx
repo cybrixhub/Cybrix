@@ -70,11 +70,11 @@ export default async function WorkPage({
           <div className="container-x">
             <Reveal>
               <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-muted">
-                <Link href="/#work" className="hover:text-amber">
+                <Link href="/#work" className="hover:text-navy">
                   Work
                 </Link>
                 <span aria-hidden="true">/</span>
-                <span className="text-oxblood-bright">{project.client}</span>
+                <span className="text-navy">{project.client}</span>
               </div>
             </Reveal>
 
@@ -106,7 +106,7 @@ export default async function WorkPage({
                 </Reveal>
 
                 <Reveal delay={160}>
-                  <p className="mt-5 max-w-2xl font-display text-2xl italic leading-tight text-oxblood-bright sm:text-3xl">
+                  <p className="mt-5 max-w-2xl font-display text-2xl italic leading-tight text-navy sm:text-3xl">
                     <Underlined>{project.result}</Underlined>
                   </p>
                 </Reveal>
@@ -120,13 +120,13 @@ export default async function WorkPage({
 
               {/* Case ID plate — masthead style */}
               <Reveal delay={80}>
-                <div className="rounded-md border border-line-strong bg-paper-2 shadow-[0_18px_36px_-20px_rgba(36,30,22,0.4)]">
-                  <div className="relative bg-espresso px-5 pb-3 pt-3 text-cream">
+                <div className="rounded-md border border-line-strong bg-paper-2 shadow-[0_18px_36px_-20px_rgba(20,49,122,0.2)]">
+                  <div className="relative bg-navy px-5 pb-3 pt-3 text-white">
                     <div
                       aria-hidden="true"
-                      className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-oxblood via-amber to-oxblood"
+                      className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-navy via-[#78efeb] to-navy"
                     />
-                    <div className="flex items-baseline justify-between font-mono text-[0.6rem] uppercase tracking-[0.18em] text-cream-soft">
+                    <div className="flex items-baseline justify-between font-mono text-[0.6rem] uppercase tracking-[0.18em] text-[#B9CBE4]">
                       <span>Cybrix · Case Print</span>
                       <span>
                         № {String(idx + 1).padStart(2, "0")} /{" "}
@@ -145,7 +145,7 @@ export default async function WorkPage({
                     </div>
                     <div className="flex items-baseline justify-between gap-4 py-2.5">
                       <dt className="text-muted">Headline</dt>
-                      <dd className="text-right font-display text-sm italic normal-case tracking-normal text-oxblood-bright">
+                      <dd className="text-right font-display text-sm italic normal-case tracking-normal text-navy">
                         {project.result}
                       </dd>
                     </div>
@@ -167,17 +167,17 @@ export default async function WorkPage({
         {/* Metrics band — pulled numbers in ledger grid */}
         {project.metrics && project.metrics.length > 0 && (
           <>
-            <TornEdge color="var(--color-espresso)" className="-mb-px" />
+            <TornEdge color="var(--color-navy)" className="-mb-px" />
             <section
               aria-label="Metrics"
-              className="relative overflow-hidden bg-espresso py-20 text-cream sm:py-28"
+              className="relative overflow-hidden bg-navy py-20 text-white sm:py-28"
             >
-              <span className="marginalia !text-cream-soft">
+              <span className="marginalia !text-[#B9CBE4]">
                 ledger · verified numbers
               </span>
               <div className="container-x relative z-10">
                 <Reveal>
-                  <span className="kicker text-amber">The numbers</span>
+                  <span className="kicker text-[#78efeb]">The numbers</span>
                 </Reveal>
                 <Reveal delay={80}>
                   <h2
@@ -188,14 +188,14 @@ export default async function WorkPage({
                   </h2>
                 </Reveal>
 
-                <ul className="mt-12 grid gap-px overflow-hidden rounded-md border border-cream/15 bg-cream/15 sm:grid-cols-2 lg:grid-cols-3">
+                <ul className="mt-12 grid gap-px overflow-hidden rounded-md border border-white/15 bg-white/15 sm:grid-cols-2 lg:grid-cols-3">
                   {project.metrics.map((m, i) => (
                     <Reveal key={m.label} delay={i * 40}>
-                      <li className="flex h-full flex-col justify-between gap-4 bg-espresso p-6 sm:p-8">
-                        <span className="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-cream-soft">
+                      <li className="flex h-full flex-col justify-between gap-4 bg-navy p-6 sm:p-8">
+                        <span className="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-[#B9CBE4]">
                           {m.label}
                         </span>
-                        <span className="font-display text-4xl font-medium italic leading-none text-amber sm:text-5xl">
+                        <span className="font-display text-4xl font-medium italic leading-none text-[#78efeb] sm:text-5xl">
                           {m.value}
                         </span>
                       </li>
@@ -222,11 +222,11 @@ export default async function WorkPage({
                     <div>
                       <span
                         aria-hidden="true"
-                        className="font-display text-6xl font-medium italic leading-none text-oxblood-bright sm:text-7xl"
+                        className="font-display text-6xl font-medium italic leading-none text-navy sm:text-7xl"
                       >
                         01
                       </span>
-                      <span className="kicker mt-4 block text-oxblood-bright">
+                      <span className="kicker mt-4 block text-navy">
                         Challenge
                       </span>
                       <p className="mt-5 font-display text-xl font-medium leading-[1.35] tracking-tight text-balance text-ink sm:text-2xl">
@@ -240,11 +240,11 @@ export default async function WorkPage({
                     <div>
                       <span
                         aria-hidden="true"
-                        className="font-display text-6xl font-medium italic leading-none text-amber sm:text-7xl"
+                        className="font-display text-6xl font-medium italic leading-none text-[#78efeb] sm:text-7xl"
                       >
                         02
                       </span>
-                      <span className="kicker mt-4 block text-oxblood-bright">
+                      <span className="kicker mt-4 block text-navy">
                         Approach
                       </span>
                       <p className="mt-5 font-display text-xl font-medium leading-[1.35] tracking-tight text-balance text-ink sm:text-2xl">
@@ -268,7 +268,7 @@ export default async function WorkPage({
             <div className="container-x">
               <div className="max-w-3xl">
                 <Reveal>
-                  <span className="kicker text-oxblood-bright">
+                  <span className="kicker text-navy">
                     Campaign audit
                   </span>
                 </Reveal>
@@ -285,13 +285,13 @@ export default async function WorkPage({
               <div className="mt-12 grid gap-6 sm:grid-cols-2">
                 {project.screenshots.map((src, i) => (
                   <Reveal key={src} delay={i * 80}>
-                    <figure className="group flex h-full flex-col overflow-hidden rounded-lg border border-line-strong bg-paper text-ink shadow-[0_18px_36px_-16px_rgba(36,30,22,0.4)]">
-                      <div className="relative bg-espresso px-4 pb-3 pt-3 text-cream">
+                    <figure className="group flex h-full flex-col overflow-hidden rounded-lg border border-line-strong bg-paper text-ink shadow-[0_18px_36px_-16px_rgba(20,49,122,0.15)]">
+                      <div className="relative bg-navy px-4 pb-3 pt-3 text-white">
                         <div
                           aria-hidden="true"
-                          className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-oxblood via-amber to-oxblood"
+                          className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-navy via-[#78efeb] to-navy"
                         />
-                        <div className="flex items-baseline justify-between font-mono text-[0.58rem] uppercase tracking-[0.18em] text-cream-soft">
+                        <div className="flex items-baseline justify-between font-mono text-[0.58rem] uppercase tracking-[0.18em] text-[#B9CBE4]">
                           <span>Cybrix · Campaign Audit</span>
                           <span>
                             Ex. {String(i + 1).padStart(2, "0")}
@@ -307,7 +307,7 @@ export default async function WorkPage({
                             {project.category}
                           </span>
                         </div>
-                        <p className="mt-1 font-display text-lg font-medium italic leading-tight text-oxblood-bright">
+                        <p className="mt-1 font-display text-lg font-medium italic leading-tight text-navy">
                           {project.result}
                         </p>
                       </div>
@@ -329,7 +329,7 @@ export default async function WorkPage({
                           Meta Ads Manager
                         </span>
                         <span
-                          className="flex items-center gap-1 text-oxblood-bright"
+                          className="flex items-center gap-1 text-navy"
                           title="Verified from live account"
                         >
                           <span aria-hidden="true">✓</span>
@@ -355,7 +355,7 @@ export default async function WorkPage({
               <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-14">
                 <div>
                   <Reveal>
-                    <span className="kicker text-oxblood-bright">
+                    <span className="kicker text-navy">
                       Services used
                     </span>
                   </Reveal>
@@ -374,7 +374,7 @@ export default async function WorkPage({
                     <Reveal key={s.slug} delay={i * 60}>
                       <Link
                         href={`/services/${s.slug}`}
-                        className="group flex h-full flex-col justify-between rounded-md border border-line-strong bg-paper-2 p-6 transition-colors hover:border-amber sm:p-7"
+                        className="group flex h-full flex-col justify-between rounded-md border border-line-strong bg-paper-2 p-6 transition-colors hover:border-navy sm:p-7"
                       >
                         <div>
                           <span className="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-muted">
@@ -389,7 +389,7 @@ export default async function WorkPage({
                         </div>
                         <span
                           aria-hidden="true"
-                          className="mt-5 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-oxblood-bright transition-transform group-hover:translate-x-1"
+                          className="mt-5 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-navy transition-transform group-hover:translate-x-1"
                         >
                           See the service →
                         </span>
@@ -403,39 +403,39 @@ export default async function WorkPage({
         )}
 
         {/* Other cases + CTA */}
-        <TornEdge color="var(--color-espresso)" className="-mb-px" />
+        <TornEdge color="var(--color-navy)" className="-mb-px" />
         <section
           aria-label="More work and next steps"
-          className="relative overflow-hidden bg-espresso py-24 text-cream sm:py-28"
+          className="relative overflow-hidden bg-navy py-24 text-white sm:py-28"
         >
           <div className="container-x relative z-10">
             {otherCases.length > 0 && (
               <div className="mb-16">
                 <Reveal>
-                  <span className="kicker text-amber">More work</span>
+                  <span className="kicker text-[#78efeb]">More work</span>
                 </Reveal>
                 <div className="mt-8 grid gap-5 sm:grid-cols-2">
                   {otherCases.map((c, i) => (
                     <Reveal key={c.slug} delay={i * 80}>
                       <Link
                         href={`/work/${c.slug}`}
-                        className="group flex h-full flex-col rounded-md border border-cream/15 bg-espresso-2 p-6 transition-colors hover:border-amber sm:p-7"
+                        className="group flex h-full flex-col rounded-md border border-white/15 bg-[#1B3D8F] p-6 transition-colors hover:border-[#78efeb] sm:p-7"
                       >
-                        <span className="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-cream-soft">
+                        <span className="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-[#B9CBE4]">
                           {c.category}
                         </span>
-                        <p className="mt-3 font-display text-2xl font-medium italic leading-tight text-amber sm:text-3xl">
+                        <p className="mt-3 font-display text-2xl font-medium italic leading-tight text-[#78efeb] sm:text-3xl">
                           {c.result}
                         </p>
                         <h3 className="mt-4 font-display text-lg font-medium tracking-tight sm:text-xl">
                           {c.client}
                         </h3>
-                        <p className="mt-2 flex-1 text-sm leading-relaxed text-cream-soft">
+                        <p className="mt-2 flex-1 text-sm leading-relaxed text-[#B9CBE4]">
                           {c.summary}
                         </p>
                         <span
                           aria-hidden="true"
-                          className="mt-5 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-amber transition-transform group-hover:translate-x-1"
+                          className="mt-5 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#78efeb] transition-transform group-hover:translate-x-1"
                         >
                           Read case →
                         </span>
@@ -446,10 +446,10 @@ export default async function WorkPage({
               </div>
             )}
 
-            <div className="grid items-end gap-8 border-t border-cream/15 pt-14 lg:grid-cols-[1.4fr_1fr] lg:gap-14">
+            <div className="grid items-end gap-8 border-t border-white/15 pt-14 lg:grid-cols-[1.4fr_1fr] lg:gap-14">
               <Reveal>
                 <div>
-                  <span className="kicker text-amber">Ready to be next?</span>
+                  <span className="kicker text-[#78efeb]">Ready to be next?</span>
                   <h2
                     data-split
                     className="split-parent mt-4 font-display text-4xl font-medium tracking-tight text-balance sm:text-5xl md:text-6xl"
@@ -465,13 +465,13 @@ export default async function WorkPage({
                     target="_blank"
                     rel="noopener noreferrer"
                     data-cursor="book"
-                    className="btn-ink btn-press inline-flex items-center gap-2 border border-amber bg-amber px-6 py-3 text-sm font-semibold text-espresso [--ink-fill:#e5b562]"
+                    className="btn-ink btn-press inline-flex items-center gap-2 border border-[#78efeb] bg-[#78efeb] px-6 py-3 text-sm font-semibold text-navy [--ink-fill:#8ff0e0]"
                   >
                     Book a call
                   </Link>
                   <Link
                     href="/#work"
-                    className="inline-flex items-center gap-2 border border-cream/30 px-6 py-3 text-sm font-semibold text-cream transition-colors hover:border-amber hover:text-amber"
+                    className="inline-flex items-center gap-2 border border-white/30 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-[#78efeb] hover:text-[#78efeb]"
                   >
                     ← All work
                   </Link>

@@ -112,7 +112,7 @@ export default function ContentEditor() {
           </button>
           <button
             onClick={handleSave}
-            className="btn-ink btn-press inline-flex items-center gap-2 border border-navy bg-navy px-4 py-2 text-sm font-semibold text-cream [--ink-fill:var(--color-navy-2)]"
+            className="btn-ink btn-press inline-flex items-center gap-2 border border-navy bg-navy px-4 py-2 text-sm font-semibold text-white [--ink-fill:var(--color-navy-2)]"
           >
             {saved ? "Saved ✓" : "Save draft"}
           </button>
@@ -185,7 +185,7 @@ export default function ContentEditor() {
                 </span>
                 <button
                   onClick={() => setTestimonials(testimonials.filter((_, j) => j !== i))}
-                  className="text-xs text-oxblood-bright hover:underline"
+                  className="text-xs text-red-500 hover:underline"
                 >
                   Remove
                 </button>
@@ -237,7 +237,7 @@ export default function ContentEditor() {
                 <span className="kicker text-muted">FAQ {i + 1}</span>
                 <button
                   onClick={() => setFaqs(faqs.filter((_, j) => j !== i))}
-                  className="text-xs text-oxblood-bright hover:underline"
+                  className="text-xs text-red-500 hover:underline"
                 >
                   Remove
                 </button>
@@ -287,7 +287,7 @@ export default function ContentEditor() {
                   />
                   <button
                     onClick={() => setBookChecks(bookChecks.filter((_, j) => j !== i))}
-                    className="px-3 text-muted hover:text-oxblood-bright transition-colors"
+                    className="px-3 text-muted hover:text-red-500 transition-colors"
                   >
                     ✕
                   </button>

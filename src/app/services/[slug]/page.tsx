@@ -64,43 +64,43 @@ export default async function ServicePage({
   const a = isTech
     ? {
         tone: "teal" as const,
-        link: "hover:text-teal-bright",
-        name: "text-teal-bright",
-        kicker: "text-teal-bright",
-        num1: "text-teal-bright",
-        num2: "text-teal",
-        dot: "bg-teal-bright",
-        seeHover: "group-hover:border-teal-bright group-hover:text-teal-bright",
-        cta: "border-navy bg-navy text-cream shadow-[0_10px_20px_-8px_rgba(14,26,58,0.85)] [--ink-fill:var(--color-navy-2)]",
+        link: "hover:text-[#78efeb]",
+        name: "text-[#78efeb]",
+        kicker: "text-[#78efeb]",
+        num1: "text-[#78efeb]",
+        num2: "text-[#78efeb]",
+        dot: "bg-[#78efeb]",
+        seeHover: "group-hover:border-[#78efeb] group-hover:text-[#78efeb]",
+        cta: "border-navy bg-navy text-white shadow-[0_10px_20px_-8px_rgba(14,26,58,0.85)] [--ink-fill:var(--color-navy-2)]",
         procTorn: "var(--color-navy)",
-        procSection: "bg-navy text-cream",
-        procMarg: "!text-[#b9cbe4]",
-        procCard: "border-teal/20 bg-navy-2 hover:bg-[#1b2c60]",
-        procGhost: "text-teal/10",
-        procText: "text-[#b9cbe4]",
+        procSection: "bg-navy text-white",
+        procMarg: "!text-[#B9CBE4]",
+        procCard: "border-[#78efeb]/20 bg-navy-2 hover:bg-[#1b2c60]",
+        procGhost: "text-[#78efeb]/10",
+        procText: "text-[#B9CBE4]",
         relPlate: "bg-navy",
-        ctaBtn: "border-teal-bright bg-teal-bright text-navy [--ink-fill:#8ff0e0]",
-        ctaSecHover: "hover:border-teal-bright hover:text-teal-bright",
+        ctaBtn: "border-[#78efeb] bg-[#78efeb] text-navy [--ink-fill:#8ff0e0]",
+        ctaSecHover: "hover:border-[#78efeb] hover:text-[#78efeb]",
       }
     : {
-        tone: "amber" as const,
-        link: "hover:text-amber",
-        name: "text-oxblood-bright",
-        kicker: "text-amber",
-        num1: "text-oxblood-bright",
-        num2: "text-amber",
-        dot: "bg-oxblood-bright",
-        seeHover: "group-hover:border-amber group-hover:text-amber",
-        cta: "border-oxblood bg-oxblood text-[#f7efe4] shadow-[0_10px_20px_-8px_rgba(143,45,45,0.7)] [--ink-fill:var(--color-oxblood-deep)]",
-        procTorn: "var(--color-oxblood)",
-        procSection: "bg-oxblood text-[#f7efe4]",
-        procMarg: "!text-[#eed9c8]/90",
-        procCard: "border-[#f7efe4]/15 bg-[#7a2424] hover:bg-[#6d1e1e]",
-        procGhost: "text-[#f7efe4]/10",
-        procText: "text-[#eed9c8]/90",
-        relPlate: "bg-oxblood",
-        ctaBtn: "border-amber bg-amber text-espresso [--ink-fill:#e5b562]",
-        ctaSecHover: "hover:border-amber hover:text-amber",
+        tone: "teal" as const,
+        link: "hover:text-navy",
+        name: "text-navy",
+        kicker: "text-navy",
+        num1: "text-navy",
+        num2: "text-[#78efeb]",
+        dot: "bg-navy",
+        seeHover: "group-hover:border-navy group-hover:text-navy",
+        cta: "border-navy bg-navy text-white shadow-[0_10px_20px_-8px_rgba(20,49,122,0.7)] [--ink-fill:var(--color-navy-2)]",
+        procTorn: "var(--color-navy)",
+        procSection: "bg-navy text-white",
+        procMarg: "!text-[#B9CBE4]",
+        procCard: "border-white/15 bg-[#1B3D8F] hover:bg-[#1b2c60]",
+        procGhost: "text-white/10",
+        procText: "text-[#B9CBE4]",
+        relPlate: "bg-navy",
+        ctaBtn: "border-[#78efeb] bg-[#78efeb] text-navy [--ink-fill:#8ff0e0]",
+        ctaSecHover: "hover:border-navy hover:text-navy",
       };
 
   return (
@@ -204,12 +204,12 @@ export default async function ServicePage({
         {/* Problem / Solution — split editorial spread on espresso */}
         {(service.problem || service.solution) && (
           <>
-            <TornEdge color="var(--color-espresso)" className="-mb-px" />
+            <TornEdge color="var(--color-navy)" className="-mb-px" />
             <section
               aria-label="Problem and solution"
-              className="relative overflow-hidden bg-espresso py-24 text-cream sm:py-32"
+              className="relative overflow-hidden bg-navy py-24 text-white sm:py-32"
             >
-              <span className="marginalia !text-cream-soft">
+              <span className="marginalia !text-[#B9CBE4]">
                 ch. i · the problem we solve
               </span>
               <div className="container-x relative z-10">
@@ -380,17 +380,17 @@ export default async function ServicePage({
                   <Reveal delay={80}>
                     <Link
                       href={`/work/${related.slug}`}
-                      className="group flex h-full flex-col overflow-hidden rounded-md border border-line-strong bg-espresso text-cream transition-shadow hover:shadow-[0_20px_44px_-20px_rgba(36,30,22,0.65)]"
+                      className="group flex h-full flex-col overflow-hidden rounded-md border border-line-strong bg-navy text-white transition-shadow hover:shadow-[0_20px_44px_-20px_rgba(20,49,122,0.5)]"
                     >
                       <div className={`relative overflow-hidden p-8 sm:p-10 ${a.relPlate}`}>
                         <span
                           aria-hidden="true"
-                          className="pointer-events-none absolute -bottom-6 right-4 select-none font-display text-8xl font-medium italic leading-none text-[#f7efe4]/10"
+                          className="pointer-events-none absolute -bottom-6 right-4 select-none font-display text-8xl font-medium italic leading-none text-white/10"
                         >
                           {related.slug.charAt(0).toUpperCase()}
                         </span>
                         <span className={`kicker ${a.kicker}`}>Proof · case study</span>
-                        <p className="mt-4 font-display text-3xl font-medium italic leading-tight text-[#f7efe4] sm:text-4xl">
+                        <p className="mt-4 font-display text-3xl font-medium italic leading-tight text-white sm:text-4xl">
                           {related.result}
                         </p>
                       </div>
@@ -398,10 +398,10 @@ export default async function ServicePage({
                         <h3 className="font-display text-xl font-medium tracking-tight sm:text-2xl">
                           {related.client}
                         </h3>
-                        <p className="mt-2 flex-1 text-sm leading-relaxed text-cream-soft">
+                        <p className="mt-2 flex-1 text-sm leading-relaxed text-[#B9CBE4]">
                           {related.summary}
                         </p>
-                        <span className="mt-5 inline-flex items-center gap-2 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-amber transition-transform group-hover:translate-x-1">
+                        <span className="mt-5 inline-flex items-center gap-2 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-[#78efeb] transition-transform group-hover:translate-x-1">
                           Read the case study →
                         </span>
                       </div>
@@ -460,10 +460,10 @@ export default async function ServicePage({
         )}
 
         {/* Closing CTA — mirrors book section brevity */}
-        <TornEdge color="var(--color-espresso)" className="-mb-px" />
+        <TornEdge color="var(--color-navy)" className="-mb-px" />
         <section
           aria-label="Get started"
-          className="relative overflow-hidden bg-espresso py-24 text-cream sm:py-28"
+          className="relative overflow-hidden bg-navy py-24 text-white sm:py-28"
         >
           <div className="container-x relative z-10">
             <div className="grid items-end gap-8 lg:grid-cols-[1.4fr_1fr] lg:gap-14">
@@ -476,7 +476,7 @@ export default async function ServicePage({
                   >
                     Let&rsquo;s map your growth.
                   </h2>
-                  <p className="mt-4 max-w-xl text-base leading-relaxed text-cream-soft sm:text-lg">
+                  <p className="mt-4 max-w-xl text-base leading-relaxed text-[#B9CBE4] sm:text-lg">
                     A free 30-minute strategy call on Google Meet. Come with
                     your goals; leave with a plan.
                   </p>
@@ -495,7 +495,7 @@ export default async function ServicePage({
                   </Link>
                   <Link
                     href="/#services"
-                    className={`inline-flex items-center gap-2 border border-cream/30 px-6 py-3 text-sm font-semibold text-cream transition-colors ${a.ctaSecHover}`}
+                    className={`inline-flex items-center gap-2 border border-white/30 px-6 py-3 text-sm font-semibold text-white transition-colors ${a.ctaSecHover}`}
                   >
                     ← All services
                   </Link>

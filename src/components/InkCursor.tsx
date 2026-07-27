@@ -66,8 +66,8 @@ export default function InkCursor() {
       <div
         className={`flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full transition-all duration-300 ${
           label
-            ? "h-16 w-16 bg-[#f2ecdd]/95 text-espresso"
-            : "h-2.5 w-2.5 bg-teal-bright"
+            ? "h-16 w-16 bg-white/95 text-navy shadow-[0_4px_12px_rgba(20,49,122,0.15)]"
+            : "h-2.5 w-2.5 bg-navy"
         }`}
       >
         {label && (

@@ -71,11 +71,11 @@ export default function AdminLogin() {
               autoComplete="current-password"
             />
           </div>
-          {error && <p className="text-sm text-oxblood-bright">{error}</p>}
+          {error && <p className="text-sm text-red-500">{error}</p>}
           <button
             type="submit"
             disabled={loading || !username || !password}
-            className="btn-ink btn-press w-full border border-navy bg-navy px-5 py-2.5 text-sm font-semibold text-cream shadow-[0_10px_20px_-8px_rgba(14,26,58,0.85)] [--ink-fill:var(--color-navy-2)] disabled:opacity-50"
+            className="btn-ink btn-press w-full border border-navy bg-navy px-5 py-2.5 text-sm font-semibold text-white shadow-[0_10px_20px_-8px_rgba(14,26,58,0.85)] [--ink-fill:var(--color-navy-2)] disabled:opacity-50"
           >
             {loading ? "Signing in…" : "Sign in"}
           </button>

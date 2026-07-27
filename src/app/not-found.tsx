@@ -29,7 +29,7 @@ export default function NotFound() {
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
           <Link
             href="/"
-            className="btn-ink btn-press inline-flex items-center gap-2 border border-navy bg-navy px-6 py-3 text-sm font-semibold text-cream [--ink-fill:var(--color-navy-2)]"
+            className="btn-ink btn-press inline-flex items-center gap-2 border border-[#78efeb] bg-[#78efeb] px-6 py-3 text-sm font-semibold text-navy [--ink-fill:var(--color-navy)]"
           >
             ← Back to home
           </Link>

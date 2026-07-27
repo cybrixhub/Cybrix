@@ -48,7 +48,7 @@ export default function AdminDashboard() {
         <div className="flex flex-wrap gap-3">
           <Link
             href="/admin/content"
-            className="btn-ink btn-press inline-flex items-center gap-2 border border-navy bg-navy px-4 py-2 text-sm font-semibold text-cream [--ink-fill:var(--color-navy-2)]"
+            className="btn-ink btn-press inline-flex items-center gap-2 border border-navy bg-navy px-4 py-2 text-sm font-semibold text-white [--ink-fill:var(--color-navy-2)]"
           >
             Edit site copy
           </Link>

@@ -1,8 +1,8 @@
 const STEPS = [
   {
     number: "01",
-    color: "#c0524a",
-    bg: "#3d2320",
+    color: "#14317a",
+    bg: "#F5F7FB",
     label: "Audit",
     title: "We analyse your data",
     bullets: [
@@ -24,8 +24,8 @@ const STEPS = [
   },
   {
     number: "02",
-    color: "#c9772a",
-    bg: "#392c17",
+    color: "#1B3D8F",
+    bg: "#EDF0F7",
     label: "Strategy",
     title: "We build the content plan",
     bullets: [
@@ -49,8 +49,8 @@ const STEPS = [
   },
   {
     number: "03",
-    color: "#6dd0c4",
-    bg: "#1e3a3f",
+    color: "#3DB5B0",
+    bg: "#F0FAFA",
     label: "Launch",
     title: "We launch your ad strategy",
     bullets: [
@@ -73,8 +73,8 @@ const STEPS = [
   },
   {
     number: "04",
-    color: "#f2ecdd",
-    bg: "#253570",
+    color: "#0D2563",
+    bg: "#EDF0F7",
     label: "Pipeline",
     title: "We activate your systems",
     bullets: [
@@ -101,42 +101,42 @@ const FUNNEL = [
   {
     label: "Lead Capture",
     note: "Leads come through ads, site & other channels",
-    color: "#6dd0c4",
+    color: "#14317a",
     width: "w-full",
   },
   {
     label: "Lead Qualification",
     note: "We filter & qualify genuine prospects",
-    color: "#c9772a",
+    color: "#1B3D8F",
     width: "w-[85%]",
   },
   {
     label: "Strategy Call",
     note: "Our team connects & nurtures the lead",
-    color: "#c0524a",
+    color: "#3DB5B0",
     width: "w-[65%]",
   },
   {
     label: "Signed Client",
     note: "Only serious & budget-ready clients move forward",
-    color: "#f2ecdd",
+    color: "#0D2563",
     width: "w-[42%]",
   },
 ] as const;
 
 const PILLARS = [
-  { icon: "◎", label: "Data-Driven", note: "Real numbers, not gut feel.", color: "#c0524a" },
-  { icon: "◈", label: "Audience-First", note: "Built around your exact buyer.", color: "#c9772a" },
-  { icon: "↑", label: "Higher Conversions", note: "Better targeting, better results.", color: "#6dd0c4" },
-  { icon: "⚙", label: "Automated", note: "Save time with smart follow-ups.", color: "#f2ecdd" },
-  { icon: "⊞", label: "Scalable Growth", note: "A system built to compound.", color: "#b9cbe4" },
+  { icon: "◎", label: "Data-Driven", note: "Real numbers, not gut feel.", color: "#14317a" },
+  { icon: "◈", label: "Audience-First", note: "Built around your exact buyer.", color: "#1B3D8F" },
+  { icon: "↑", label: "Higher Conversions", note: "Better targeting, better results.", color: "#3DB5B0" },
+  { icon: "⚙", label: "Automated", note: "Save time with smart follow-ups.", color: "#0D2563" },
+  { icon: "⊞", label: "Scalable Growth", note: "A system built to compound.", color: "#14317a" },
 ] as const;
 
 function ArrowRight({ color }: { color: string }) {
   return (
     <div className="absolute -right-4 top-1/2 z-10 hidden -translate-y-1/2 lg:flex">
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-        <circle cx="16" cy="16" r="15" fill="#171310" stroke={color} strokeWidth="1.5" />
+        <circle cx="16" cy="16" r="15" fill="#FFFFFF" stroke={color} strokeWidth="1.5" />
         <path d="M11 16h10M17 12l4 4-4 4" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     </div>
@@ -157,7 +157,7 @@ export default function HowWeWork() {
           <p className="kicker text-muted">Our proven process</p>
           <h2 className="mt-3 font-display text-4xl font-medium italic leading-tight tracking-tight text-balance sm:text-5xl">
             Strategy to pipeline.{" "}
-            <span className="not-italic text-oxblood-bright">No gaps.</span>
+            <span className="not-italic text-[#78efeb]">No gaps.</span>
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-muted">
             Every engagement runs the same four phases — built on six years of what actually moves numbers.
@@ -179,8 +179,8 @@ export default function HowWeWork() {
                 {/* Step circle + icon */}
                 <div className="mb-4 flex items-center gap-3">
                   <div
-                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-bold"
-                    style={{ backgroundColor: step.color, color: "#171310" }}
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
+                    style={{ backgroundColor: step.color }}
                   >
                     {step.number}
                   </div>
@@ -191,14 +191,14 @@ export default function HowWeWork() {
                 <p className="mb-1 font-mono text-[0.6rem] uppercase tracking-[0.14em]" style={{ color: step.color }}>
                   {step.label}
                 </p>
-                <h3 className="font-display text-lg font-medium leading-snug tracking-tight text-cream sm:text-xl">
+                <h3 className="font-display text-lg font-medium leading-snug tracking-tight text-navy sm:text-xl">
                   {step.title}
                 </h3>
 
                 {/* Bullets */}
-                <ul className="mt-4 flex-1 space-y-2 border-t border-white/10 pt-4">
+                <ul className="mt-4 flex-1 space-y-2 border-t border-line-strong/40 pt-4">
                   {step.bullets.map((b) => (
-                    <li key={b} className="flex items-start gap-2 text-sm text-cream-soft">
+                    <li key={b} className="flex items-start gap-2 text-sm text-ink-soft">
                       <span className="mt-[0.3rem] h-1 w-1 shrink-0 rounded-full" style={{ backgroundColor: step.color }} />
                       {b}
                     </li>
@@ -206,7 +206,7 @@ export default function HowWeWork() {
                 </ul>
 
                 {/* Blurb */}
-                <p className="mt-4 rounded-lg border border-white/10 bg-black/20 px-3 py-2.5 text-xs leading-relaxed text-cream-soft/70 italic">
+                <p className="mt-4 rounded-lg border border-line-strong/40 bg-white/60 px-3 py-2.5 text-xs leading-relaxed text-muted italic">
                   {step.blurb}
                 </p>
               </div>
@@ -221,13 +221,13 @@ export default function HowWeWork() {
             {/* Left label */}
             <div className="hidden lg:block">
               <p className="kicker text-muted">Every lead we send you is</p>
-              <h3 className="mt-2 font-display text-3xl font-medium italic leading-tight text-cream">
+              <h3 className="mt-2 font-display text-3xl font-medium italic leading-tight text-navy">
                 Qualified &amp; ready<br />to move forward.
               </h3>
               <div className="mt-6 space-y-2">
                 {["Genuine interest in your service", "Right budget & timeline", "Documents & profile evaluated", "Ready to take next step"].map((item) => (
                   <div key={item} className="flex items-center gap-2.5 text-sm text-ink-soft">
-                    <svg viewBox="0 0 16 16" className="h-4 w-4 shrink-0 text-teal-bright">
+                    <svg viewBox="0 0 16 16" className="h-4 w-4 shrink-0 text-[#3DB5B0]">
                       <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" />
                       <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
@@ -244,7 +244,7 @@ export default function HowWeWork() {
                 <div key={f.label} className={`relative flex flex-col items-center ${f.width}`}>
                   <div
                     className="flex w-full items-center justify-between rounded-lg px-4 py-3 text-center"
-                    style={{ backgroundColor: `${f.color}22`, border: `1px solid ${f.color}55` }}
+                    style={{ backgroundColor: `${f.color}15`, border: `1px solid ${f.color}35` }}
                   >
                     <div
                       className="font-mono text-[0.65rem] font-bold uppercase tracking-[0.12em]"
@@ -268,13 +268,13 @@ export default function HowWeWork() {
             {/* Right label (mobile shows below) */}
             <div className="lg:hidden mt-6">
               <p className="kicker text-muted">Every lead we send you is</p>
-              <h3 className="mt-2 font-display text-3xl font-medium italic leading-tight text-cream">
+              <h3 className="mt-2 font-display text-3xl font-medium italic leading-tight text-navy">
                 Qualified &amp; ready to move forward.
               </h3>
               <div className="mt-6 space-y-2">
                 {["Genuine interest in your service", "Right budget & timeline", "Documents & profile evaluated", "Ready to take next step"].map((item) => (
                   <div key={item} className="flex items-center gap-2.5 text-sm text-ink-soft">
-                    <svg viewBox="0 0 16 16" className="h-4 w-4 shrink-0 text-teal-bright">
+                    <svg viewBox="0 0 16 16" className="h-4 w-4 shrink-0 text-[#3DB5B0]">
                       <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5" />
                       <path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
@@ -287,12 +287,12 @@ export default function HowWeWork() {
             {/* Right stats */}
             <div className="hidden lg:flex flex-col gap-4">
               {[
-                { value: "120+", label: "founders backed", color: "#c0524a" },
-                { value: "18M+", label: "impressions driven", color: "#c9772a" },
-                { value: "$40M+", label: "raised by clients", color: "#6dd0c4" },
-                { value: "6 yrs", label: "compounding results", color: "#f2ecdd" },
+                { value: "120+", label: "founders backed", color: "#14317a" },
+                { value: "18M+", label: "impressions driven", color: "#1B3D8F" },
+                { value: "$40M+", label: "raised by clients", color: "#3DB5B0" },
+                { value: "6 yrs", label: "compounding results", color: "#0D2563" },
               ].map((s) => (
-                <div key={s.label} className="flex items-center gap-4 rounded-lg border border-line-strong/50 bg-paper-3 px-5 py-4">
+                <div key={s.label} className="flex items-center gap-4 rounded-lg border border-line-strong/50 bg-white px-5 py-4">
                   <span className="font-display text-2xl font-medium italic" style={{ color: s.color }}>
                     {s.value}
                   </span>
@@ -312,7 +312,7 @@ export default function HowWeWork() {
             {PILLARS.map((p) => (
               <div
                 key={p.label}
-                className="flex flex-col items-center rounded-xl border border-line-strong/50 bg-paper-3 px-4 py-5 text-center transition-transform duration-300 hover:-translate-y-1"
+                className="flex flex-col items-center rounded-xl border border-line-strong/50 bg-white px-4 py-5 text-center transition-transform duration-300 hover:-translate-y-1"
               >
                 <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-full border border-line-strong/60 text-lg" style={{ color: p.color }}>
                   {p.icon}
@@ -327,17 +327,17 @@ export default function HowWeWork() {
         </div>
 
         {/* Bottom CTA strip */}
-        <div className="mt-14 flex flex-col items-center gap-4 rounded-xl border border-line-strong/60 bg-paper-3 px-6 py-8 text-center sm:mt-16">
-          <p className="font-display text-2xl font-medium italic text-cream sm:text-3xl">
+        <div className="mt-14 flex flex-col items-center gap-4 rounded-xl border border-line-strong/60 bg-navy px-6 py-8 text-center sm:mt-16">
+          <p className="font-display text-2xl font-medium italic text-white sm:text-3xl">
             We don&rsquo;t just generate leads —
-            <span className="text-oxblood-bright"> we deliver clients ready to buy.</span>
+            <span className="text-[#78efeb]"> we deliver clients ready to buy.</span>
           </p>
-          <p className="kicker text-muted">A. Rahman · Founder, Cybrix</p>
+          <p className="kicker text-[#B9CBE4]">A. Rahman · Founder, Cybrix</p>
           <a
             href="https://cal.com/cybrix-talha/30min"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-ink btn-press mt-2 inline-flex items-center gap-2 border border-navy bg-navy px-7 py-3 text-sm font-semibold text-cream [--ink-fill:var(--color-navy-2)]"
+            className="btn-ink btn-press mt-2 inline-flex items-center gap-2 border border-[#78efeb] bg-[#78efeb] px-7 py-3 text-sm font-semibold text-navy [--ink-fill:var(--color-navy)]"
           >
             Book a strategy call →
           </a>

@@ -370,7 +370,7 @@ function ArrowConnector({ color }: { color: string }) {
   return (
     <div className="absolute -right-3.5 top-8 z-10 hidden lg:flex items-center justify-center">
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-        <circle cx="14" cy="14" r="13" fill="#171310" stroke={color} strokeWidth="1.5" opacity="0.8"/>
+        <circle cx="14" cy="14" r="13" fill="#FFFFFF" stroke={color} strokeWidth="1.5" opacity="0.8"/>
         <path d="M9 14h10M15 10l4 4-4 4" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
     </div>
@@ -392,24 +392,24 @@ export default function ServiceProcess({
 
   const colors = isTech
     ? {
-        circle: "#6dd0c4",
-        circleText: "#0e1a3a",
-        connector: "rgba(109,208,196,0.25)",
+        circle: "#78efeb",
+        circleText: "#14317a",
+        connector: "rgba(120,239,235,0.25)",
         card: "rgba(27,44,96,0.7)",
-        cardBorder: "rgba(109,208,196,0.18)",
-        text: "#b9cbe4",
-        icon: "#6dd0c4",
-        rail: "rgba(109,208,196,0.3)",
+        cardBorder: "rgba(120,239,235,0.18)",
+        text: "#B9CBE4",
+        icon: "#78efeb",
+        rail: "rgba(120,239,235,0.3)",
       }
     : {
-        circle: "#c9772a",
-        circleText: "#171310",
-        connector: "rgba(201,119,42,0.25)",
-        card: "rgba(90,28,28,0.6)",
-        cardBorder: "rgba(201,119,42,0.2)",
-        text: "#eed9c8",
-        icon: "#c9772a",
-        rail: "rgba(201,119,42,0.35)",
+        circle: "#14317a",
+        circleText: "#FFFFFF",
+        connector: "rgba(20,49,122,0.2)",
+        card: "rgba(20,49,122,0.08)",
+        cardBorder: "rgba(20,49,122,0.15)",
+        text: "#64748B",
+        icon: "#14317a",
+        rail: "rgba(20,49,122,0.25)",
       };
 
   return (
@@ -431,7 +431,7 @@ export default function ServiceProcess({
                 </div>
                 <div style={{ color: colors.icon }}>{serviceIcons[i]}</div>
               </div>
-              <h3 className="font-display text-lg font-medium leading-snug tracking-tight text-cream sm:text-xl">
+              <h3 className="font-display text-lg font-medium leading-snug tracking-tight sm:text-xl">
                 {step.title}
               </h3>
               <p

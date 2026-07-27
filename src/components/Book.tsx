@@ -65,22 +65,22 @@ export default function Book() {
   return (
     <section
       id="book"
-      className="relative overflow-hidden bg-espresso text-cream"
+      className="relative overflow-hidden bg-navy text-white"
     >
       <div className="bg-noise pointer-events-none absolute inset-0 opacity-[0.06]" />
-      <span className="marginalia !text-cream-soft">appointments open</span>
+      <span className="marginalia !text-[#B9CBE4]">appointments open</span>
       <div className="container-x relative z-10 py-24 sm:py-32">
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
           {/* Left — the offer */}
           <div>
-            <span className="kicker text-teal-bright">{BOOK.kicker}</span>
+            <span className="kicker text-[#78efeb]">{BOOK.kicker}</span>
             <h2
               data-split
               className="split-parent mt-4 font-display text-4xl font-medium leading-[1.05] tracking-tight text-balance sm:text-6xl"
             >
               Let&apos;s map your <Underlined>growth</Underlined>.
             </h2>
-            <p className="mt-6 max-w-md text-lg leading-relaxed text-cream-soft text-pretty">
+            <p className="mt-6 max-w-md text-lg leading-relaxed text-[#B9CBE4] text-pretty">
               {BOOK.copy}
             </p>
 
@@ -88,9 +88,9 @@ export default function Book() {
               {BOOK.checkmarks.map((item) => (
                 <li
                   key={item}
-                  className="flex items-baseline gap-4 border-b border-espresso-line py-4 first:border-t"
+                  className="flex items-baseline gap-4 border-b border-white/15 py-4 first:border-t"
                 >
-                  <span aria-hidden="true" className="font-mono text-teal-bright">
+                  <span aria-hidden="true" className="font-mono text-[#78efeb]">
                     ✓
                   </span>
                   <span className="text-base">{item}</span>
@@ -103,10 +103,10 @@ export default function Book() {
                 href={`mailto:${SITE.email}`}
                 className="group flex w-fit items-baseline gap-3 text-lg font-medium"
               >
-                <span aria-hidden="true" className="font-mono text-sm text-teal-bright">
+                <span aria-hidden="true" className="font-mono text-sm text-[#78efeb]">
                   ✉
                 </span>
-                <span className="border-b border-cream/25 transition-colors group-hover:border-cream/70">
+                <span className="border-b border-white/25 transition-colors group-hover:border-white/70">
                   {SITE.email}
                 </span>
               </a>
@@ -117,7 +117,7 @@ export default function Book() {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="kicker kicker-bare text-cream-soft transition-colors hover:text-teal-bright"
+                      className="kicker kicker-bare text-[#B9CBE4] transition-colors hover:text-[#78efeb]"
                     >
                       {social.label}
                     </a>
@@ -127,15 +127,15 @@ export default function Book() {
             </div>
           </div>
 
-          {/* Right — the form, on a parchment plate */}
-          <div className="border border-espresso-line bg-paper p-7 text-ink sm:p-9">
+          {/* Right — the form, on a white plate */}
+          <div className="border border-white/15 bg-paper p-7 text-ink sm:p-9">
             {sent ? (
               <div
                 role="status"
                 aria-live="polite"
                 className="flex h-full min-h-[320px] flex-col items-center justify-center text-center"
               >
-                <div className="grid h-14 w-14 place-items-center rounded-full bg-teal-soft font-mono text-2xl text-teal-bright">
+                <div className="grid h-14 w-14 place-items-center rounded-full bg-[#78efeb]/15 font-mono text-2xl text-[#3DB5B0]">
                   ✓
                 </div>
                 <h3
@@ -150,7 +150,7 @@ export default function Book() {
                   it didn&apos;t open, email us directly at{" "}
                   <a
                     href={`mailto:${SITE.email}`}
-                    className="font-medium text-teal-bright underline"
+                    className="font-medium text-navy underline"
                   >
                     {SITE.email}
                   </a>
@@ -230,7 +230,7 @@ export default function Book() {
                 <button
                   type="submit"
                   data-cursor="book"
-                  className="btn-ink btn-press inline-flex w-full items-center justify-center bg-navy px-6 py-3.5 text-sm font-semibold text-cream [--ink-fill:var(--color-navy-2)]"
+                  className="btn-ink btn-press inline-flex w-full items-center justify-center bg-[#78efeb] px-6 py-3.5 text-sm font-semibold text-navy [--ink-fill:var(--color-navy)]"
                 >
                   Book my strategy call
                 </button>
@@ -268,7 +268,7 @@ function Field({
         {label}
         {required && (
           <>
-            <span className="text-oxblood-bright" aria-hidden="true">
+            <span className="text-red-500" aria-hidden="true">
               {" "}
               *
             </span>
@@ -278,7 +278,7 @@ function Field({
       </label>
       {children}
       {error && (
-        <p id={`${name}-error`} className="mt-1.5 text-xs font-medium text-oxblood-bright">
+        <p id={`${name}-error`} className="mt-1.5 text-xs font-medium text-red-500">
           {error}
         </p>
       )}

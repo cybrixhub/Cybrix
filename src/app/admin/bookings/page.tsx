@@ -27,7 +27,7 @@ export default function Bookings() {
           href={SITE.calendarUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-ink btn-press inline-flex items-center gap-2 border border-navy bg-navy px-4 py-2 text-sm font-semibold text-cream [--ink-fill:var(--color-navy-2)]"
+          className="btn-ink btn-press inline-flex items-center gap-2 border border-navy bg-navy px-4 py-2 text-sm font-semibold text-white [--ink-fill:var(--color-navy-2)]"
         >
           Open Cal.com ↗
         </a>

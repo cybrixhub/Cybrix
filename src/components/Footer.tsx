@@ -7,12 +7,12 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden bg-navy text-cream">
+    <footer className="relative overflow-hidden bg-navy text-white">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent to-[#0a1430]"
       />
-      <ThreadScene color="#bcd0e6" alpha={0.2} rise={0.5} />
+      <ThreadScene color="#B9CBE4" alpha={0.15} rise={0.5} />
       <div className="container-x relative z-10 pb-10 pt-16">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div className="max-w-sm">
@@ -100,12 +100,12 @@ export default function Footer() {
         {/* Giant woven colophon wordmark */}
         <WovenWordmark
           text={`${SITE.name}.`}
-          color="#f7efe4"
+          color="#FFFFFF"
           className="mt-14 h-[23vw] max-h-[20rem] w-full"
         />
 
-        <div className="mt-10 flex flex-col gap-3 border-t border-[#f7efe4]/20 pt-5 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-[#b9cbe4] sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-center gap-3 text-[#f7efe4]/85">
+        <div className="mt-10 flex flex-col gap-3 border-t border-white/20 pt-5 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-[#B9CBE4] sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-center gap-3 text-white/85">
             <Logo variant="mono" className="!h-5 !w-[36px]" />
             <p>© {year} {SITE.legalName} — all rights reserved</p>
           </div>

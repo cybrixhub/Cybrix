@@ -114,7 +114,7 @@ export default function Ticker() {
   return (
     <section
       aria-label="What we do, at a glance"
-      className="relative overflow-hidden border-y border-espresso-line bg-espresso py-5 text-cream"
+      className="relative overflow-hidden border-y border-navy-line bg-navy py-5 text-white"
     >
       <div
         ref={viewport}
@@ -135,12 +135,12 @@ export default function Ticker() {
             >
               <span
                 className={`font-display text-2xl italic tracking-tight ${
-                  ["text-cream", "text-teal-bright", "text-[#e8c9b4]"][i % 3]
+                  ["text-white", "text-[#78efeb]", "text-[#B9CBE4]"][i % 3]
                 }`}
               >
                 {item}
               </span>
-              <span className="font-mono text-sm text-teal-bright">/</span>
+              <span className="font-mono text-sm text-[#78efeb]">/</span>
             </span>
           ))}
         </div>
@@ -151,7 +151,7 @@ export default function Ticker() {
           type="button"
           onClick={() => setPaused((p) => !p)}
           aria-pressed={paused}
-          className="absolute bottom-1 right-2 z-10 px-2 py-1 font-mono text-[0.6rem] uppercase tracking-[0.18em] text-cream-soft transition-colors hover:text-cream"
+          className="absolute bottom-1 right-2 z-10 px-2 py-1 font-mono text-[0.6rem] uppercase tracking-[0.18em] text-[#B9CBE4] transition-colors hover:text-white"
         >
           {paused ? "▶ Play" : "❚❚ Pause"}
         </button>

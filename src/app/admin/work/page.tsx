@@ -128,7 +128,7 @@ export default function WorkManager() {
           </button>
           <button
             onClick={openAdd}
-            className="btn-ink btn-press inline-flex items-center gap-2 border border-navy bg-navy px-4 py-2 text-sm font-semibold text-cream [--ink-fill:var(--color-navy-2)]"
+            className="btn-ink btn-press inline-flex items-center gap-2 border border-navy bg-navy px-4 py-2 text-sm font-semibold text-white [--ink-fill:var(--color-navy-2)]"
           >
             + Add case study
           </button>
@@ -188,7 +188,7 @@ export default function WorkManager() {
           <div className="flex gap-2 pt-2">
             <button
               onClick={save}
-              className="btn-ink btn-press border border-navy bg-navy px-4 py-2 text-sm font-semibold text-cream [--ink-fill:var(--color-navy-2)]"
+              className="btn-ink btn-press border border-navy bg-navy px-4 py-2 text-sm font-semibold text-white [--ink-fill:var(--color-navy-2)]"
             >
               Save
             </button>
@@ -201,7 +201,7 @@ export default function WorkManager() {
             {editing !== null && (
               <button
                 onClick={() => remove(editing)}
-                className="ml-auto px-4 py-2 text-sm text-oxblood-bright hover:underline"
+                className="ml-auto px-4 py-2 text-sm text-red-500 hover:underline"
               >
                 Delete
               </button>

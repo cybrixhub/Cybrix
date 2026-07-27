@@ -4,30 +4,30 @@ import BrandMark from "./BrandMark";
 
 const PANEL_STYLES = [
   {
-    // Growth plans — warm editorial (the human, strategy-led work)
-    section: "bg-espresso text-cream",
-    line: "border-espresso-line",
-    displayNumber: "text-oxblood-bright",
-    pagination: "text-amber",
-    arrow: "text-amber",
-    muted: "text-cream-soft",
-    itemBg: "bg-espresso-2",
-    itemBorder: "border-espresso-line",
-    itemHover: "hover:bg-[#3a2f22]",
-    mark: "text-cream/[0.05]",
+    // Growth plans — light editorial (the human, strategy-led work)
+    section: "bg-[#0D2563] text-white",
+    line: "border-white/15",
+    displayNumber: "text-[#78efeb]",
+    pagination: "text-[#78efeb]",
+    arrow: "text-[#78efeb]",
+    muted: "text-[#B9CBE4]",
+    itemBg: "bg-[#14317a]",
+    itemBorder: "border-white/15",
+    itemHover: "hover:bg-[#1B3D8F]",
+    mark: "text-white/[0.04]",
   },
   {
     // Automated systems — the logo's navy+teal (the tech, engine-led work)
-    section: "bg-navy text-cream",
-    line: "border-navy-line",
-    displayNumber: "text-teal-bright",
-    pagination: "text-teal-bright",
-    arrow: "text-teal-bright",
-    muted: "text-[#b9cbe4]",
+    section: "bg-navy text-white",
+    line: "border-white/15",
+    displayNumber: "text-[#78efeb]",
+    pagination: "text-[#78efeb]",
+    arrow: "text-[#78efeb]",
+    muted: "text-[#B9CBE4]",
     itemBg: "bg-navy-2",
-    itemBorder: "border-teal/25",
+    itemBorder: "border-[#78efeb]/25",
     itemHover: "hover:bg-[#1b2c60]",
-    mark: "text-teal/10",
+    mark: "text-[#78efeb]/10",
   },
 ] as const;
 

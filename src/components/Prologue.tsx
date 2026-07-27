@@ -68,11 +68,11 @@ export default function Prologue() {
     <section
       ref={root}
       aria-label="Manifesto"
-      className="relative overflow-hidden bg-espresso py-28 text-cream sm:py-40"
+      className="relative overflow-hidden bg-navy py-28 text-white sm:py-40"
     >
       <div className="bg-noise pointer-events-none absolute inset-0 opacity-[0.05]" />
       <div className="container-x relative z-10 text-center">
-        <p className="kicker text-teal-bright">
+        <p className="kicker text-[#78efeb]">
           <span aria-hidden="true">✦✦✦&ensp;</span>Prologue
           <span aria-hidden="true">&ensp;✦✦✦</span>
         </p>
