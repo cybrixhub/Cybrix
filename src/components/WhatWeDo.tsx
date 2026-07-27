@@ -5,19 +5,19 @@ import BrandMark from "./BrandMark";
 const PANEL_STYLES = [
   {
     // Growth plans — light editorial (the human, strategy-led work)
-    section: "bg-[#0D2563] text-white",
-    line: "border-white/15",
-    displayNumber: "text-[#78efeb]",
-    pagination: "text-[#78efeb]",
-    arrow: "text-[#78efeb]",
-    muted: "text-[#B9CBE4]",
-    itemBg: "bg-[#14317a]",
-    itemBorder: "border-white/15",
-    itemHover: "hover:bg-[#1B3D8F]",
-    mark: "text-white/[0.04]",
+    section: "bg-paper text-ink",
+    line: "border-line-strong",
+    displayNumber: "text-navy",
+    pagination: "text-navy",
+    arrow: "text-[#3DB5B0]",
+    muted: "text-ink-soft",
+    itemBg: "bg-white",
+    itemBorder: "border-line",
+    itemHover: "hover:bg-paper-2",
+    mark: "text-navy/[0.03]",
   },
   {
-    // Automated systems — the logo's navy+teal (the tech, engine-led work)
+    // Automated systems — dark navy + teal (the tech, engine-led work)
     section: "bg-navy text-white",
     line: "border-white/15",
     displayNumber: "text-[#78efeb]",

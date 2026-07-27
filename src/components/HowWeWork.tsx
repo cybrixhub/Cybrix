@@ -2,7 +2,8 @@ const STEPS = [
   {
     number: "01",
     color: "#14317a",
-    bg: "#F5F7FB",
+    bg: "#FFFFFF",
+    accent: "#14317a",
     label: "Audit",
     title: "We analyse your data",
     bullets: [
@@ -25,7 +26,8 @@ const STEPS = [
   {
     number: "02",
     color: "#1B3D8F",
-    bg: "#EDF0F7",
+    bg: "#E4EAF5",
+    accent: "#1B3D8F",
     label: "Strategy",
     title: "We build the content plan",
     bullets: [
@@ -50,7 +52,8 @@ const STEPS = [
   {
     number: "03",
     color: "#3DB5B0",
-    bg: "#F0FAFA",
+    bg: "#D6F5F3",
+    accent: "#3DB5B0",
     label: "Launch",
     title: "We launch your ad strategy",
     bullets: [
@@ -74,7 +77,9 @@ const STEPS = [
   {
     number: "04",
     color: "#0D2563",
-    bg: "#EDF0F7",
+    bg: "#0D2563",
+    accent: "#78efeb",
+    dark: true,
     label: "Pipeline",
     title: "We activate your systems",
     bullets: [
@@ -173,40 +178,71 @@ export default function HowWeWork() {
 
               {/* Card */}
               <div
-                className="flex h-full flex-col rounded-xl border border-line-strong/60 p-5 transition-transform duration-300 hover:-translate-y-1 sm:p-6"
-                style={{ backgroundColor: step.bg }}
+                className={`flex h-full flex-col overflow-hidden rounded-xl border p-5 shadow-md transition-transform duration-300 hover:-translate-y-1 sm:p-6 ${
+                  "dark" in step && step.dark
+                    ? "border-white/10 shadow-[0_8px_24px_rgba(13,37,99,0.35)]"
+                    : "border-line-strong/60 shadow-[0_4px_16px_rgba(20,49,122,0.08)]"
+                }`}
+                style={{
+                  backgroundColor: step.bg,
+                  borderTopWidth: "4px",
+                  borderTopColor: step.accent,
+                }}
               >
                 {/* Step circle + icon */}
                 <div className="mb-4 flex items-center gap-3">
                   <div
                     className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
-                    style={{ backgroundColor: step.color }}
+                    style={{ backgroundColor: "dark" in step && step.dark ? step.accent : step.color }}
                   >
                     {step.number}
                   </div>
-                  <div style={{ color: step.color }}>{step.icon}</div>
+                  <div style={{ color: "dark" in step && step.dark ? step.accent : step.color }}>{step.icon}</div>
                 </div>
 
                 {/* Title */}
-                <p className="mb-1 font-mono text-[0.6rem] uppercase tracking-[0.14em]" style={{ color: step.color }}>
+                <p
+                  className="mb-1 font-mono text-[0.6rem] uppercase tracking-[0.14em]"
+                  style={{ color: "dark" in step && step.dark ? step.accent : step.color }}
+                >
                   {step.label}
                 </p>
-                <h3 className="font-display text-lg font-medium leading-snug tracking-tight text-navy sm:text-xl">
+                <h3
+                  className={`font-display text-lg font-medium leading-snug tracking-tight sm:text-xl ${
+                    "dark" in step && step.dark ? "text-white" : "text-navy"
+                  }`}
+                >
                   {step.title}
                 </h3>
 
                 {/* Bullets */}
-                <ul className="mt-4 flex-1 space-y-2 border-t border-line-strong/40 pt-4">
+                <ul className={`mt-4 flex-1 space-y-2 border-t pt-4 ${
+                  "dark" in step && step.dark ? "border-white/15" : "border-line-strong/40"
+                }`}>
                   {step.bullets.map((b) => (
-                    <li key={b} className="flex items-start gap-2 text-sm text-ink-soft">
-                      <span className="mt-[0.3rem] h-1 w-1 shrink-0 rounded-full" style={{ backgroundColor: step.color }} />
+                    <li
+                      key={b}
+                      className={`flex items-start gap-2 text-sm ${
+                        "dark" in step && step.dark ? "text-[#B9CBE4]" : "text-ink-soft"
+                      }`}
+                    >
+                      <span
+                        className="mt-[0.3rem] h-1 w-1 shrink-0 rounded-full"
+                        style={{ backgroundColor: "dark" in step && step.dark ? step.accent : step.color }}
+                      />
                       {b}
                     </li>
                   ))}
                 </ul>
 
                 {/* Blurb */}
-                <p className="mt-4 rounded-lg border border-line-strong/40 bg-white/60 px-3 py-2.5 text-xs leading-relaxed text-muted italic">
+                <p
+                  className={`mt-4 rounded-lg border px-3 py-2.5 text-xs leading-relaxed italic ${
+                    "dark" in step && step.dark
+                      ? "border-white/10 bg-white/5 text-[#8ba0c0]"
+                      : "border-line-strong/40 bg-white/60 text-muted"
+                  }`}
+                >
                   {step.blurb}
                 </p>
               </div>
