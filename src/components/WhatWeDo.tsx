@@ -67,8 +67,21 @@ export default function WhatWeDo() {
                 </span>
               </div>
 
+              {/* Mobile — number + title */}
+              <div className="mt-4 md:hidden">
+                <span
+                  aria-hidden="true"
+                  className={`font-display text-5xl font-medium italic sm:text-6xl ${s.displayNumber}`}
+                >
+                  {group.number}
+                </span>
+                <h3 className="mt-2 font-display text-2xl font-medium leading-[1.05] tracking-tight text-balance sm:text-3xl">
+                  {group.title}
+                </h3>
+              </div>
+
               <div className="mt-4 grid gap-6 md:mt-10 md:grid-cols-[0.9fr_1.1fr] md:gap-14">
-                {/* Left — the group intro (desktop only; mobile shows items only) */}
+                {/* Left — the group intro (desktop) */}
                 <div className="hidden md:block md:sticky md:top-24 md:self-start">
                   <span
                     aria-hidden="true"
