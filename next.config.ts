@@ -12,12 +12,12 @@ import type { NextConfig } from "next";
  */
 const csp = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://app.cal.com",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://app.cal.com https://www.youtube.com https://www.youtube-nocookie.com",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob: https://cal.com https://app.cal.com",
   "font-src 'self' data:",
   "connect-src 'self' https://vitals.vercel-insights.com https://va.vercel-scripts.com https://cal.com https://app.cal.com",
-  "frame-src 'self' https://cal.com https://app.cal.com",
+  "frame-src 'self' https://cal.com https://app.cal.com https://www.youtube.com https://www.youtube-nocookie.com",
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "form-action 'self' mailto:",
