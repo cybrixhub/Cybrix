@@ -12,7 +12,7 @@ import type { NextConfig } from "next";
  */
 const csp = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://app.cal.com",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://app.cal.com https://www.youtube-nocookie.com",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob: https://cal.com https://app.cal.com",
   "font-src 'self' data:",
@@ -75,6 +75,7 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       { source: "/(.*)", headers: securityHeaders },
+
       // Long-lived caches for immutable static assets
       {
         source: "/fonts/(.*)",
@@ -85,6 +86,7 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+
       {
         source: "/img/(.*)",
         headers: [
@@ -94,6 +96,7 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+
       {
         source: "/brand/(.*)",
         headers: [
@@ -103,6 +106,7 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+
       {
         source: "/case-results/(.*)",
         headers: [
@@ -112,6 +116,7 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+
       {
         source: "/hero-bg.jpg",
         headers: [

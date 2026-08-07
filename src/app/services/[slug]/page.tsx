@@ -186,7 +186,7 @@ export default async function ServicePage({
         </section>
 
         {/* Service overview video — auto-plays on load; drop the file to activate */}
-        <ServiceVideo slug={service.slug} name={service.name} />
+        <ServiceVideo slug={service.slug} name={service.name} youtubeId={service.youtubeId} />
 
         {/* Book CTA — shakes after 2 s to pull the eye */}
         <div className="container-x -mt-4 pb-12 text-center sm:pb-16">

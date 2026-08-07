@@ -93,6 +93,7 @@ export type ServiceItem = {
   fitFor?: string[];
   faqs?: { question: string; answer: string }[];
   relatedCase?: string;
+  youtubeId?: string;
 };
 
 export type ServiceGroup = {
@@ -161,6 +162,7 @@ export const SERVICE_GROUPS: ServiceGroup[] = [
             answer: "Qualification funnels capture academic background, budget, destination preference and programme interest before any enquiry reaches your team. Counsellors only see prospects worth their time.",
           },
         ],
+        youtubeId: "8QD2faW2aMI",
       },
       {
         slug: "deal-drive",

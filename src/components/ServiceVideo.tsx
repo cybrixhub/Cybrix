@@ -2,15 +2,22 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export default function ServiceVideo({ slug, name }: { slug: string; name: string }) {
+type Props = {
+  slug: string;
+  name: string;
+  youtubeId?: string;
+};
+
+export default function ServiceVideo({ slug, name, youtubeId }: Props) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [missing, setMissing] = useState(false);
 
   useEffect(() => {
+    if (youtubeId) return;
     const vid = videoRef.current;
     if (!vid) return;
     vid.play().catch(() => {});
-  }, []);
+  }, [youtubeId]);
 
   return (
     <div className="container-x py-16 sm:py-20">
@@ -20,7 +27,7 @@ export default function ServiceVideo({ slug, name }: { slug: string; name: strin
           <span className="flex min-w-0 items-center gap-2">
             <span aria-hidden="true" className="h-2 w-2 shrink-0 rounded-full bg-teal-bright" />
             <span className="truncate font-mono text-[0.6rem] uppercase tracking-[0.16em] text-ink-soft">
-              {slug}.mp4
+              {youtubeId ? "youtube · service overview" : `${slug}.mp4`}
             </span>
           </span>
           <span className="ml-3 shrink-0 font-mono text-[0.6rem] uppercase tracking-[0.12em] text-muted">
@@ -29,45 +36,57 @@ export default function ServiceVideo({ slug, name }: { slug: string; name: strin
         </div>
 
         {/* Video */}
-        <div className="relative aspect-video bg-navy">
-          <video
-            ref={videoRef}
-            src={`/videos/${slug}.mp4`}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            onError={() => setMissing(true)}
-            onCanPlay={() => setMissing(false)}
-            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${
-              missing ? "opacity-0" : "opacity-100"
-            }`}
-          />
+        <div className="relative aspect-video bg-espresso">
+          {youtubeId ? (
+            <iframe
+              className="absolute inset-0 h-full w-full"
+              src={`https://www.youtube-nocookie.com/embed/${youtubeId}?rel=0&modestbranding=1`}
+              title={`${name} — service overview`}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          ) : (
+            <>
+              <video
+                ref={videoRef}
+                src={`/videos/${slug}.mp4`}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                onError={() => setMissing(true)}
+                onCanPlay={() => setMissing(false)}
+                className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${
+                  missing ? "opacity-0" : "opacity-100"
+                }`}
+              />
 
-          {/* Placeholder */}
-          <div
-            aria-hidden="true"
-            className={`absolute inset-0 flex flex-col items-center justify-center gap-5 transition-opacity duration-300 ${
-              missing ? "opacity-100" : "opacity-0 pointer-events-none"
-            }`}
-          >
-            <div className="bg-grain absolute inset-0 opacity-20" />
-            <div className="relative flex flex-col items-center gap-4 text-center">
-              <span className="grid h-16 w-16 place-items-center rounded-full bg-white text-navy">
-                <svg width="16" height="19" viewBox="0 0 16 19" fill="none" aria-hidden="true">
-                  <path d="M1 1.5 L15 9.5 L1 17.5 Z" fill="currentColor" />
-                </svg>
-              </span>
-              <p className="font-display text-lg font-medium italic text-[#B9CBE4]">
-                {name} — overview video
-              </p>
-              <p className="font-mono text-[0.6rem] uppercase tracking-[0.18em] text-[#8ba0c0]">
-                <span className="sm:hidden">Video coming soon</span>
-                <span className="hidden sm:inline">Drop /public/videos/{slug}.mp4 to activate</span>
-              </p>
-            </div>
-          </div>
+              {/* Placeholder shown while video is missing */}
+              <div
+                aria-hidden="true"
+                className={`absolute inset-0 flex flex-col items-center justify-center gap-5 transition-opacity duration-300 ${
+                  missing ? "opacity-100" : "opacity-0 pointer-events-none"
+                }`}
+              >
+                <div className="bg-grain absolute inset-0 opacity-20" />
+                <div className="relative flex flex-col items-center gap-4 text-center">
+                  <span className="grid h-16 w-16 place-items-center rounded-full bg-[#f7efe4] text-espresso">
+                    <svg width="16" height="19" viewBox="0 0 16 19" fill="none" aria-hidden="true">
+                      <path d="M1 1.5 L15 9.5 L1 17.5 Z" fill="currentColor" />
+                    </svg>
+                  </span>
+                  <p className="font-display text-lg font-medium italic text-cream-soft">
+                    {name} — overview video
+                  </p>
+                  <p className="font-mono text-[0.6rem] uppercase tracking-[0.18em] text-[#8ba0c0]">
+                    <span className="sm:hidden">Video coming soon</span>
+                    <span className="hidden sm:inline">Drop /public/videos/{slug}.mp4 to activate</span>
+                  </p>
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
