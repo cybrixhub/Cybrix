@@ -169,9 +169,12 @@ export default function Hero() {
           {/* Left-aligned pitch over the full-bleed backdrop */}
           <div className="container-x flex flex-1 items-center py-10">
             <div className="max-w-2xl">
-              <span data-h="kicker" className="kicker text-[#e8c9b4]">
-                Social &amp; content studio — for startups
-              </span>
+              <span
+  data-h="kicker"
+  className="kicker !font-semibold text-[0.7rem] tracking-[0.12em] text-white"
+>
+  Social &amp; content studio — for startups
+</span>
 
               <h1 className="mt-6 font-display text-[11.5vw] font-medium leading-[1.02] tracking-[-0.015em] sm:text-6xl xl:text-7xl">
                 <span className="hero-line line-clip block">
@@ -179,8 +182,8 @@ export default function Hero() {
                 </span>
                 <span className="hero-line line-clip block">
                   <span className="block">
-                    <em className="relative inline-block pr-1 italic">
-                      impossible to ignore
+                    <span className="relative inline-block pr-1">
+  impossible to ignore
                       <span className="not-italic">.</span>
                       <svg
                         data-h="flourish"
@@ -197,7 +200,7 @@ export default function Hero() {
                           strokeLinecap="round"
                         />
                       </svg>
-                    </em>
+                    </span>
                   </span>
                 </span>
               </h1>
@@ -235,12 +238,11 @@ className="btn-ink btn-press inline-flex items-center justify-center gap-2 bg-[#
               </div>
 
               <p
-                data-h="cta-note"
-                className="mt-4 font-mono text-[0.62rem] uppercase tracking-[0.16em] text-[#e8c9b4]"
-              >
-                Free 30-minute call · leave with a plan · no pitch
-              </p>
-
+  data-h="cta-note"
+  className="mt-4 font-sans text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-white"
+>
+  Free 30-minute call · leave with a plan · no pitch
+</p>
               <PlatformLogos
                 data-h="logos"
                 className="mt-9 flex items-center gap-5 sm:gap-6"
@@ -267,9 +269,9 @@ className="btn-ink btn-press inline-flex items-center justify-center gap-2 bg-[#
                   href="#services"
                   className="group flex items-center gap-3 rounded-md border border-[#f7efe4]/12 bg-[#f7efe4]/[0.04] px-4 py-2.5 transition-colors hover:border-[#f7efe4]/30 hover:bg-[#f7efe4]/[0.08]"
                 >
-                  <span className="font-mono text-[0.6rem] uppercase tracking-[0.14em] text-[#e8c9b4]">
-                    48hrs — brief to first drop
-                  </span>
+                 <span className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-white">
+  48hrs — brief to first drop
+</span>
                   <span aria-hidden="true" className="text-teal-bright">
                     →
                   </span>
@@ -278,9 +280,9 @@ className="btn-ink btn-press inline-flex items-center justify-center gap-2 bg-[#
                   href="#work"
                   className="group hidden items-center gap-3 rounded-md border border-[#f7efe4]/12 bg-[#f7efe4]/[0.04] px-4 py-2.5 transition-colors hover:border-[#f7efe4]/30 hover:bg-[#f7efe4]/[0.08] xl:flex"
                 >
-                  <span className="font-mono text-[0.6rem] uppercase tracking-[0.14em] text-[#e8c9b4]">
-                    Cases — numbers we&apos;re proud of
-                  </span>
+                  <span className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-white">
+  Cases — numbers we&apos;re proud of
+</span>
                   <span aria-hidden="true" className="text-teal-bright">
                     →
                   </span>
@@ -289,33 +291,37 @@ className="btn-ink btn-press inline-flex items-center justify-center gap-2 bg-[#
 
               {/* video card */}
               <a
-                href="#founder"
-                data-cursor="play"
-                className="group flex items-center gap-3 justify-self-start rounded-md border border-[#f7efe4]/12 bg-[#f7efe4]/[0.04] p-1.5 pr-4 transition-colors hover:border-[#f7efe4]/30 hover:bg-[#f7efe4]/[0.08] sm:justify-self-end"
-              >
-                <span className="relative block h-12 w-16 overflow-hidden rounded">
-                  <Image
-                    src="/img/factoid-studio.jpg"
-                    alt=""
-                    fill
-                    sizes="64px"
-                    quality={70}
-                    className="object-cover"
-                  />
-                  <span className="absolute inset-0 grid place-items-center bg-black/35">
-                    <span className="grid h-6 w-6 place-items-center rounded-full bg-[#f7efe4] text-espresso transition-transform duration-300 group-hover:scale-110">
-                      <svg width="8" height="10" viewBox="0 0 8 10" aria-hidden="true">
-                        <path d="M0.5 0.8 L7.5 5 L0.5 9.2 Z" fill="currentColor" />
-                      </svg>
-                    </span>
-                  </span>
-                </span>
-                <span className="font-mono text-[0.6rem] uppercase tracking-[0.14em] leading-relaxed text-[#e8c9b4]">
-                  {FOUNDER.kicker}
-                  <br />
-                  <span className="text-[#f7efe4]">{FOUNDER.duration}</span>
-                </span>
-              </a>
+  href="#founder"
+  data-cursor="play"
+  className="group flex items-center gap-3 justify-self-start rounded-md border border-[#f7efe4]/12 bg-[#f7efe4]/[0.04] p-1.5 pr-4 transition-colors hover:border-[#f7efe4]/30 hover:bg-[#f7efe4]/[0.08] sm:justify-self-end"
+>
+  <span className="relative block h-12 w-16 overflow-hidden rounded">
+    <Image
+      src="/img/factoid-studio.jpg"
+      alt=""
+      fill
+      sizes="64px"
+      quality={70}
+      className="object-cover"
+    />
+
+    <span className="absolute inset-0 grid place-items-center bg-black/35">
+      <span className="grid h-6 w-6 place-items-center rounded-full bg-[#f7efe4] text-espresso transition-transform duration-300 group-hover:scale-110">
+        <svg width="8" height="10" viewBox="0 0 8 10" aria-hidden="true">
+          <path d="M0.5 0.8 L7.5 5 L0.5 9.2 Z" fill="currentColor" />
+        </svg>
+      </span>
+    </span>
+  </span>
+
+  <span className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.1em] leading-relaxed text-white">
+    {FOUNDER.kicker}
+    <br />
+    <span className="font-sans text-sm font-bold text-white">
+      {FOUNDER.duration}
+    </span>
+  </span>
+</a>
             </div>
           </div>
 
