@@ -30,7 +30,7 @@ export default function Leads() {
       <section>
         <p className="kicker text-muted mb-3">Lifetime track record</p>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-          <InfoCard label="Founders backed" value="120+" sub="since 2020" />
+          <InfoCard label="Founders backed" value="120+" sub="since 2015" />
           <InfoCard label="Impressions" value="18M+" sub="across all channels" />
           <InfoCard label="Raised by clients" value="$40M+" sub="post-engagement" />
           <InfoCard label="Years operating" value="6" sub="compounding" />

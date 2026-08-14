@@ -220,20 +220,21 @@ export default function Hero() {
               >
                 <Magnetic>
                   <a
-                    href="#book"
-                    data-cursor="book"
-className="btn-ink btn-press inline-flex items-center justify-center gap-2 bg-[#78EFEB] px-8 py-4 text-sm font-semibold text-[#14317A] shadow-[0_14px_28px_-12px_rgba(14,26,58,0.85)] hover:bg-[#14317A] hover:text-white transition-all duration-300 [--ink-fill:var(--color-navy-2)]"                  >
-                    Book a strategy call
-                  </a>
+  href="#book"
+  data-cursor="book"
+  className="btn-ink btn-press inline-flex items-center justify-center gap-2 bg-[#14317A] px-8 py-4 text-sm font-semibold text-white shadow-[0_14px_28px_-12px_rgba(14,26,58,0.85)] hover:bg-[#62C3C0] hover:text-[#14317A] transition-all duration-300 [--ink-fill:#62C3C0]"
+>
+  Book a strategy call
+</a>
                 </Magnetic>
                 <Magnetic strength={0.25}>
                   <a
-                    href="#work"
-                    data-cursor="view"
-                    className="btn-ink btn-press inline-flex items-center justify-center gap-2 border border-[#f7efe4]/30 bg-[#f7efe4]/5 px-8 py-4 text-sm font-semibold text-[#f7efe4] [--ink-fill:#f7efe4] hover:text-espresso focus-visible:text-espresso"
-                  >
-                    See the work <span aria-hidden="true">→</span>
-                  </a>
+  href="#work"
+  data-cursor="view"
+  className="btn-ink btn-press inline-flex items-center justify-center gap-2 border border-white bg-transparent px-8 py-4 text-sm font-semibold text-white transition-all duration-300 [--ink-fill:#FFFFFF] hover:text-[#14317A] focus-visible:text-[#14317A]"
+>
+  See the work <span aria-hidden="true">→</span>
+</a>
                 </Magnetic>
               </div>
 
@@ -255,7 +256,7 @@ className="btn-ink btn-press inline-flex items-center justify-center gap-2 bg-[#
             <div className="grid grid-cols-1 items-center gap-4 border-t border-[#f7efe4]/12 py-4 sm:grid-cols-[auto_1fr_auto]">
               {/* rating */}
               <div className="flex items-baseline gap-3">
-                <span aria-hidden="true" className="text-sm text-amber">
+                <span aria-hidden="true" className="text-sm text-[#FFD700]">
                   ★★★★★
                 </span>
                 <span className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-[#e8c9b4]">
@@ -329,7 +330,7 @@ className="btn-ink btn-press inline-flex items-center justify-center gap-2 bg-[#
           <div data-h="wordmark" className="relative mt-2 pb-4 sm:pb-6">
             <span
               aria-hidden="true"
-              className="kicker absolute -top-3 left-5 hidden items-center gap-3 text-[#e8c9b4] lg:flex"
+              className="kicker absolute -top-3 left-5 hidden items-center gap-3 text-white lg:flex"
             >
               Scroll
               <span className="inline-block h-9 w-px bg-[#f7efe4]/40" />
@@ -341,10 +342,10 @@ className="btn-ink btn-press inline-flex items-center justify-center gap-2 bg-[#
               <Stamp />
             </div>
             <WovenWordmark
-              text={`${SITE.name}.`}
-              color="#f7efe4"
-              className="h-[21vw] max-h-[19rem] w-full"
-            />
+  text={`${SITE.name}.`}
+  color="#FFFFFF"
+  className="h-[21vw] max-h-[19rem] w-full"
+/>
           </div>
         </div>
       </div>

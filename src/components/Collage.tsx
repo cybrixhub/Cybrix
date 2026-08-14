@@ -144,12 +144,12 @@ export default function Collage() {
                   Cybrix<span className="not-italic text-[#78efeb]">.</span>
                 </p>
                 <p className="kicker mt-2 text-[#B9CBE4]">
-                  Studio · est. 2020
+                  Studio · EST. 2012
                 </p>
               </div>
             </div>
           </Reveal>
-        </div>
+        </div> 
       </div>
     </section>
   );

@@ -45,7 +45,6 @@ const MARKS: { name: string; path: React.ReactNode }[] = [
     ),
   },
 ];
-
 export default function PlatformLogos({
   className = "",
   ...rest
@@ -55,11 +54,24 @@ export default function PlatformLogos({
       <span className="sr-only">
         We grow brands on Meta, Instagram, TikTok, LinkedIn, X and YouTube.
       </span>
+
       {MARKS.map((mark) => (
         <span
           key={mark.name}
           title={mark.name}
-          className="text-[#f7efe4]/65 transition-colors hover:text-[#f7efe4]"
+          className={`transition-colors duration-300 ${
+            mark.name === "Meta"
+              ? "text-white hover:text-[#1877F2]"
+              : mark.name === "Instagram"
+                ? "text-white hover:text-[#E4405F]"
+                : mark.name === "TikTok"
+                  ? "text-white hover:text-black"
+                  : mark.name === "LinkedIn"
+                    ? "text-white hover:text-[#0A66C2]"
+                    : mark.name === "X"
+                      ? "text-white hover:text-black"
+                      : "text-white hover:text-[#FF0000]"
+          }`}
         >
           <svg
             viewBox="0 0 24 24"

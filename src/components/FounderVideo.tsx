@@ -13,7 +13,7 @@ export default function FounderVideo() {
         <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <div>
             <Reveal>
-              <span className="kicker text-navy">{FOUNDER.kicker}</span>
+              <span className="kicker text-navy !font-bold">{FOUNDER.kicker}</span>
             </Reveal>
             <h2
               data-split
@@ -37,9 +37,9 @@ export default function FounderVideo() {
                     aria-hidden="true"
                     className="h-2 w-2 rounded-full bg-navy"
                   />
-                  <span className="kicker text-ink-soft">{FOUNDER.file}</span>
+                  <span className="kicker text-ink-soft !font-bold">{FOUNDER.file}</span>
                 </span>
-                <span className="kicker text-ink-soft">{FOUNDER.duration}</span>
+                <span className="kicker text-ink-soft !font-bold">{FOUNDER.duration}</span>
               </div>
               <div className="relative flex aspect-video items-center justify-center overflow-hidden rounded-b-lg border border-line-strong bg-navy">
                 <div className="bg-grain absolute inset-0 opacity-20" />

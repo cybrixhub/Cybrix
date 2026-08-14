@@ -14,7 +14,7 @@ export const SITE = {
   /** Placeholder — point this at your real inbox before launch. */
   email: "hello@cybrix.uk",
   ogImage: "/opengraph-image",
-  established: "2020",
+  established: "2015",
   calendarUrl: "https://cal.com/cybrix-talha/30min",
 } as const;
 

@@ -39,14 +39,14 @@ export default function Home() {
         <div className="bg-paper pb-12 text-center sm:pb-16">
           <ShakeCta>
             <a
-              href={SITE.calendarUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-cursor="book"
-              className="btn-ink btn-press inline-flex items-center gap-2 border border-[#78efeb] bg-[#78efeb] px-8 py-4 text-sm font-semibold text-navy [--ink-fill:var(--color-navy)]"
-            >
-              Book a strategy call
-            </a>
+  href={SITE.calendarUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  data-cursor="book"
+  className="btn-ink btn-press inline-flex items-center gap-2 border border-[#14317A] bg-[#14317A] px-8 py-4 text-sm font-semibold text-white hover:bg-[#78EFEB] hover:text-[#14317A] transition-all duration-300 [--ink-fill:#62C3C0]"
+>
+  Book a strategy call
+</a>
           </ShakeCta>
         </div>
         <Ticker />

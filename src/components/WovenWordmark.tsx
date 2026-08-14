@@ -77,7 +77,7 @@ export default function WovenWordmark({
       octx.textAlign = "center";
       octx.textBaseline = "middle";
       octx.fillStyle = "#fff";
-      octx.fillText(text, width / 2, height * 0.5);
+      octx.fillText(text, width / 2, height * 0.44);
 
       // Every contiguous vertical run per column becomes its own strand,
       // so counters and letter shapes survive the weave.

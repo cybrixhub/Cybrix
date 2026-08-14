@@ -134,7 +134,7 @@ export default function Ticker() {
               className="flex items-baseline gap-8 whitespace-nowrap"
             >
               <span
-                className={`font-display text-2xl italic tracking-tight ${
+                className={`font-display text-2xl tracking-tight ${
                   ["text-white", "text-[#78efeb]", "text-[#B9CBE4]"][i % 3]
                 }`}
               >
