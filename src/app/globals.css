@@ -134,7 +134,7 @@ html.lenis body {
     font-size: 0.7rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    font-weight: 500;
+    font-weight: 600;
   }
   .kicker::before {
     content: "";
