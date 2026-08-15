@@ -75,7 +75,7 @@ export default function WhatWeDo() {
                 >
                   {group.number}
                 </span>
-                <h3 className="mt-2 font-display text-2xl font-medium leading-[1.05] tracking-tight text-balance sm:text-3xl">
+                <h3 className="mt-2 font-display text-2xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-3xl">
                   {group.title}
                 </h3>
               </div>
