@@ -3,6 +3,15 @@
  * Server component; the hero staggers its children in on load.
  */
 
+const BRAND_COLORS: Record<string, string> = {
+  Meta: "#1877F2",
+  Instagram: "#E4405F",
+  TikTok: "#00F2EA",
+  LinkedIn: "#0A66C2",
+  X: "#ffffff",
+  YouTube: "#FF0000",
+};
+
 const MARKS: { name: string; path: React.ReactNode }[] = [
   {
     name: "Meta",
@@ -59,7 +68,10 @@ export default function PlatformLogos({
         <span
           key={mark.name}
           title={mark.name}
-          className="text-[#f7efe4]/65 transition-colors hover:text-[#f7efe4]"
+          className="text-white/70 transition-colors duration-300"
+          style={{ ["--brand" as string]: BRAND_COLORS[mark.name] || "#fff" }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = BRAND_COLORS[mark.name] || "#fff")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "")}
         >
           <svg
             viewBox="0 0 24 24"

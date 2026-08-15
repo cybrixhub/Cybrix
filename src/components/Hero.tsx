@@ -68,8 +68,6 @@ export default function Hero() {
         )
         .from('[data-h="stamp"]', { opacity: 0, duration: 0.8 }, 1.8);
 
-      // Exit: the hero mats into the black surround; the plate photo pulls
-      // back inside its frame.
       const scrub = {
         trigger: root.current,
         start: "top top",
@@ -93,7 +91,6 @@ export default function Hero() {
         scrollTrigger: scrub,
       });
 
-      // Ambient: the softbox glow breathes across the dark stage.
       gsap.to('[data-h="glow"]', {
         xPercent: -20,
         yPercent: 10,
@@ -112,14 +109,12 @@ export default function Hero() {
     <section
       id="top"
       ref={root}
-      className="relative bg-[#0f0c08] text-[#f7efe4]"
+      className="relative bg-[#0B1A3A] text-white"
     >
-      {/* Everything lives inside the frame so the scroll-out can mat it */}
       <div
         data-h="frame"
-        className="relative overflow-hidden bg-[#14100b] will-change-transform"
+        className="relative overflow-hidden bg-[#0B1A3A] will-change-transform"
       >
-        {/* full-bleed backdrop photo */}
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 overflow-hidden"
@@ -132,45 +127,34 @@ export default function Hero() {
             priority
             sizes="100vw"
             quality={78}
-            className="object-cover will-change-transform [filter:saturate(1.06)]"
+            className="object-cover"
           />
-          {/* copy shade — dark only where the text sits */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0f0c08]/85 via-[#0f0c08]/25 to-transparent" />
-          {/* bottom fade into the strip */}
-          <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-b from-transparent to-[#0f0c08]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0B1A3A]/90 via-[#0B1A3A]/30 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-b from-transparent to-[#0B1A3A]" />
         </div>
-
-        {/* breathing softbox glow */}
         <div
           data-h="glow"
           aria-hidden="true"
-          className="pointer-events-none absolute -top-[24%] left-[58%] h-[70vw] w-[70vw] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(60,111,224,0.26),rgba(60,111,224,0.06)_45%,transparent_72%)] opacity-30 will-change-transform"
+          className="pointer-events-none absolute -top-[24%] left-[58%] h-[70vw] w-[70vw] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(120,239,235,0.2),rgba(120,239,235,0.06)_45%,transparent_72%)] opacity-30 will-change-transform"
         />
-        {/* cool counter-glow */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -bottom-[12%] -left-[8%] h-[52vw] w-[52vw] rounded-full bg-[radial-gradient(closest-side,rgba(123,229,216,0.16),rgba(123,229,216,0.05)_50%,transparent_72%)] opacity-70"
+          className="pointer-events-none absolute -bottom-[12%] -left-[8%] h-[52vw] w-[52vw] rounded-full bg-[radial-gradient(closest-side,rgba(120,239,235,0.14),rgba(120,239,235,0.04)_50%,transparent_72%)] opacity-70"
         />
-        <ThreadScene color="#f2d9c4" alpha={0.14} rise={0.3} />
-
-        {/* scroll-exit veil */}
+        <ThreadScene color="#B9CBE4" alpha={0.14} rise={0.3} />
         <div
           data-h="veil"
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-20 bg-black opacity-0"
+          className="pointer-events-none absolute inset-0 z-20 bg-[#0B1A3A] opacity-0"
         />
 
         <div
           data-h="content"
           className="relative z-10 flex min-h-svh flex-col pt-24 sm:pt-28"
         >
-          {/* Left-aligned pitch over the full-bleed backdrop */}
           <div className="container-x flex flex-1 items-center py-10">
             <div className="max-w-2xl">
-              <span
-                data-h="kicker"
-                className="kicker !font-semibold text-[0.7rem] tracking-[0.12em] text-white"
-              >
+              <span data-h="kicker" className="kicker font-semibold text-white">
                 Social &amp; content studio — for startups
               </span>
 
@@ -188,7 +172,7 @@ export default function Hero() {
                         aria-hidden="true"
                         viewBox="0 0 320 12"
                         preserveAspectRatio="none"
-                        className="absolute -bottom-2 left-0 h-2.5 w-[calc(100%-0.4em)] text-teal-bright sm:-bottom-3"
+                        className="absolute -bottom-2 left-0 h-2.5 w-[calc(100%-0.4em)] text-[#78efeb] sm:-bottom-3"
                       >
                         <path
                           d="M2 9 C 60 3, 140 2, 318 6"
@@ -205,7 +189,7 @@ export default function Hero() {
 
               <p
                 data-h="sub"
-                className="mt-7 max-w-lg text-lg leading-relaxed text-pretty text-[#e5d5c2]/90"
+                className="mt-7 max-w-lg text-lg leading-relaxed text-white/70 text-pretty"
               >
                 Cybrix is the social &amp; content studio behind startups that
                 punch above their size. We turn attention into pipeline — not
@@ -218,11 +202,9 @@ export default function Hero() {
               >
                 <Magnetic>
                   <a
-                    href={SITE.calendarUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="#book"
                     data-cursor="book"
-                    className="btn-ink btn-press inline-flex items-center justify-center gap-2 bg-[#78EFEB] px-8 py-4 text-sm font-semibold text-[#14317A] shadow-[0_14px_28px_-12px_rgba(14,26,58,0.85)] transition-all duration-300 hover:bg-[#14317A] hover:text-white [--ink-fill:var(--color-navy-2)]"
+                    className="btn-ink btn-press inline-flex items-center justify-center gap-2 bg-navy px-8 py-4 text-sm font-semibold text-white shadow-[0_14px_28px_-12px_rgba(20,49,122,0.6)] transition-colors duration-300 [--ink-fill:#78efeb] hover:bg-[#78efeb] hover:text-navy"
                   >
                     Book a strategy call
                   </a>
@@ -231,18 +213,18 @@ export default function Hero() {
                   <a
                     href="#work"
                     data-cursor="view"
-                    className="btn-ink btn-press inline-flex items-center justify-center gap-2 border border-[#f7efe4]/30 bg-[#f7efe4]/5 px-8 py-4 text-sm font-semibold text-[#f7efe4] [--ink-fill:#f7efe4] hover:text-espresso focus-visible:text-espresso"
+                    className="btn-ink btn-press inline-flex items-center justify-center gap-2 border border-white bg-transparent px-8 py-4 text-sm font-semibold text-white transition-colors duration-300 [--ink-fill:#ffffff] hover:bg-white hover:text-navy"
                   >
-                    See the work <span aria-hidden="true">→</span>
+                    See the work <span aria-hidden="true">&rarr;</span>
                   </a>
                 </Magnetic>
               </div>
 
               <p
                 data-h="cta-note"
-                className="mt-4 font-sans text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-white"
+                className="mt-4 font-mono text-[0.62rem] uppercase tracking-[0.16em] text-white"
               >
-                Free 30-minute call · leave with a plan · no pitch
+                Free 30-minute call &middot; leave with a plan &middot; no pitch
               </p>
 
               <PlatformLogos
@@ -252,46 +234,46 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Bottom strip — rating, teasers, video card */}
           <div data-h="meta" className="container-x">
-            <div className="grid grid-cols-1 items-center gap-4 border-t border-[#f7efe4]/12 py-4 sm:grid-cols-[auto_1fr_auto]">
-              {/* rating */}
+            <div className="grid grid-cols-1 items-center gap-4 border-t border-white/12 py-4 sm:grid-cols-[auto_1fr_auto]">
               <div className="flex items-baseline gap-3">
-                <span aria-hidden="true" className="text-sm text-amber">
-                  ★★★★★
+                <span aria-hidden="true" className="text-sm text-[#FFD700]">
+                  &#9733;&#9733;&#9733;&#9733;&#9733;
                 </span>
-                <span className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-[#e8c9b4]">
-                  4.9/5 · 120+ founders
+                <span className="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-white">
+                  4.9/5 &middot; 120+ founders
                 </span>
               </div>
 
-              {/* teaser cards */}
               <div className="hidden items-center justify-center gap-3 md:flex">
                 <a
                   href="#services"
-                  className="group flex items-center gap-3 rounded-md border border-[#f7efe4]/12 bg-[#f7efe4]/[0.04] px-4 py-2.5 transition-colors hover:border-[#f7efe4]/30 hover:bg-[#f7efe4]/[0.08]"
+                  className="group flex items-center gap-3 rounded-md border border-white/12 bg-white/[0.04] px-4 py-2.5 transition-colors hover:border-white/30 hover:bg-white/[0.08]"
                 >
-                  <span className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-white">
-                    48hrs — brief to first drop
+                  <span className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-white">
+                    48hrs &mdash; brief to first drop
                   </span>
-                  <span aria-hidden="true" className="text-teal-bright">→</span>
+                  <span aria-hidden="true" className="text-[#78efeb]">
+                    &rarr;
+                  </span>
                 </a>
                 <a
                   href="#work"
-                  className="group hidden items-center gap-3 rounded-md border border-[#f7efe4]/12 bg-[#f7efe4]/[0.04] px-4 py-2.5 transition-colors hover:border-[#f7efe4]/30 hover:bg-[#f7efe4]/[0.08] xl:flex"
+                  className="group hidden items-center gap-3 rounded-md border border-white/12 bg-white/[0.04] px-4 py-2.5 transition-colors hover:border-white/30 hover:bg-white/[0.08] xl:flex"
                 >
-                  <span className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-white">
-                    Cases — numbers we&apos;re proud of
+                  <span className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-white">
+                    Cases &mdash; numbers we&apos;re proud of
                   </span>
-                  <span aria-hidden="true" className="text-teal-bright">→</span>
+                  <span aria-hidden="true" className="text-[#78efeb]">
+                    &rarr;
+                  </span>
                 </a>
               </div>
 
-              {/* video card */}
               <a
                 href="#founder"
                 data-cursor="play"
-                className="group flex items-center gap-3 justify-self-start rounded-md border border-[#f7efe4]/12 bg-[#f7efe4]/[0.04] p-1.5 pr-4 transition-colors hover:border-[#f7efe4]/30 hover:bg-[#f7efe4]/[0.08] sm:justify-self-end"
+                className="group flex items-center gap-3 justify-self-start rounded-md border border-white/12 bg-white/[0.04] p-1.5 pr-4 transition-colors hover:border-white/30 hover:bg-white/[0.08] sm:justify-self-end"
               >
                 <span className="relative block h-12 w-16 overflow-hidden rounded">
                   <Image
@@ -303,42 +285,39 @@ export default function Hero() {
                     className="object-cover"
                   />
                   <span className="absolute inset-0 grid place-items-center bg-black/35">
-                    <span className="grid h-6 w-6 place-items-center rounded-full bg-[#f7efe4] text-espresso transition-transform duration-300 group-hover:scale-110">
+                    <span className="grid h-6 w-6 place-items-center rounded-full bg-white text-navy transition-transform duration-300 group-hover:scale-110">
                       <svg width="8" height="10" viewBox="0 0 8 10" aria-hidden="true">
                         <path d="M0.5 0.8 L7.5 5 L0.5 9.2 Z" fill="currentColor" />
                       </svg>
                     </span>
                   </span>
                 </span>
-                <span className="font-sans text-[0.72rem] font-semibold uppercase tracking-[0.1em] leading-relaxed text-white">
+                <span className="font-mono text-[0.6rem] font-semibold uppercase tracking-[0.14em] leading-relaxed text-white">
                   {FOUNDER.kicker}
                   <br />
-                  <span className="font-sans text-sm font-bold text-white">
-                    {FOUNDER.duration}
-                  </span>
+                  <span className="text-sm font-bold text-white">{FOUNDER.duration}</span>
                 </span>
               </a>
             </div>
           </div>
 
-          {/* Giant woven wordmark */}
           <div data-h="wordmark" className="relative mt-2 pb-4 sm:pb-6">
             <span
               aria-hidden="true"
-              className="kicker absolute -top-3 left-5 hidden items-center gap-3 text-[#e8c9b4] lg:flex"
+              className="kicker absolute -top-3 left-5 hidden items-center gap-3 text-white lg:flex"
             >
               Scroll
-              <span className="inline-block h-9 w-px bg-[#f7efe4]/40" />
+              <span className="inline-block h-9 w-px bg-white/40" />
             </span>
             <div
               data-h="stamp"
-              className="absolute -top-20 right-6 z-10 hidden text-[#e8c9b4] lg:block"
+              className="absolute -top-20 right-6 z-10 hidden text-[#B9CBE4] lg:block"
             >
               <Stamp />
             </div>
             <WovenWordmark
               text={`${SITE.name}.`}
-              color="#f7efe4"
+              color="#FFFFFF"
               className="h-[21vw] max-h-[19rem] w-full"
             />
           </div>

@@ -13,7 +13,7 @@ export default function FounderVideo() {
         <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <div>
             <Reveal>
-              <span className="kicker text-navy">{FOUNDER.kicker}</span>
+              <span className="kicker font-semibold text-navy">{FOUNDER.kicker}</span>
             </Reveal>
             <h2
               data-split
@@ -23,8 +23,8 @@ export default function FounderVideo() {
               about growth.
             </h2>
             <Reveal delay={120}>
-              <p className="mt-5 font-display italic text-muted">
-                — {FOUNDER.name}, {FOUNDER.role}
+              <p className="mt-5 font-display font-medium italic text-muted">
+                — {FOUNDER.name}, <em>Founder</em>
               </p>
             </Reveal>
           </div>

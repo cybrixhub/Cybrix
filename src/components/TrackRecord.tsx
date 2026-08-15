@@ -84,7 +84,7 @@ export default function TrackRecord() {
     <section aria-label="Track record" className="bg-paper py-16 sm:py-20">
       <div className="container-x">
         <div className="flex items-baseline justify-between">
-          <p className="kicker text-muted">Track record</p>
+          <p className="kicker font-semibold text-muted">Track record</p>
           <p className="kicker hidden text-muted sm:block">
             six years, counted honestly
           </p>
@@ -99,12 +99,12 @@ export default function TrackRecord() {
               >
                 <dt className="sr-only">{stat.label}</dt>
                 <dd
-                  className={`font-display text-4xl font-medium tracking-tight sm:text-6xl ${s.number}`}
+                  className={`font-display text-4xl font-bold tracking-tight sm:text-6xl ${s.number}`}
                 >
                   <CountUp value={stat.value} />
                 </dd>
                 <p
-                  className={`mt-3 font-mono text-[0.65rem] uppercase tracking-[0.14em] ${s.label}`}
+                  className={`mt-3 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.14em] ${s.label}`}
                 >
                   {stat.label}
                 </p>

@@ -4,10 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import Logo from "./Logo";
 import { NAV_LINKS, SITE } from "@/lib/site";
 
-/**
- * Editorial masthead: navy bar with a teal hairline rail, hang-tag nav,
- * and a compact state once scrolled.
- */
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -38,39 +34,34 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 bg-[#14317A]/95 text-white backdrop-blur-sm transition-shadow duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 bg-white text-navy transition-shadow duration-300 ${
         scrolled
-          ? "shadow-[0_1px_0_var(--color-line-strong),0_14px_34px_-20px_rgba(36,30,22,0.45)]"
-          : "shadow-[0_10px_28px_-22px_rgba(36,30,22,0.35)]"
+          ? "shadow-[0_2px_0_var(--color-line-strong),0_10px_28px_-12px_rgba(20,49,122,0.18)]"
+          : "shadow-[0_1px_0_var(--color-line)]"
       }`}
     >
-      {/* gilded rail the tags hang from */}
       <div aria-hidden="true" className="h-0.5 bg-[#78EFEB]" />
       <div
-        aria-hidden="true"
-        className="bg-noise pointer-events-none absolute inset-0 opacity-[0.04]"
-      />
-      <div
-        className={`container-x flex items-center justify-between border-b border-[#78EFEB]/30 transition-all duration-300 ${
-          scrolled ? "h-14" : "h-16"
+        className={`container-x flex items-center justify-between border-b transition-all duration-300 ${
+          scrolled ? "h-18 border-line-strong" : "h-20 border-transparent"
         }`}
       >
-        <a href="#top" aria-label="Cybrix — back to top" className="flex items-center gap-3">
-          <Logo />
-          <span className="kicker hidden text-[#78EFEB] lg:inline">
+        <a href="/" aria-label="Cybrix — home" className="flex items-center gap-3">
+          <span className="scale-110 origin-left">
+            <Logo />
+          </span>
+          <span className="kicker hidden text-navy lg:inline">
             [ est. {SITE.established} ]
           </span>
         </a>
 
-        {/* Hang-tag nav: each link dangles from the gilded rail on its own
-            knotted string — tilted, idly swaying, swinging on touch. */}
         <nav className="hidden items-start gap-6 self-stretch md:flex" aria-label="Primary">
           {NAV_LINKS.map((link, i) => {
             const t = [
-              { tint: "bg-[#14317A]", angle: "-3.5deg", string: 11 },
-              { tint: "bg-[#14317A]", angle: "2.6deg",  string: 18 },
-              { tint: "bg-[#14317A]", angle: "-2.2deg", string: 8  },
-              { tint: "bg-[#14317A]", angle: "3.2deg",  string: 15 },
+              { tint: "bg-navy", angle: "-3.5deg", string: 11 },
+              { tint: "bg-navy", angle: "2.6deg", string: 18 },
+              { tint: "bg-navy", angle: "-2.2deg", string: 8 },
+              { tint: "bg-navy", angle: "3.2deg", string: 15 },
             ][i % 4];
             return (
               <a
@@ -79,23 +70,21 @@ export default function Header() {
                 style={{ rotate: t.angle, animationDelay: `${i * 0.7}s` }}
                 className="hover-swing animate-sway group flex flex-col items-center"
               >
-                {/* knot at the rail */}
                 <span
                   aria-hidden="true"
-                  className="-mt-px h-1.5 w-1.5 rounded-full bg-[#8a6b46] shadow-[0_1px_1px_rgba(36,30,22,0.4)]"
+                  className="-mt-px h-1.5 w-1.5 rounded-full bg-navy shadow-[0_1px_1px_rgba(20,49,122,0.25)]"
                 />
                 <span
                   aria-hidden="true"
-                  className="w-px bg-[#8a6b46]"
+                  className="w-px bg-navy/40"
                   style={{ height: t.string }}
                 />
                 <span
-                  className={`relative rounded-b-md rounded-t-[3px] border border-line-strong px-3.5 pb-1.5 pt-2.5 font-display text-[0.85rem] font-medium italic leading-none text-white shadow-[0_6px_12px_-4px_rgba(36,30,22,0.35)] transition-all duration-200 group-hover:border-[#78EFEB] group-hover:text-[#78EFEB] group-hover:shadow-[0_9px_16px_-4px_rgba(36,30,22,0.45)] ${t.tint}`}
+                  className={`relative rounded-b-md rounded-t-[3px] border border-line-strong px-3.5 pb-1.5 pt-2.5 font-display text-[0.85rem] font-medium italic leading-none text-white shadow-[0_4px_10px_-4px_rgba(20,49,122,0.2)] transition-all duration-200 group-hover:border-[#78efeb] group-hover:text-[#78efeb] group-hover:shadow-[0_6px_14px_-4px_rgba(20,49,122,0.3)] ${t.tint}`}
                 >
-                  {/* punched grommet */}
                   <span
                     aria-hidden="true"
-                    className="absolute left-1/2 top-1 h-[5px] w-[5px] -translate-x-1/2 rounded-full bg-paper ring-1 ring-[#8a6b46]/70"
+                    className="absolute left-1/2 top-1 h-[5px] w-[5px] -translate-x-1/2 rounded-full bg-white ring-1 ring-navy/30"
                   />
                   {link.label}
                 </span>
@@ -106,11 +95,9 @@ export default function Header() {
 
         <div className="hidden md:block">
           <a
-            href={SITE.calendarUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#book"
             data-cursor="book"
-            className="btn-ink btn-press inline-flex items-center gap-2 border border-[#78EFEB] bg-[#78EFEB] px-5 py-2.5 text-sm font-semibold text-[#14317A] shadow-[0_10px_20px_-8px_rgba(14,26,58,0.85)] transition-all duration-300 hover:border-[#78EFEB] hover:bg-[#14317A] hover:text-white [--ink-fill:var(--color-navy-2)]"
+            className="btn-ink btn-press inline-flex items-center gap-2 bg-navy px-5 py-2.5 text-sm font-semibold text-white shadow-[0_6px_16px_-6px_rgba(20,49,122,0.4)] transition-colors duration-300 [--ink-fill:#78efeb] hover:bg-[#78efeb] hover:text-navy"
           >
             Book a call
           </a>
@@ -120,7 +107,7 @@ export default function Header() {
           ref={toggleRef}
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="inline-flex h-10 w-10 items-center justify-center md:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center text-navy md:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           aria-controls="mobile-menu"
@@ -145,7 +132,6 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile menu */}
       <div
         id="mobile-menu"
         inert={!open}
@@ -167,11 +153,9 @@ export default function Header() {
             </a>
           ))}
           <a
-            href={SITE.calendarUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#book"
             onClick={() => setOpen(false)}
-            className="mt-4 inline-flex items-center justify-center bg-[#78EFEB] px-5 py-3 text-sm font-semibold text-navy"
+            className="mt-4 inline-flex items-center justify-center bg-[#78efeb] px-5 py-3 text-sm font-semibold text-navy"
           >
             Book a call
           </a>

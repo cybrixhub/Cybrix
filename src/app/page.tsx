@@ -43,7 +43,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               data-cursor="book"
-              className="btn-ink btn-press inline-flex items-center gap-2 border border-[#78efeb] bg-[#78efeb] px-8 py-4 text-sm font-semibold text-navy [--ink-fill:var(--color-navy)]"
+              className="btn-ink btn-press inline-flex items-center gap-2 bg-navy px-8 py-4 text-sm font-semibold text-white transition-colors duration-300 [--ink-fill:#78efeb] hover:bg-[#78efeb] hover:text-navy"
             >
               Book a strategy call
             </a>

@@ -159,10 +159,10 @@ export default function HowWeWork() {
 
         {/* Header */}
         <div className="mb-12 text-center sm:mb-16">
-          <p className="kicker text-muted">Our proven process</p>
-          <h2 className="mt-3 font-display text-4xl font-medium italic leading-tight tracking-tight text-balance sm:text-5xl">
+          <p className="kicker font-semibold text-muted">Our proven process</p>
+          <h2 className="mt-3 font-display text-4xl font-semibold leading-tight tracking-tight text-balance sm:text-5xl">
             Strategy to pipeline.{" "}
-            <span className="not-italic text-[#78efeb]">No gaps.</span>
+            <span className="not-italic text-navy">No gaps.</span>
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-muted">
             Every engagement runs the same four phases — built on six years of what actually moves numbers.

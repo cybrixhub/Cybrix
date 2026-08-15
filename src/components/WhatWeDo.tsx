@@ -40,7 +40,7 @@ export default function WhatWeDo() {
         return (
           <article
             key={group.number}
-            className={`chapter-shadow sticky top-0 flex min-h-svh flex-col justify-center ${s.section}`}
+            className={`chapter-shadow sticky top-0 flex min-h-fit flex-col justify-center md:min-h-svh ${s.section}`}
           >
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
               <div className="bg-noise absolute inset-0 opacity-[0.06]" />
@@ -57,7 +57,7 @@ export default function WhatWeDo() {
               <div
                 className={`flex items-baseline justify-between border-b pb-3 md:pb-5 ${s.line}`}
               >
-                <span className="kicker">{group.kicker}</span>
+                <span className="kicker font-semibold">{group.kicker}</span>
                 <span className="font-mono text-sm">
                   <span className={s.pagination}>{group.number}</span>
                   <span className={s.muted}>
@@ -71,7 +71,7 @@ export default function WhatWeDo() {
               <div className="mt-4 md:hidden">
                 <span
                   aria-hidden="true"
-                  className={`font-display text-5xl font-medium italic sm:text-6xl ${s.displayNumber}`}
+                  className={`font-display text-5xl font-bold sm:text-6xl ${s.displayNumber}`}
                 >
                   {group.number}
                 </span>
@@ -85,11 +85,11 @@ export default function WhatWeDo() {
                 <div className="hidden md:block md:sticky md:top-24 md:self-start">
                   <span
                     aria-hidden="true"
-                    className={`font-display text-6xl font-medium italic sm:text-7xl md:text-8xl ${s.displayNumber}`}
+                    className={`font-display text-6xl font-bold sm:text-7xl md:text-8xl ${s.displayNumber}`}
                   >
                     {group.number}
                   </span>
-                  <h3 className="mt-4 font-display text-3xl font-medium leading-[1.05] tracking-tight text-balance sm:text-4xl md:text-5xl">
+                  <h3 className="mt-4 font-display text-3xl font-semibold leading-[1.05] tracking-tight text-balance sm:text-4xl md:text-5xl">
                     {group.title}
                   </h3>
                   <p
@@ -118,7 +118,7 @@ export default function WhatWeDo() {
                               >
                                 {String(idx + 1).padStart(2, "0")}
                               </span>
-                              <h4 className="font-display text-lg font-medium tracking-tight md:text-xl">
+                              <h4 className="font-display text-lg font-semibold tracking-tight md:text-xl">
                                 {item.name}
                               </h4>
                             </div>
