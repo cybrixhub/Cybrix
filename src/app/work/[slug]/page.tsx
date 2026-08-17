@@ -23,6 +23,10 @@ export async function generateMetadata({
   const { slug } = await params;
   const project = findWork(slug);
   if (!project) return {};
+  const ogUrl = `${SITE.url}/work/${project.slug}/opengraph-image`;
+  const ogImages = project.screenshots?.length
+    ? [{ url: project.screenshots[0], width: 1200, height: 630 }]
+    : [{ url: ogUrl, width: 1200, height: 630, alt: `${project.client} — ${project.result}` }];
   return {
     title: `${project.client} — ${project.result}`,
     description: project.summary,
@@ -32,9 +36,13 @@ export async function generateMetadata({
       description: project.summary,
       url: `${SITE.url}/work/${project.slug}`,
       type: "article",
-      images: project.screenshots?.length
-        ? [{ url: project.screenshots[0] }]
-        : undefined,
+      images: ogImages,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.client} · Case study — ${SITE.name}`,
+      description: project.summary,
+      images: [ogImages[0].url],
     },
   };
 }
@@ -54,8 +62,42 @@ export default async function WorkPage({
     .map((s) => findService(s))
     .filter((s): s is NonNullable<ReturnType<typeof findService>> => Boolean(s));
 
+  // JSON-LD: CaseStudy (Article subtype)
+  const caseStudyJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: `${project.client} — ${project.result}`,
+    description: project.summary,
+    url: `${SITE.url}/work/${project.slug}`,
+    author: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    publisher: {
+      "@type": "Organization",
+      name: SITE.name,
+      url: SITE.url,
+      logo: { "@type": "ImageObject", url: `${SITE.url}/brand/cybrix-mark.png` },
+    },
+    about: { "@type": "Thing", name: project.client },
+    keywords: project.tags.join(", "),
+    ...(project.screenshots?.length
+      ? { image: project.screenshots[0] }
+      : {}),
+  };
+
+  // JSON-LD: BreadcrumbList
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
+      { "@type": "ListItem", position: 2, name: "Work", item: `${SITE.url}/#work` },
+      { "@type": "ListItem", position: 3, name: project.client, item: `${SITE.url}/work/${project.slug}` },
+    ],
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudyJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <Header />
       <main id="main" tabIndex={-1} className="flex-1 outline-none">
         {/* Editorial masthead hero */}

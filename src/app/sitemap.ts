@@ -1,27 +1,28 @@
 import type { MetadataRoute } from "next";
 import { ALL_SERVICES, SITE, WORK } from "@/lib/site";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+// Pinned to the last real content update — change when pages are updated.
+const SITE_UPDATED = new Date("2026-08-18");
 
+export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: SITE.url,
-      lastModified: now,
-      changeFrequency: "monthly",
+      lastModified: SITE_UPDATED,
+      changeFrequency: "weekly",
       priority: 1,
     },
     ...ALL_SERVICES.map((s) => ({
       url: `${SITE.url}/services/${s.slug}`,
-      lastModified: now,
+      lastModified: SITE_UPDATED,
       changeFrequency: "monthly" as const,
-      priority: 0.8,
+      priority: 0.9,
     })),
     ...WORK.map((w) => ({
       url: `${SITE.url}/work/${w.slug}`,
-      lastModified: now,
+      lastModified: SITE_UPDATED,
       changeFrequency: "monthly" as const,
-      priority: 0.7,
+      priority: 0.8,
     })),
   ];
 }

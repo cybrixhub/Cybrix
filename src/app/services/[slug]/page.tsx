@@ -30,6 +30,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const service = findService(slug);
   if (!service) return {};
+  const ogUrl = `${SITE.url}/services/${service.slug}/opengraph-image`;
   return {
     title: service.name,
     description: service.tagline,
@@ -39,6 +40,13 @@ export async function generateMetadata({
       description: service.tagline,
       url: `${SITE.url}/services/${service.slug}`,
       type: "article",
+      images: [{ url: ogUrl, width: 1200, height: 630, alt: service.name }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${service.name} — ${SITE.name}`,
+      description: service.tagline,
+      images: [ogUrl],
     },
   };
 }
@@ -103,8 +111,53 @@ export default async function ServicePage({
         ctaSecHover: "hover:border-navy hover:text-navy",
       };
 
+  // JSON-LD: Service schema
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.name,
+    description: service.tagline,
+    url: `${SITE.url}/services/${service.slug}`,
+    provider: {
+      "@type": "Organization",
+      name: SITE.name,
+      url: SITE.url,
+    },
+    areaServed: "Worldwide",
+    ...(service.deliverables?.length
+      ? { hasOfferCatalog: { "@type": "OfferCatalog", name: service.name, itemListElement: service.deliverables.map((d) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: d } })) } }
+      : {}),
+  };
+
+  // JSON-LD: BreadcrumbList
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
+      { "@type": "ListItem", position: 2, name: "Services", item: `${SITE.url}/#services` },
+      { "@type": "ListItem", position: 3, name: service.name, item: `${SITE.url}/services/${service.slug}` },
+    ],
+  };
+
+  // JSON-LD: FAQPage (only when FAQs exist)
+  const faqJsonLd = service.faqs?.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: service.faqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: { "@type": "Answer", text: faq.answer },
+        })),
+      }
+    : null;
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      {faqJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />}
       <Header />
       <main id="main" tabIndex={-1} className="flex-1 outline-none">
         {/* Editorial hero — parchment, kicker, giant italic display */}

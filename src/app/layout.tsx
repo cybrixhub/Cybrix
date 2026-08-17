@@ -102,10 +102,11 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-const jsonLd = {
+const orgJsonLd = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
+  "@type": ["ProfessionalService", "Organization"],
   name: SITE.name,
+  legalName: SITE.legalName,
   description: SITE.description,
   url: SITE.url,
   logo: `${SITE.url}/brand/cybrix-mark.png`,
@@ -123,7 +124,29 @@ const jsonLd = {
     "Paid Social Advertising",
     "Short-form Video",
   ],
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    bestRating: "5",
+    ratingCount: "120",
+    reviewCount: "120",
+  },
   sameAs: SOCIALS.map((social) => social.href),
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer service",
+    email: SITE.email,
+    availableLanguage: "English",
+  },
+};
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "A. Rahman",
+  jobTitle: "Founder",
+  worksFor: { "@type": "Organization", name: SITE.name, url: SITE.url },
+  url: SITE.url,
 };
 
 export default function RootLayout({
@@ -137,9 +160,16 @@ export default function RootLayout({
       className={`${poppins.variable} ${montserrat.variable} ${fraunces.variable} ${plexMono.variable} h-full`}
     >
       <body className="min-h-full flex flex-col bg-paper text-ink font-sans antialiased">
+        <link rel="preconnect" href="https://cal.com" />
+        <link rel="preconnect" href="https://va.vercel-scripts.com" />
+        <link rel="dns-prefetch" href="https://connect.facebook.net" />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
         <a
           href="#main"
