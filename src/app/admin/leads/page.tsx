@@ -1,4 +1,9 @@
+import { adminFetch, type Lead, type LeadStats } from "@/lib/api";
 import { SITE } from "@/lib/site";
+
+// Always render fresh — no ISR, no cache.
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 const LEAD_SOURCES = [
   { label: "Cal.com bookings", href: "https://app.cal.com/bookings/upcoming", desc: "Upcoming and past calls" },
@@ -6,7 +11,37 @@ const LEAD_SOURCES = [
   { label: "Meta Ads Manager", href: "https://adsmanager.facebook.com", desc: "Campaign leads & CPL" },
 ];
 
-function InfoCard({ label, value, sub }: { label: string; value: string; sub?: string }) {
+const STATUS_COLOR: Record<Lead["status"], string> = {
+  new: "bg-teal-bright/15 text-teal-bright border-teal-bright/30",
+  contacted: "bg-navy/10 text-navy border-navy/30",
+  booked: "bg-green-500/15 text-green-600 border-green-500/30",
+  lost: "bg-red-500/10 text-red-500 border-red-500/30",
+  spam: "bg-muted/10 text-muted border-line",
+};
+
+type FetchResult<T> = { data: T; error?: undefined } | { data?: undefined; error: string };
+
+async function fetchLeads(): Promise<FetchResult<Lead[]>> {
+  try {
+    const r = await adminFetch("/leads?limit=100");
+    if (!r.ok) return { error: `Backend returned ${r.status}` };
+    return { data: (await r.json()) as Lead[] };
+  } catch (e) {
+    return { error: e instanceof Error ? e.message : "Backend unreachable" };
+  }
+}
+
+async function fetchStats(): Promise<FetchResult<LeadStats>> {
+  try {
+    const r = await adminFetch("/leads/stats");
+    if (!r.ok) return { error: `Backend returned ${r.status}` };
+    return { data: (await r.json()) as LeadStats };
+  } catch (e) {
+    return { error: e instanceof Error ? e.message : "Backend unreachable" };
+  }
+}
+
+function StatCard({ label, value, sub }: { label: string; value: string | number; sub?: string }) {
   return (
     <div className="rounded-md border border-line bg-paper-2 p-5">
       <p className="kicker text-muted mb-2">{label}</p>
@@ -16,30 +51,117 @@ function InfoCard({ label, value, sub }: { label: string; value: string; sub?: s
   );
 }
 
-export default function Leads() {
+function formatWhen(iso: string): string {
+  try {
+    const d = new Date(iso.endsWith("Z") ? iso : iso + "Z");
+    const now = new Date();
+    const diffMs = now.getTime() - d.getTime();
+    const mins = Math.round(diffMs / 60_000);
+    if (mins < 60) return `${mins}m ago`;
+    const hours = Math.round(mins / 60);
+    if (hours < 24) return `${hours}h ago`;
+    const days = Math.round(hours / 24);
+    if (days < 7) return `${days}d ago`;
+    return d.toISOString().slice(0, 10);
+  } catch {
+    return iso;
+  }
+}
+
+export default async function Leads() {
+  const [leadsResult, statsResult] = await Promise.all([fetchLeads(), fetchStats()]);
+  const leads = leadsResult.data ?? [];
+  const stats = statsResult.data;
+  const backendError = leadsResult.error ?? statsResult.error;
+
   return (
-    <div className="max-w-3xl space-y-8">
+    <div className="max-w-5xl space-y-8">
       <div>
         <h1 className="font-display text-3xl italic text-ink">Leads</h1>
         <p className="mt-1 text-sm text-muted">
-          Pipeline overview — bookings, inbound, and ad-generated leads.
+          Inbound leads from the site — form submissions, chat captures, all sources.
         </p>
       </div>
 
-      {/* Lifetime stats from site.ts */}
-      <section>
-        <p className="kicker text-muted mb-3">Lifetime track record</p>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-          <InfoCard label="Founders backed" value="120+" sub="since 2020" />
-          <InfoCard label="Impressions" value="18M+" sub="across all channels" />
-          <InfoCard label="Raised by clients" value="$40M+" sub="post-engagement" />
-          <InfoCard label="Years operating" value="6" sub="compounding" />
+      {backendError && (
+        <div className="rounded-md border border-red-500/30 bg-red-500/5 p-4 text-sm text-red-500">
+          <p className="font-medium">Backend unreachable</p>
+          <p className="mt-1 text-xs opacity-80">
+            {backendError}. Check that <code>CYBRIX_API_URL</code> and{" "}
+            <code>CYBRIX_API_TOKEN</code> are set in Vercel and the VPS backend is up.
+          </p>
         </div>
+      )}
+
+      {/* Live pipeline stats from the backend */}
+      {stats && (
+        <section>
+          <p className="kicker text-muted mb-3">Pipeline this month</p>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <StatCard label="Total leads" value={stats.total} sub="all time" />
+            <StatCard label="Today" value={stats.today} sub="new this session" />
+            <StatCard label="New" value={stats.by_status["new"] ?? 0} sub="untouched" />
+            <StatCard label="Booked" value={stats.by_status["booked"] ?? 0} sub="on the calendar" />
+          </div>
+        </section>
+      )}
+
+      {/* Real leads table */}
+      <section>
+        <p className="kicker text-muted mb-3">Recent leads ({leads.length})</p>
+        {leads.length === 0 ? (
+          <div className="rounded-md border border-line bg-paper-2 p-10 text-center">
+            <p className="text-sm text-muted">
+              {backendError
+                ? "Can't load leads until the backend is reachable."
+                : "No leads yet. New form submissions and chat captures will appear here."}
+            </p>
+          </div>
+        ) : (
+          <div className="overflow-hidden rounded-md border border-line bg-paper-2">
+            <table className="w-full text-sm">
+              <thead className="border-b border-line bg-paper-3">
+                <tr className="text-left">
+                  <th className="kicker text-muted px-4 py-3 font-normal">When</th>
+                  <th className="kicker text-muted px-4 py-3 font-normal">Name</th>
+                  <th className="kicker text-muted px-4 py-3 font-normal">Email</th>
+                  <th className="kicker text-muted px-4 py-3 font-normal">Company</th>
+                  <th className="kicker text-muted px-4 py-3 font-normal">Message</th>
+                  <th className="kicker text-muted px-4 py-3 font-normal">Source</th>
+                  <th className="kicker text-muted px-4 py-3 font-normal">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {leads.map((lead) => (
+                  <tr key={lead.id} className="border-b border-line last:border-b-0 hover:bg-paper-3/50">
+                    <td className="px-4 py-3 whitespace-nowrap text-xs text-muted">{formatWhen(lead.created_at)}</td>
+                    <td className="px-4 py-3 font-medium text-ink">{lead.name}</td>
+                    <td className="px-4 py-3 text-teal-bright">
+                      <a href={`mailto:${lead.email}`} className="hover:underline">{lead.email}</a>
+                    </td>
+                    <td className="px-4 py-3 text-ink-soft">{lead.company || "—"}</td>
+                    <td className="px-4 py-3 text-ink-soft max-w-xs truncate" title={lead.message ?? undefined}>
+                      {lead.message || "—"}
+                    </td>
+                    <td className="px-4 py-3 text-xs text-muted">
+                      {lead.utm_source ? `${lead.source} · ${lead.utm_source}` : lead.source}
+                    </td>
+                    <td className="px-4 py-3">
+                      <span className={`inline-block rounded border px-2 py-0.5 text-[0.65rem] font-medium uppercase tracking-wider ${STATUS_COLOR[lead.status]}`}>
+                        {lead.status}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </section>
 
-      {/* Quick links to external dashboards */}
+      {/* External dashboards — unchanged from the old page */}
       <section>
-        <p className="kicker text-muted mb-3">Lead sources</p>
+        <p className="kicker text-muted mb-3">External sources</p>
         <div className="space-y-2">
           {LEAD_SOURCES.map((s) => (
             <a
@@ -77,15 +199,6 @@ export default function Leads() {
               Open ↗
             </a>
           </div>
-        </div>
-      </section>
-
-      {/* Contact info */}
-      <section>
-        <p className="kicker text-muted mb-3">Inbound email</p>
-        <div className="rounded-md border border-line bg-paper-2 px-5 py-4">
-          <p className="text-sm font-medium text-ink">{SITE.email}</p>
-          <p className="text-xs text-muted mt-0.5">Direct enquiries land here</p>
         </div>
       </section>
     </div>
