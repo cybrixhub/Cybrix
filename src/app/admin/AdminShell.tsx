@@ -17,6 +17,7 @@ const NAV = [
   { href: "/admin/work", label: "Work", icon: "◈" },
   { href: "/admin/bookings", label: "Bookings", icon: "◷" },
   { href: "/admin/leads", label: "Leads", icon: "◎" },
+  { href: "/admin/conversations", label: "Conversations", icon: "◍" },
 ];
 
 const PAGE_LABELS: Record<string, string> = {
@@ -25,6 +26,7 @@ const PAGE_LABELS: Record<string, string> = {
   "/admin/work": "Work",
   "/admin/bookings": "Bookings",
   "/admin/leads": "Leads",
+  "/admin/conversations": "Conversations",
 };
 
 export default function AdminShell({ children }: { children: React.ReactNode }) {
