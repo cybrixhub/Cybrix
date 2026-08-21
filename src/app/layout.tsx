@@ -3,6 +3,8 @@ import { Poppins, Montserrat, Fraunces, IBM_Plex_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 import { SITE, SOCIALS } from "@/lib/site";
+import PublicOnly from "@/components/PublicOnly";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -178,6 +180,9 @@ export default function RootLayout({
           Skip to content
         </a>
         {children}
+        <PublicOnly>
+          <WhatsAppButton />
+        </PublicOnly>
         <Analytics />
         {/* Meta Pixel */}
         <Script id="meta-pixel" strategy="afterInteractive">{`
