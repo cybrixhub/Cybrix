@@ -5,17 +5,68 @@ import Underlined from "./Underlined";
 import { BOOK, SITE, SOCIALS } from "@/lib/site";
 
 type Errors = { name?: string; email?: string; message?: string };
+type UtmParams = { utm_source?: string; utm_medium?: string; utm_campaign?: string };
+
+const UTM_STORAGE_KEY = "cybrix_utm";
+const UTM_KEYS: (keyof UtmParams)[] = ["utm_source", "utm_medium", "utm_campaign"];
+
+/** Grab UTMs from the URL on first arrival; persist so the form still has them
+ *  after the visitor scrolls, reads, comes back later, whatever. */
+function loadUtms(): UtmParams {
+  if (typeof window === "undefined") return {};
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const fresh: UtmParams = {};
+    for (const k of UTM_KEYS) {
+      const v = params.get(k);
+      if (v) fresh[k] = v.slice(0, 200);
+    }
+    if (Object.keys(fresh).length > 0) {
+      sessionStorage.setItem(UTM_STORAGE_KEY, JSON.stringify(fresh));
+      return fresh;
+    }
+    const stored = sessionStorage.getItem(UTM_STORAGE_KEY);
+    return stored ? (JSON.parse(stored) as UtmParams) : {};
+  } catch {
+    return {};
+  }
+}
+
+/** Fallback: opens the user's mail app with the form pre-filled so their words
+ *  aren't lost when the backend is down. */
+function mailtoFallback(name: string, email: string, company: string, message: string) {
+  const subject = `Strategy call request from ${name}`;
+  const body = [
+    `Name: ${name}`,
+    `Email: ${email}`,
+    company ? `Company: ${company}` : null,
+    "",
+    message,
+  ]
+    .filter((line) => line !== null)
+    .join("\n");
+  window.location.href = `mailto:${SITE.email}?subject=${encodeURIComponent(
+    subject,
+  )}&body=${encodeURIComponent(body)}`;
+}
 
 export default function Book() {
   const [sent, setSent] = useState(false);
   const [errors, setErrors] = useState<Errors>({});
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  // UTMs don't trigger re-renders — read at submit time only, so ref not state.
+  const utmsRef = useRef<UtmParams>({});
   const successHeadingRef = useRef<HTMLHeadingElement | null>(null);
 
+  useEffect(() => {
+    utmsRef.current = loadUtms();
+  }, []);
   useEffect(() => {
     if (sent) successHeadingRef.current?.focus();
   }, [sent]);
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
@@ -23,6 +74,7 @@ export default function Book() {
     const email = String(data.get("email") || "").trim();
     const company = String(data.get("company") || "").trim();
     const message = String(data.get("message") || "").trim();
+    const website = String(data.get("website") || "").trim(); // honeypot
 
     const nextErrors: Errors = {};
     if (!name) nextErrors.name = "Please enter your name.";
@@ -33,33 +85,34 @@ export default function Book() {
 
     if (Object.keys(nextErrors).length > 0) {
       setErrors(nextErrors);
-      const firstField = nextErrors.name
-        ? "name"
-        : nextErrors.email
-          ? "email"
-          : "message";
+      const firstField = nextErrors.name ? "name" : nextErrors.email ? "email" : "message";
       document.getElementById(firstField)?.focus();
       return;
     }
 
     setErrors({});
+    setSubmitError(null);
+    setSubmitting(true);
 
-    const subject = `Strategy call request from ${name}`;
-    const body = [
-      `Name: ${name}`,
-      `Email: ${email}`,
-      company ? `Company: ${company}` : null,
-      "",
-      message,
-    ]
-      .filter((line) => line !== null)
-      .join("\n");
-
-    window.location.href = `mailto:${SITE.email}?subject=${encodeURIComponent(
-      subject,
-    )}&body=${encodeURIComponent(body)}`;
-
-    setSent(true);
+    try {
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, company, message, website, ...utmsRef.current }),
+      });
+      if (!res.ok) {
+        const { error } = (await res.json().catch(() => ({ error: null }))) as {
+          error?: string | null;
+        };
+        setSubmitError(error ?? "Something went wrong. Try again in a minute.");
+        return;
+      }
+      setSent(true);
+    } catch {
+      setSubmitError("Couldn't reach the server. Try again, or email us directly below.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -143,16 +196,18 @@ export default function Book() {
                   tabIndex={-1}
                   className="mt-5 font-display text-2xl font-medium outline-none"
                 >
-                  Thanks — your email is ready to send.
+                  Got it — we&apos;ll be in touch.
                 </h3>
                 <p className="mt-2 max-w-sm text-sm text-muted">
-                  We&apos;ve opened your mail app with the details filled in. If
-                  it didn&apos;t open, email us directly at{" "}
+                  Talha or someone from the team will reach out within one
+                  business day. Want a slot now?{" "}
                   <a
-                    href={`mailto:${SITE.email}`}
+                    href="https://cal.com/cybrix-talha/30min"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="font-medium text-navy underline"
                   >
-                    {SITE.email}
+                    Grab a time here
                   </a>
                   .
                 </p>
@@ -167,6 +222,13 @@ export default function Book() {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5" noValidate>
                 <p className="kicker text-muted">Request a call</p>
+                {/* Honeypot — hidden from real users; bots that spray forms fill everything. */}
+                <div aria-hidden="true" style={{ position: "absolute", left: "-10000px", top: "auto", width: 1, height: 1, overflow: "hidden" }}>
+                  <label>
+                    Website (leave blank)
+                    <input type="text" name="website" tabIndex={-1} autoComplete="off" />
+                  </label>
+                </div>
                 <div className="grid gap-5 sm:grid-cols-2">
                   <Field label="Name" name="name" required error={errors.name}>
                     <input
@@ -230,10 +292,33 @@ export default function Book() {
                 <button
                   type="submit"
                   data-cursor="book"
-                  className="btn-ink btn-press inline-flex w-full items-center justify-center bg-[#78efeb] px-6 py-3.5 text-sm font-semibold text-navy [--ink-fill:var(--color-navy)]"
+                  disabled={submitting}
+                  className="btn-ink btn-press inline-flex w-full items-center justify-center bg-[#78efeb] px-6 py-3.5 text-sm font-semibold text-navy [--ink-fill:var(--color-navy)] disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  Book my strategy call
+                  {submitting ? "Sending…" : "Book my strategy call"}
                 </button>
+                {submitError && (
+                  <p role="alert" className="text-center text-xs font-medium text-red-500">
+                    {submitError}{" "}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const form = document.querySelector<HTMLFormElement>("#book form");
+                        if (!form) return;
+                        const d = new FormData(form);
+                        mailtoFallback(
+                          String(d.get("name") || ""),
+                          String(d.get("email") || ""),
+                          String(d.get("company") || ""),
+                          String(d.get("message") || ""),
+                        );
+                      }}
+                      className="underline underline-offset-2"
+                    >
+                      Email us instead
+                    </button>
+                  </p>
+                )}
                 <p className="text-center font-mono text-[0.65rem] uppercase tracking-[0.14em] text-muted">
                   30 minutes · Google Meet · No pitch
                 </p>
