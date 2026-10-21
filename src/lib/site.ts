@@ -27,6 +27,13 @@ export const NAV_LINKS: NavLink[] = [
   { label: "FAQ", href: "/#faq" },
 ];
 
+/** Header menu — the shared links plus the standalone Portfolio page. */
+export const HEADER_NAV_LINKS: NavLink[] = [
+  ...NAV_LINKS.slice(0, 2),
+  { label: "Portfolio", href: "/portfolio" },
+  ...NAV_LINKS.slice(2),
+];
+
 // Replace these with your real profile URLs before launch.
 export const SOCIALS: { label: string; href: string; handle: string }[] = [
   { label: "Instagram", href: "https://instagram.com/cybrix", handle: "@cybrix" },

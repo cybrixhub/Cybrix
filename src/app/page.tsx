@@ -21,8 +21,10 @@ import Reviews from "@/components/Reviews";
 import Collage from "@/components/Collage";
 import Faq from "@/components/Faq";
 import MeetingBooking from "@/components/MeetingBooking";
-import Book from "@/components/Book";
 import Footer from "@/components/Footer";
+
+// Temporarily hidden — set to true to restore the "From the Founder" section.
+const SHOW_FOUNDER_SECTION = false;
 
 export default function Home() {
   return (
@@ -34,21 +36,25 @@ export default function Home() {
       <main id="main" tabIndex={-1} className="flex-1 outline-none">
         <Hero />
         <Prologue />
-        <TornEdge color="var(--color-paper)" className="-mt-6 sm:-mt-7" />
-        <FounderVideo />
-        <div className="bg-paper pb-12 text-center sm:pb-16">
-          <ShakeCta>
-            <a
-              href={SITE.calendarUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-cursor="book"
-              className="btn-ink btn-press inline-flex items-center gap-2 bg-navy px-8 py-4 text-sm font-semibold text-white transition-colors duration-300 [--ink-fill:#78efeb] hover:bg-[#78efeb] hover:text-navy"
-            >
-              Book a strategy call
-            </a>
-          </ShakeCta>
-        </div>
+        {SHOW_FOUNDER_SECTION && (
+          <>
+            <TornEdge color="var(--color-paper)" className="-mt-6 sm:-mt-7" />
+            <FounderVideo />
+            <div className="bg-paper pb-12 text-center sm:pb-16">
+              <ShakeCta>
+                <a
+                  href={SITE.calendarUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cursor="book"
+                  className="btn-ink btn-press inline-flex items-center gap-2 bg-navy px-8 py-4 text-sm font-semibold text-white transition-colors duration-300 [--ink-fill:#78efeb] hover:bg-[#78efeb] hover:text-navy"
+                >
+                  Book a strategy call
+                </a>
+              </ShakeCta>
+            </div>
+          </>
+        )}
         <Ticker />
         <TrackRecord />
         <WhatWeDo />
@@ -57,10 +63,8 @@ export default function Home() {
         <Work />
         <Reviews />
         <Collage />
-        <Faq />
         <MeetingBooking />
-        <TornEdge color="var(--color-espresso)" className="-mb-px" />
-        <Book />
+        <Faq />
       </main>
       <ClientAfterMain />
       <Footer />

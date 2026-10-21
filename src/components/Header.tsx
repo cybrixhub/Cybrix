@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Logo from "./Logo";
-import { NAV_LINKS, SITE } from "@/lib/site";
+import { HEADER_NAV_LINKS, SITE } from "@/lib/site";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -55,8 +55,8 @@ export default function Header() {
           </span>
         </a>
 
-        <nav className="hidden items-start gap-6 self-stretch md:flex" aria-label="Primary">
-          {NAV_LINKS.map((link, i) => {
+        <nav className="hidden items-start gap-2 self-stretch md:flex lg:gap-6" aria-label="Primary">
+          {HEADER_NAV_LINKS.map((link, i) => {
             const t = [
               { tint: "bg-navy", angle: "-3.5deg", string: 11 },
               { tint: "bg-navy", angle: "2.6deg", string: 18 },
@@ -141,7 +141,7 @@ export default function Header() {
         } transition-all duration-300 ease-out`}
       >
         <nav className="container-x flex flex-col py-4" aria-label="Mobile">
-          {NAV_LINKS.map((link, i) => (
+          {HEADER_NAV_LINKS.map((link, i) => (
             <a
               key={link.href}
               href={link.href}

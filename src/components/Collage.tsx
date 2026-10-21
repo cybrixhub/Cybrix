@@ -1,48 +1,10 @@
 import Image from "next/image";
 import Reveal from "./Reveal";
 import { COLLAGE, SITE } from "@/lib/site";
-import { hash } from "@/lib/hash";
-
-/** Scattered pixel marks, like ink misregistration on a press sheet. */
-function PixelGlitch({
-  className = "",
-  seed = 1,
-}: {
-  className?: string;
-  seed?: number;
-}) {
-  const cells: React.ReactNode[] = [];
-  for (let i = 0; i < 110; i++) {
-    const r = hash(i * seed);
-    if (r < 0.45) continue;
-    const x = Math.floor(hash(i * seed + 1) * 55) * 4;
-    const y = Math.floor(hash(i * seed + 2) * 11) * 4;
-    const w = 2 + Math.floor(hash(i * seed + 3) * 3) * 2;
-    cells.push(
-      <rect
-        key={i}
-        x={x}
-        y={y}
-        width={w}
-        height={3}
-        opacity={0.35 + 0.6 * hash(i * seed + 4)}
-      />,
-    );
-  }
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 220 44"
-      className={`fill-current ${className}`}
-    >
-      {cells}
-    </svg>
-  );
-}
 
 /**
- * "From the studio floor" — tilted photo plates with mono captions, press
- * glitch marks and a stitched brand patch (the sondaven culture collage).
+ * "From the studio floor" — tilted photo plates with mono captions and a
+ * stitched brand patch (the sondaven culture collage).
  */
 export default function Collage() {
   return (
@@ -50,15 +12,6 @@ export default function Collage() {
       aria-label="From the studio floor"
       className="relative overflow-hidden bg-paper py-24 sm:py-32"
     >
-      <PixelGlitch
-        seed={3}
-        className="absolute right-6 top-10 hidden w-56 text-ink/70 md:block"
-      />
-      <PixelGlitch
-        seed={7}
-        className="absolute bottom-12 left-4 hidden w-72 text-ink/60 md:block"
-      />
-
       <div className="container-x relative z-10">
         <Reveal>
           <span className="kicker text-navy">

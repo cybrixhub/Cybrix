@@ -7,10 +7,34 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import type { SplitText as SplitTextT } from "gsap/SplitText";
 import { useIso } from "@/lib/useIso";
 
+/**
+ * Chapter panels are sticky. A panel taller than the viewport would pin at
+ * top:0 and get covered before its last items scroll into view, so pin it by
+ * its bottom edge instead.
+ */
+function pinChapterPanels() {
+  const panels = Array.from(
+    document.querySelectorAll<HTMLElement>("#services article"),
+  );
+  const pin = () =>
+    panels.forEach((p) => {
+      p.style.top = `${Math.min(0, window.innerHeight - p.offsetHeight)}px`;
+    });
+  pin();
+  const ro = new ResizeObserver(pin);
+  panels.forEach((p) => ro.observe(p));
+  window.addEventListener("resize", pin);
+  return () => {
+    ro.disconnect();
+    window.removeEventListener("resize", pin);
+  };
+}
+
 export default function SmoothScroll() {
   useIso(() => {
+    const unpinPanels = pinChapterPanels();
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) return;
+    if (reduce) return unpinPanels;
 
     gsap.registerPlugin(ScrollTrigger);
 
@@ -76,16 +100,16 @@ export default function SmoothScroll() {
           trigger: next,
           start: "top bottom",
           end: "top top",
-          scrub: true,
+          scrub: 0.6,
         };
         gsap.to(panel, {
-          scale: 0.965,
+          scale: 0.985,
           transformOrigin: "center top",
           ease: "none",
           scrollTrigger: trigger,
         });
         if (shade) {
-          gsap.to(shade, { opacity: 0.45, ease: "none", scrollTrigger: trigger });
+          gsap.to(shade, { opacity: 0.15, ease: "none", scrollTrigger: trigger });
         }
       });
     });
@@ -124,6 +148,7 @@ export default function SmoothScroll() {
     window.addEventListener("load", onLoad);
 
     return () => {
+      unpinPanels();
       cancelled = true;
       window.removeEventListener("load", onLoad);
       splits.forEach((s) => s.revert());

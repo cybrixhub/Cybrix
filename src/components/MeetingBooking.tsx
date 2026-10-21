@@ -46,7 +46,7 @@ export default function MeetingBooking() {
   function isDisabled(d: number) {
     if (!today || !view) return true;
     const dow = new Date(view.y, view.m, d).getDay();
-    if (dow === 0 || dow === 6) return true;
+    if (dow === 0) return true; // Sunday is a non-working day
     if (view.y < today.y) return true;
     if (view.y === today.y && view.m < today.m) return true;
     if (view.y === today.y && view.m === today.m && d < today.d) return true;
@@ -133,7 +133,7 @@ export default function MeetingBooking() {
                 Select date &amp; time
               </h3>
               <p className="mt-1.5 text-sm text-[#8ba0c0]">
-                Weekdays only · times shown in your local zone.
+                Monday–Saturday · times shown in Pakistan time (PKT).
               </p>
 
               {/* Month nav */}
