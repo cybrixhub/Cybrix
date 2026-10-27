@@ -55,7 +55,7 @@ export default function Header() {
           </span>
         </a>
 
-        <nav className="hidden items-start gap-2 self-stretch md:flex lg:gap-6" aria-label="Primary">
+        <nav className="hidden items-start gap-2 self-stretch md:flex lg:gap-4 xl:gap-6" aria-label="Primary">
           {HEADER_NAV_LINKS.map((link, i) => {
             const t = [
               { tint: "bg-navy", angle: "-3.5deg", string: 11 },
@@ -80,7 +80,7 @@ export default function Header() {
                   style={{ height: t.string }}
                 />
                 <span
-                  className={`relative rounded-b-md rounded-t-[3px] border border-line-strong px-3.5 pb-1.5 pt-2.5 font-display text-[0.85rem] font-medium italic leading-none text-white shadow-[0_4px_10px_-4px_rgba(20,49,122,0.2)] transition-all duration-200 group-hover:border-[#78efeb] group-hover:text-[#78efeb] group-hover:shadow-[0_6px_14px_-4px_rgba(20,49,122,0.3)] ${t.tint}`}
+                  className={`relative rounded-b-md rounded-t-[3px] border border-line-strong px-2.5 pb-1.5 pt-2.5 font-display text-[0.78rem] font-medium xl:px-3.5 xl:text-[0.85rem] italic leading-none text-white shadow-[0_4px_10px_-4px_rgba(20,49,122,0.2)] transition-all duration-200 group-hover:border-[#78efeb] group-hover:text-[#78efeb] group-hover:shadow-[0_6px_14px_-4px_rgba(20,49,122,0.3)] ${t.tint}`}
                 >
                   <span
                     aria-hidden="true"
@@ -137,7 +137,7 @@ export default function Header() {
         inert={!open}
         aria-hidden={!open}
         className={`overflow-hidden bg-navy text-white md:hidden ${
-          open ? "max-h-[420px] border-b border-white/10" : "max-h-0"
+          open ? "max-h-[520px] border-b border-white/10" : "max-h-0"
         } transition-all duration-300 ease-out`}
       >
         <nav className="container-x flex flex-col py-4" aria-label="Mobile">

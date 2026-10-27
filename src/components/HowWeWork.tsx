@@ -373,7 +373,7 @@ export default function HowWeWork() {
             href="https://cal.com/cybrix-talha/30min"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-ink btn-press mt-2 inline-flex items-center gap-2 border border-[#78efeb] bg-[#78efeb] px-7 py-3 text-sm font-semibold text-navy [--ink-fill:var(--color-navy)]"
+            className="btn-ink btn-press mt-2 inline-flex items-center gap-2 border border-[#78efeb] bg-[#78efeb] px-7 py-3 text-sm font-semibold text-navy [--ink-fill:#8ff0e0] hover:text-[#142F78]"
           >
             Book a strategy call →
           </a>

@@ -31,6 +31,7 @@ export const NAV_LINKS: NavLink[] = [
 export const HEADER_NAV_LINKS: NavLink[] = [
   ...NAV_LINKS.slice(0, 2),
   { label: "Portfolio", href: "/portfolio" },
+  { label: "Team", href: "/team" },
   ...NAV_LINKS.slice(2),
 ];
 
