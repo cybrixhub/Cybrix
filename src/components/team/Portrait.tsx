@@ -17,11 +17,14 @@ export default function Portrait({
   member,
   sizes,
   priority = false,
+  reveal = true,
   className = "",
 }: {
   member: TeamMember;
   sizes: string;
   priority?: boolean;
+  /** Scroll-in clip reveal; off for portraits that live in a carousel. */
+  reveal?: boolean;
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -30,7 +33,7 @@ export default function Portrait({
 
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
+    if (!el || !reveal) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     if (!("IntersectionObserver" in window)) return;
     // Already on screen at load: leave it visible rather than hiding it.
@@ -62,7 +65,7 @@ export default function Portrait({
       window.clearTimeout(fallback);
       window.removeEventListener("scroll", onScroll);
     };
-  }, []);
+  }, [reveal]);
 
   const zoom = member.photo.zoom ?? 1;
   const words = member.name.trim().split(/\s+/);

@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import TornEdge from "@/components/TornEdge";
 import Reveal from "@/components/Reveal";
 import TeamHero from "@/components/team/TeamHero";
-import { TeamGrid } from "@/components/team/TeamCards";
+import TeamShowcase from "@/components/team/TeamShowcase";
 import TeamCta from "@/components/team/TeamCta";
 import { SITE } from "@/lib/site";
 import { TEAM } from "@/lib/team";
@@ -68,7 +68,9 @@ export default function TeamPage() {
                 </p>
               </Reveal>
             </div>
-            <TeamGrid members={TEAM} />
+            <Reveal>
+              <TeamShowcase members={TEAM} />
+            </Reveal>
           </div>
         </section>
 

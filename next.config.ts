@@ -70,6 +70,11 @@ const nextConfig: NextConfig = {
     // Allowed quality values (Next 16 requires an allow-list); each JPG
     // asset picks the smallest quality that still looks right for its role.
     qualities: [70, 75, 78, 85],
+    // Temporary stock team portrait (src/lib/team.ts). Served through the image
+    // optimizer, so the browser still only loads images from 'self'.
+    remotePatterns: [
+      { protocol: "https", hostname: "images.pexels.com", pathname: "/photos/**" },
+    ],
   },
 
   async headers() {

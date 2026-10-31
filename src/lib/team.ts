@@ -46,20 +46,6 @@ export const TEAM: TeamMember[] = [
     },
   },
   {
-    key: "md",
-    name: "Awais",
-    role: "Managing Director",
-    focus: "Runs day-to-day operations and keeps every engagement on time, on scope and on target.",
-    bio: "",
-    skills: ["Operations", "Delivery", "Client success"],
-    photo: {
-      src: "/team/awais.webp",
-      alt: "Awais, Managing Director at Cybrix",
-      position: "50% 16%",
-      zoom: 1.2,
-    },
-  },
-  {
     key: "marketing",
     name: "Muhammad Shahroz",
     role: "Marketing Director",
@@ -74,6 +60,20 @@ export const TEAM: TeamMember[] = [
     },
   },
   {
+    key: "md",
+    name: "Awais",
+    role: "Managing Director",
+    focus: "Runs day-to-day operations and keeps every engagement on time, on scope and on target.",
+    bio: "",
+    skills: ["Operations", "Delivery", "Client success"],
+    photo: {
+      src: "/team/awais.webp",
+      alt: "Awais, Managing Director at Cybrix",
+      position: "50% 16%",
+      zoom: 1.2,
+    },
+  },
+  {
     key: "video",
     name: "Muhammad Arham Hussain",
     role: "Video Production Manager",
@@ -81,10 +81,10 @@ export const TEAM: TeamMember[] = [
     bio: "",
     skills: ["Production", "Editing", "Motion"],
     photo: {
-      src: "/team/muhammad-arham-hussain.jpg",
+      src: "/team/muhammad-arham-hussain-2026.jpg",
       alt: "Muhammad Arham Hussain, Video Production Manager at Cybrix",
-      position: "50% 36%",
-      zoom: 1.75,
+      position: "50% 44%",
+      zoom: 1.5,
     },
   },
   {
@@ -95,9 +95,12 @@ export const TEAM: TeamMember[] = [
     bio: "",
     skills: ["UX", "Websites", "Landing pages"],
     photo: {
-      // No photo yet — an empty src shows the branded "photo coming soon" card.
-      src: "",
-      alt: "Mishal Fatima, Web Experience Specialist at Cybrix",
+      // Temporary Pexels stock portrait until her own photo is provided.
+      src: "https://images.pexels.com/photos/8154425/pexels-photo-8154425.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      alt: "Portrait standing in for Mishal Fatima, Web Experience Specialist (temporary stock photo)",
+      position: "50% 22%",
+      zoom: 1.05,
+      credit: { name: "Cedric Fauntleroy", url: "https://www.pexels.com/photo/8154425/" },
     },
   },
 ];
